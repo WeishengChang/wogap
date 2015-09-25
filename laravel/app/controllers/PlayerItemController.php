@@ -1,9 +1,8 @@
 <?php
-
+require_once 'EditorController.php';
 class PlayerItemController extends EditorController {
-	private $rules = [
+	public $rules = [
 			'p_id' => 'required',
-			'p_name' => 'required|min:1|max:10',
 			'a_id' => 'string',
 			'd_head_id' => 'string',
 			'd_body_id' => 'string',
@@ -15,5 +14,20 @@ class PlayerItemController extends EditorController {
 			'd_stone_id' => 'string',
 			'd_plus_id' => 'string',
 	];
-	private $dbname = 'DBWOGPlayerItem';
+	public $dbname = 'DBWOGPlayerItem';
+	public function show() {
+		$page = Input::get("page");
+		$rows = Input::get("rows");
+		$sort = Input::get("sort", App::make($this->dbname)->getKeyName());
+		$order = Input::get("order", 'ASC');
+		$list = [
+				'total' => call_user_func(array($this->dbname, 'count')), 
+				'rows'=> call_user_func(array($this->dbname, 'leftJoin'), 'wog_player', 'wog_item.p_id', '=', 'wog_player.p_id')
+					->orderBy('wog_item.'.$sort, $order)
+					->skip(($page-1)*$rows)
+					->take($rows)
+					->get(['wog_item.*', 'wog_player.p_name']),
+		];
+		return Response::json($list);
+	}
 }

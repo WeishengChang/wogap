@@ -132,7 +132,11 @@ App.Router.map(function() {
 		});
 		this.route('playerHero');
 		this.route('playerCP');
-		this.route('playerItem');
+		this.route('playeritem', {path: '/playeritem', resetNamespace: true}, function() {
+			this.route('add');
+			this.route('edit', {path: '/edit/:id'});
+			this.route('delete');
+		});
 		this.route('playerEquipment');
 		this.route('playerDepot');
 		this.route('playerExchange');
@@ -495,6 +499,9 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 					return;
 				}
 				var column = columns[map[field]];
+				if(column.readonly === true) {
+					return;
+				}
 				if(i%2 === 0) {
 					text.push('<tr>');
 				}
@@ -686,7 +693,7 @@ App.PlayerEditRoute = App.EditorRoute.extend({
 	}
 });
 
-App.PlayerItemRoute = App.TabDatagridRoute.extend({
+App.PlayeritemRoute = App.TabDatagridRoute.extend({
 	title: "玩家物品管理",
 	gridParamsUrl: 'json/grid.playeritem.json',
 	gridParams: {
@@ -717,6 +724,16 @@ App.PlayerItemRoute = App.TabDatagridRoute.extend({
 			}
 			this.transitionTo("playeritem.edit", this.gridParams.selected.p_id);
 		},
+	}
+});
+
+App.PlayeritemEditRoute = App.EditorRoute.extend({
+	title: "編輯玩家物品",
+	targetModel: "playeritem",
+	loadSelected: true,
+	actions: {
+		save: function() {
+		}
 	}
 });
 

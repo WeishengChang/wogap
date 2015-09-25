@@ -2024,7 +2024,7 @@ Ember.TEMPLATES["management"] = Ember.HTMLBars.template((function() {
       ["block","link-to",["player","all"],[],0,null,["loc",[null,[3,1],[3,42]]]],
       ["block","link-to",["playerHero"],[],1,null,["loc",[null,[3,43],[3,82]]]],
       ["block","link-to",["playerCP"],[],2,null,["loc",[null,[3,83],[3,120]]]],
-      ["block","link-to",["playerItem"],[],3,null,["loc",[null,[4,1],[4,40]]]],
+      ["block","link-to",["playeritem"],[],3,null,["loc",[null,[4,1],[4,40]]]],
       ["block","link-to",["playerEquipment"],[],4,null,["loc",[null,[5,1],[5,45]]]],
       ["block","link-to",["playerDepot"],[],5,null,["loc",[null,[6,1],[6,41]]]],
       ["block","link-to",["playerExchange"],[],6,null,["loc",[null,[7,1],[7,44]]]],
@@ -2462,7 +2462,7 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
     },
     statements: [
       ["block","link-to",["player"],[],0,null,["loc",[null,[3,8],[3,45]]]],
-      ["block","link-to",["playerItem"],[],1,null,["loc",[null,[6,10],[6,49]]]]
+      ["block","link-to",["playeritem"],[],1,null,["loc",[null,[6,10],[6,49]]]]
     ],
     locals: [],
     templates: [child0, child1]
