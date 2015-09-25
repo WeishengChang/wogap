@@ -1,0 +1,13 @@
+{
+"columns": [[
+		{"field":"id", "title": "ID", "width": 40, "required": true},
+		{"field":"p_id", "title": "玩家ID", "hidden": true, "required": true},
+		{"field":"p_name", "title": "持有玩家", "width": 120, "readonly": true},
+		{"field":"d_id", "title": "物品ID", "hidden": true, "required": true},
+		{"field":"d_name", "title": "持有物品", "width": 200, "readonly": true},
+		{"field":"d_type", "title": "分類類型", "width": 80},
+		{"field":"d_num", "title": "數量", "hidden": true},
+		{"field":"hs_id", "title": "鑲嵌ID", "width": 60},
+		{"field":"ps_id", "title": "精煉ID", "width": 60}
+   ]]
+}

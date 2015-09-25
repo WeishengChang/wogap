@@ -3,6 +3,9 @@
 class EditorController extends Controller {
 	protected $rules = [];
 	protected $dbname = '';
+	public function __construct() {
+		
+	}
 	public function add() {
 		$data = Input::all();
 		$validator = Validator::make($data, $this->rules);
@@ -27,7 +30,7 @@ class EditorController extends Controller {
 	public function del($id) {
 		$id = (int) $id;
 		App::error(function(ModelNotFoundException $e) {
-			return Response::alert("玩家不存在");
+			return Response::alert("不存在的項目");
 		});
 		$p = call_user_func(array($this->dbname, 'findOrFail'), $id);
 		$p->delete();

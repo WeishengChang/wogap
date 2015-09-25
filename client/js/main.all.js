@@ -126,23 +126,32 @@ App.Router.map(function() {
 	this.route('logout');
 	this.route('management', function() {
 		this.route('player', {path: '/player', resetNamespace: true}, function() {
+			/** manipulations */
 			this.route('add');
 			this.route('edit', {path: '/edit/:id'});
 			this.route('delete');
 			
+			/** subroutes */
+			this.route('item', {path: '/item'}, function() {
+				this.route('edit', {path: '/edit/:id'});
+			});
 			this.route('equipment', {path: '/equipment'}, function() {
+				this.route('edit', {path: '/edit/:id'});
+			});
+			this.route('depot', {path: '/depot'}, function() {
+				this.route('edit', {path: '/edit/:id'});
+			});
+			this.route('exchange', {path: '/exchange'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
+			this.route('chexp', {path: '/chexp'}, function() {
 				this.route('edit', {path: '/edit/:id'});
 			});
 		});
 		this.route('playerHero');
 		this.route('playerCP');
-		this.route('playeritem', {path: '/playeritem', resetNamespace: true}, function() {
-			this.route('add');
-			this.route('edit', {path: '/edit/:id'});
-			this.route('delete');
-		});
-		
-		this.route('playerDepot');
 		this.route('playerExchange');
 		this.route('playerChExp');
 		this.route('playerSkill');
@@ -243,6 +252,10 @@ App.TabDatagridRoute = App.TabRoute.extend({
 		//example: 要使用PlayerRoute的model，targetModel要設定為player
 		//               之後就能在DialogRoute中呼叫this.model()抓回model(gridParams)
 		var route = this;
+		if(!route.gridParams.url) {
+			//沒指定URL，則使用預設的格式: 當前route的subroute: show
+			route.gridParams.url = SERVER_PATH+this.routeName.split('.').join('/')+'/show';
+		}
 		if(this.gridParamsUrl) {
 			return $.getJSON(this.gridParamsUrl).then(function(json) {
 				if(route.gridParams && route.gridParams.columns) {
@@ -318,8 +331,8 @@ App.TabDatagridRoute = App.TabRoute.extend({
 		this.gridPanel = $('<div/>').appendTo(this.panel).datagrid(route.gridParams);
 	},
 	actions: {
-		add: function() { //按下[新增]的按鈕
-			delete this.gridParams['selected'];
+		add: function() { //按下[新增]的按鈕的預設行為
+			this.gridParams['selected'] = null;
 		},
 		edit: function() { //按下[編輯]的按鈕
 			var row = $(this.getDatagrid()).datagrid('getSelected');
@@ -388,7 +401,7 @@ App.Dialog = Ember.Mixin.create({
 							if(data.msg) {
 								alert(data.msg);
 							}
-							
+							$.messager.notification("編輯成功");
 							if(data.reload === true) {
 								//console.log('first send reload');
 								route.send("reload");
@@ -426,6 +439,11 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 	_cache_switch_list: [],
 	parentRoute: null,
 	model: function(params, transition) { //用來回傳selected row的資料
+		if(!this.targetModel) { //預設的targetModel是 parent route 的model
+			var frag = this.routeName.split('.');
+			frag.pop();
+			this.targetModel = frag.join('.');
+		}
 		var data = this.modelFor(this.targetModel);
 		this.parentRoute = data[0];
 			return data[1];
@@ -482,13 +500,14 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 				text.push(createForm.call(route, columns, childs, exclude, columnmap));
 				exclude = exclude.concat(childs);
 			});
+			//console.log(exclude, columns.length, exclude.length, remain);
 			if(columns.length > exclude.length) {
 				var remain = createForm.call(route, columns, [], exclude);
+				//console.log(remain);
 				if(remain) {
 					text.push('<tr><td colspan="4" class="editor-group-title">其他</td></tr>');
 					text.push(remain);
 				}
-				
 			}
 		} else {
 			text.push(route.createForm(columns, [], []));
@@ -508,6 +527,7 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 				}
 				var column = columns[map[field]];
 				if(column.readonly === true) {
+					exclude.push(field);
 					return;
 				}
 				if(i%2 === 0) {
@@ -521,7 +541,11 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 			});
 		} else {
 			$.each(columns || [], function(k, column) {
-				if($.inArray(k, exclude) !== -1 || $.inArray(column.field, exclude) !== -1 || column.readonly === true) {
+				if($.inArray(k, exclude) !== -1 || $.inArray(column.field, exclude) !== -1) {
+					return;
+				}
+				if(column.readonly === true) {
+					exclude.push(column.field);
 					return;
 				}
 				if(i%2 === 0) {
@@ -668,16 +692,16 @@ App.PlayerRoute = App.TabDatagridRoute.extend({
 	actions: {
 		add: function() {
 			this._super();
-			this.transitionTo("player.add");
+			this.transitionTo(this.routeName+".add");
 		},
 		edit: function() {
 			if(this._super() === false) {
 				return;
 			}
-			this.transitionTo("player.edit", this.gridParams.selected.p_id);
+			this.transitionTo(this.routeName+".edit", this.gridParams.selected.p_id);
 		},
 		del: function() {
-			if(this._super() === true && this._super('player/del/'+this.gridParams.selected.p_id) === false) {
+			if(this._super() === true && this._super(this.routeName.split('.').join('/')+'/del/'+this.gridParams.selected.p_id) === false) {
 				return;
 			}
 		}
@@ -701,11 +725,11 @@ App.PlayerEditRoute = App.EditorRoute.extend({
 	}
 });
 
-App.PlayeritemRoute = App.TabDatagridRoute.extend({
+App.PlayerItemRoute = App.TabDatagridRoute.extend({
 	title: "玩家物品管理",
 	gridParamsUrl: 'json/grid.playeritem.json',
 	gridParams: {
-		url: SERVER_PATH+'playeritem/show',
+		url: SERVER_PATH+'player/item/show',
 		autoRowHeight: false,
 		pagination: true,
 		columns: [
@@ -730,14 +754,14 @@ App.PlayeritemRoute = App.TabDatagridRoute.extend({
 			if(this._super() === false) {
 				return;
 			}
-			this.transitionTo("playeritem.edit", this.gridParams.selected.p_id);
+			this.transitionTo(this.routeName+".edit", this.gridParams.selected.p_id);
 		},
 	}
 });
 
-App.PlayeritemEditRoute = App.EditorRoute.extend({
+App.PlayerItemEditRoute = App.EditorRoute.extend({
 	title: "編輯玩家物品",
-	targetModel: "playeritem",
+	targetModel: "player.item",
 	loadSelected: true,
 	actions: {
 		save: function() {
@@ -779,7 +803,7 @@ App.PlayerEquipmentRoute = App.TabDatagridRoute.extend({
 			if(this._super() === false) {
 				return;
 			}
-			this.transitionTo("player.equipment.edit", this.gridParams.selected.p_id);
+			this.transitionTo(this.routeName+".edit", this.gridParams.selected.p_id);
 		},
 	}
 });
@@ -793,6 +817,126 @@ App.PlayerEquipmentEditRoute = App.EditorRoute.extend({
 		}
 	}
 });
+
+//倉庫
+App.PlayerDepotRoute = App.TabDatagridRoute.extend({
+	title: "玩家倉庫管理",
+	gridParamsUrl: 'json/grid.player.depot.json',
+	gridParams: {
+		url: SERVER_PATH+'player/depot/show',
+		autoRowHeight: false,
+		pagination: true,
+		columns: [
+			{field: "d_name", formatter: function(val, row) { return +row.d_type < 5 ?val:val+" * "+row.d_num;}}
+		], //擴充
+		columnsGroup: { //TODO: grouptype, 能將群組中的特定欄位組合成一個選取功能
+			"基本資料": ['id', 'p_id'],
+		},
+		toolbar: [
+			{
+				iconCls: 'icon-edit',
+				text: '編輯',
+				iconAlign: 'top',
+				action: 'edit'
+			}
+		]
+	},
+	actions: {
+		edit: function() {
+			if(this._super() === false) {
+				return;
+			}
+			this.transitionTo(this.routeName+".edit", this.gridParams.selected.id);
+		},
+	}
+});
+
+App.PlayerDepotEditRoute = App.EditorRoute.extend({
+	title: "編輯倉庫物品",
+	targetModel: "player.depot",
+	loadSelected: true,
+	actions: {
+		save: function() {
+		}
+	}
+});
+
+App.PlayerExchangeRoute = App.TabDatagridRoute.extend({
+	title: "玩家資源管理",
+	gridParamsUrl: 'json/grid.player.exchange.json',
+	gridParams: {
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columnsGroup: {
+			"基本資料": ['el_id', 'p_id'],
+		},
+		toolbar: [
+			{
+				iconCls: 'icon-add',
+				text: '新增',
+				iconAlign: 'top',
+				action: "add"
+			}, 
+			{
+				iconCls: 'icon-edit',
+				text: '編輯',
+				iconAlign: 'top',
+				action: 'edit'
+			}, 
+			{
+				iconCls: 'icon-remove',
+				text: '刪除',
+				iconAlign: 'top',
+				action: 'del'
+			}
+		]
+	},
+	actions: {
+		add: function() {
+			this._super();
+			this.transitionTo(this.routeName+".add");
+		},
+		edit: function() {
+			if(this._super() === false) {
+				return;
+			}
+			this.transitionTo(this.routeName+".edit", this.gridParams.selected.el_id);
+		},
+		del: function() {
+			if(this._super() === true && this._super(this.routeName.split('.').join('/')+'/del/'+this.gridParams.selected.el_id) === false) {
+				return;
+			}
+		}
+	}
+});
+App.PlayerExchangeAddRoute = App.EditorRoute.extend({title: "新增玩家資源"});
+App.PlayerExchangeEditRoute = App.EditorRoute.extend({title: "編輯玩家資源",loadSelected: true});
+
+App.PlayerChexpRoute = App.TabDatagridRoute.extend({
+	title: "玩家職業熟練管理",
+	gridParamsUrl: 'json/grid.player.chexp.json',
+	gridParams: {
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columnsGroup: {
+			"基本資料": ['el_id', 'p_id'],
+		},
+		toolbar: [
+			{iconCls: 'icon-edit', text: '編輯', iconAlign: 'top', action: 'edit'}
+		]
+	},
+	actions: {
+		edit: function() {
+			if(this._super() === false) {
+				return;
+			}
+			this.transitionTo(this.routeName+".edit", this.gridParams.selected.el_id);
+		}
+	}
+});
+App.PlayerChexpEditRoute = App.EditorRoute.extend({title: "編輯玩家職業熟練",loadSelected: true});
 
 App.BarsController = Ember.Controller.extend({
 	field: ['現金', '存款', '財富'],

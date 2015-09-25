@@ -1,0 +1,11 @@
+{
+"columns": [[
+		{"field":"el_id", "title": "ID", "width": 40},
+		{"field":"p_id", "title": "玩家ID", "hidden": true, "required": true},
+		{"field":"p_name", "title": "持有玩家", "width": 120, "readonly": true},
+		{"field":"ex_id", "title": "資源ID", "hidden": true, "required": true},
+		{"field":"ex_name", "title": "資源", "width": 120, "readonly": true},
+		{"field":"el_amount", "title": "數量", "width": 80},
+		{"field":"el_money", "title": "成本", "width": 120}
+   ]]
+}

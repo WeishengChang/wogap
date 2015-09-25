@@ -23,12 +23,26 @@ Route::group(['prefix' => 'player'], function() {
 	Route::post('add', ['uses' => 'playerController@add']);
 	Route::post('edit', ['uses' => 'playerController@edit']);
 	Route::post('del/{id}', ['uses' => 'playerController@del']);
+	Route::group(['prefix' => 'item'], function() {
+		Route::post('show', ['uses' => 'playerItemController@show']);
+		Route::post('edit', ['uses' => 'playerItemController@edit']);
+	});
 	Route::group(['prefix' => 'equipment'], function() {
 		Route::post('show', ['uses' => 'playerEquipmentController@show']);
 		Route::post('edit', ['uses' => 'playerEquipmentController@edit']);
 	});
-});
-Route::group(['prefix' => 'playeritem'], function() {
-	Route::post('show', ['uses' => 'playerItemController@show']);
-	Route::post('edit', ['uses' => 'playerItemController@edit']);
+	Route::group(['prefix' => 'depot'], function() {
+		Route::post('show', ['uses' => 'playerDepotController@show']);
+		Route::post('edit', ['uses' => 'playerDepotController@edit']);
+	});
+	Route::group(['prefix' => 'exchange'], function() {
+		Route::post('show', ['uses' => 'playerExchangeController@show']);
+		Route::post('add', ['uses' => 'playerExchangeController@add']);
+		Route::post('edit', ['uses' => 'playerExchangeController@edit']);
+		Route::post('del/{id}', ['uses' => 'playerExchangeController@del']);
+	});
+	Route::group(['prefix' => 'chexp'], function() {
+		Route::post('show', ['uses' => 'playerChexpController@show']);
+		Route::post('edit', ['uses' => 'playerChexpController@edit']);
+	});
 });
