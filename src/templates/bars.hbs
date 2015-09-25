@@ -1,0 +1,30 @@
+<div id="bar-menu">
+	<div class="panel">
+		<div class="panel-header">設定</div>
+		<div class="panel-content">
+			<div class="panel">
+				<div class="panel-header small">欄位</div>
+				<div class="panel-content">
+				{{Select viewName="select" content=field value=selectedField}}
+				</div>
+			</div> <!--panel END-->
+
+			<div class="tab-control" data-role="tab-control">
+				<ul class="tabs">
+					<li class="active"><a href="#_p1">標準</a></li>
+					<li><a href="#_p2">級距</a></li>
+				</ul>
+				<div class="frames">
+					<div class="frame" id="_p1">
+					{{#link-to "bars.basics" selectedField}}<button>顯示圖表</button>{{/link-to}}
+					</div>
+					<div class="frame" id="_p2">
+					list
+					<button>顯示圖表</button>
+					</div>
+				</div><!--frames END-->
+			</div><!--TabControl END-->
+		</div>
+	</div>
+</div>
+<div id="bar-result">{{outlet}}</div>

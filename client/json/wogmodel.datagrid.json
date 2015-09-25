@@ -1,0 +1,878 @@
+{
+	"avatar": {
+			"title": "人物頭像列表",
+			"columns": [
+					{"field":"i_id", "title": "ID", "width": 80},
+					{"field":"*i_filename", "title": "檔案路徑", "width": 400}
+				],
+			"editurl": "control.php?f=avatar&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"bid": {
+			"showItem": {
+				"title": "拍賣物品列表",
+				"columns": [
+					{"field":"s_id", "title": "ID", "width": 40},
+					{"field":"*p_id", "title": "拍賣人ID", "width": 0},
+					{"field":"p_name", "title": "拍賣人", "width": 80},
+					{"field":"*d_id", "title": "拍賣品ID", "width": 0},
+					{"field":"d_name", "title": "拍賣品名稱", "width": 80},
+					{"field":"d_type", "title": "分類類型", "width": 60},
+					{"field":"hs_id", "title": "鑲嵌ID", "width": 60},
+					{"field":"ps_id", "title": "精煉ID", "width": 60},
+					{"field":"item_num", "title": "數量", "width": 40},
+					{"field":"s_money", "title": "競標價", "width": 60},
+					{"field":"e_money", "title": "結標價", "width": 60},
+					{"field":"e_p_id", "title": "下標人ID", "width": 0},
+					{"field":"e_name", "title": "下標人", "width": 60},
+					{"field":"s_type", "title": "拍賣類型", "width": 60},
+					{"field":"dateline", "title": "結標日期", "width": 80}
+				],
+				"editurl": "control.php?f=bid&act=edititem"
+			}
+		},
+		"character": {
+			"title": "職業列表",
+			"columns": [
+				{"field":"ch_id", "title": "ID", "width": 40},
+				{"field":"*ch_name", "title": "職業名稱", "width": 120},
+				{"field":"*ch_str", "title": "力量成長", "width": 60},
+				{"field":"*ch_smart", "title": "智力成長", "width": 60},
+				{"field":"*ch_agi", "title": "速度成長", "width": 60},
+				{"field":"*ch_life", "title": "生命成長", "width": 60},
+				{"field":"*ch_vit", "title": "體質成長", "width": 60},
+				{"field":"*ch_au", "title": "信仰成長", "width": 60},
+				{"field":"*ch_be", "title": "魅力成長", "width": 60},
+				{"field":"ch_mlv", "title": "限制等級", "width": 60},
+				{"field":"ch_map", "title": "限制熟練", "width": 60},
+				{"field":"ch_main", "title": "前置職業", "width": 0},
+				{"field":"main_name", "title": "前置職業", "width": 120}
+			],
+			"editurl": "control.php?f=character&act=edit",
+			"toolbar": {
+				"職業": {"title": "職業列表", "search": []},
+				"熟練度": {"title": "玩家熟練度", "search": []},
+				"技能": {"title": "職業技能", "search": []}
+			},
+			"contextMenu": {
+				"edit": ["編輯", "ui-icon-pencil", "edit", {
+					"viewSkill": ["編輯技能", "ui-icon-pencil", "characterSkill"]
+				}]
+			}
+		},
+		"characterSkill": {
+			"title": "職業技能列表",
+			"columns": [
+				{"field":"s_id", "title": "ID", "width": 40},
+				{"field":"*s_name", "title": "技能名稱", "width": 60},
+				{"field":"*ch_id", "title": "相關職業ID", "width": 0},
+				{"field":"ch_name", "title": "相關職業", "width": 60},
+				{"field":"s_text", "title": "說明", "width": 100},
+				{"field":"ch_exp", "title": "需求熟練", "width": 60},
+				{"field":"type", "title": "類型", "width": 40},
+				{"field":"stime", "title": "機率", "width": 40},
+				{"field":"s_sp", "title": "消耗SP", "width": 40},
+				{"field":"s_st", "title": "ST", "width": 40},
+				{"field":"s_count", "title": "持續回合", "width": 60},
+				{"field":"s_money", "title": "學習金額", "width": 60},
+				{"field":"s_lv", "title": "技能等級", "width": 0},
+				{"field":"main_sid", "title": "分類", "width": 0},
+				{"field":"*main_name", "title": "分類", "width": 60},
+				{"field":"need_sid", "title": "前置技能", "width": 0},
+				{"field":"need_name", "title": "前置技能", "width": 60},
+				{"field":"s_master", "title": "禁學", "width": 40}
+			],
+			"editurl": "control.php?f=characterSkill&act=edit"
+		},
+		"exchange": {
+			"title": "資源市場",
+			"columns": [
+					{"field":"*ex_id", "title": "ID", "width": 40},
+					{"field":"*ex_name", "title": "名稱", "width": 80},
+					{"field":"ex_money", "title": "售價", "width": 120},
+					{"field":"ex_amount", "title": "數量", "width": 40},
+					{"field":"ex_change", "title": "變動", "width": 40},
+					{"field":"ex_chg_num", "title": "變動量", "width": 60},
+					{"field":"ex_change_time", "title": "變動時間", "width": 80},
+					{"field":"ex_resupply_time", "title": "補充時間", "width": 80}
+				],
+			"editurl": "control.php?f=exchange&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"exchangeBook": {
+			"title": "資源市場變動紀錄",
+			"columns": [
+					{"field":"*eb_id", "title": "ID", "width": 40},
+					{"field":"ex_id", "title": "名稱", "width": 0},
+					{"field":"ex_name", "title": "資源", "width": 80},
+					{"field":"eb_body", "title": "訊息", "width": 320},
+					{"field":"eb_time", "title": "變動時間", "width": 80}
+				],
+			"editurl": "control.php?f=exchangeBook&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"item": {
+			"title": "道具列表",
+			"columns": [
+				{"field":"d_id", "title": "ID", "width": 50},
+					{"field":"*d_name", "title": "名稱", "width": 200},
+					{"field":"d_money", "title": "價位", "width": 0},
+					{"field":"d_type", "title": "類型", "width": 60},
+					{"field":"d_fie", "title": "背包類型", "width": 60},
+					{"field":"d_dbst", "title": "dbst", "width": 40},
+					{"field":"d_hole", "title": "洞數", "width": 40},
+					{"field":"d_plus", "title": "精煉", "width": 40},
+					{"field":"d_lv", "title": "LV", "width": 40},
+					{"field":"d_send", "title": "綁定", "width": 40},
+					{"field":"d_vip", "title": "VIP", "width": 40},
+
+					{"field":"d_mstr", "title": "力量需求", "width": 0},
+					{"field":"d_msmart", "title": "智力需求", "width": 0},
+					{"field":"d_magl", "title": "敏捷需求", "width": 0},
+					{"field":"d_mau", "title": "信仰需求", "width": 0},
+					{"field":"d_at", "title": "物理攻擊", "width": 0},
+					{"field":"d_df", "title": "物理防禦", "width": 0},
+					{"field":"d_mat", "title": "魔法攻擊", "width": 0},
+					{"field":"d_mdf", "title": "魔法防禦", "width": 0},
+
+					{"field":"d_g_hp", "title": "恢復HP", "width": 0},
+					{"field":"d_g_sp", "title": "恢復SP", "width": 0},
+					{"field":"d_g_str", "title": "增加力量", "width": 0},
+					{"field":"d_g_smart", "title": "增加智力", "width": 0},
+					{"field":"d_g_agi", "title": "增加敏捷", "width": 0},
+					{"field":"d_g_life", "title": "增加生命", "width": 0},
+					{"field":"d_g_vit", "title": "增加體質", "width": 0},
+					{"field":"d_g_au", "title": "增加信仰", "width": 0},
+					{"field":"d_g_be", "title": "增加魅力", "width": 0},
+
+					{"field":"ch_id", "title": "職業", "width": 0},
+					{"field":"ch_name", "title": "職業", "width": 40},
+					{"field":"d_s", "title": "屬性", "width": 0},
+					{"field":"skill", "title": "技能", "width": 0},
+					{"field":"stime", "title": "技能發動率", "width": 0},
+					{"field":"ch_pro", "title": "職業熟練度", "width": 0}
+			],
+			"editurl": "control.php?f=item&act=edit",
+			"toolbar": {
+				"全部": {"title": "所有玩家", "search": [""]}
+			},
+			"sortname": "d_id"
+		},
+		"itemHonor": {
+			"title": "勳章所交換品",
+			"columns": [
+					{"field":"h_id", "title": "ID", "width": 40},
+					{"field":"item_id", "title": "物品ID", "width": 0},
+					{"field":"d_name", "title": "名稱", "width": 120},
+					{"field":"h_type", "title": "類型", "width": 80},
+					{"field":"h_1", "title": "勳章1", "width": 40},
+					{"field":"h_2", "title": "勳章2", "width": 40},
+					{"field":"h_3", "title": "勳章3", "width": 40},
+					{"field":"h_4", "title": "勳章4", "width": 40},
+					{"field":"h_5", "title": "勳章5", "width": 40},
+					{"field":"item_num", "title": "數量", "width": 0}
+				],
+			"editurl": "control.php?f=itemHonor&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"itemKey": {
+			"title": "鑰匙列表",
+			"columns": [
+					{"field":"d_id", "title": "ID", "width": 40},
+					{"field":"d_name", "title": "名稱", "width": 80},
+					{"field":"area_id", "title": "開啟區域", "width": 0},
+					{"field":"area_name", "title": "開啟區域", "width": 120},
+					{"field":"area_time", "title": "開啟時間", "width": 120}
+				],
+			"editurl": "control.php?f=itemKey&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"itemPlus": {
+			"title": "精煉石列表",
+			"columns": [
+					{"field":"d_id", "title": "ID", "width": 40},
+					{"field":"d_name", "title": "名稱", "width": 200},
+					{"field":"d_lv", "title": "等級", "width": 40},
+					{"field":"d_type", "title": "類別", "width": 40},
+					{"field":"d_at", "title": "物攻", "width": 40},
+					{"field":"d_mat", "title": "魔攻", "width": 40},
+					{"field":"d_df", "title": "物防", "width": 40},
+					{"field":"d_mdf", "title": "魔防", "width": 40},
+					{"field":"d_str", "title": "力量", "width": 40},
+					{"field":"d_agi", "title": "速度", "width": 40},
+					{"field":"d_smart", "title": "智力", "width": 40},
+					{"field":"d_life", "title": "生命", "width": 40},
+					{"field":"d_vit", "title": "體質", "width": 40},
+					{"field":"d_au", "title": "信仰", "width": 40},
+					{"field":"d_be", "title": "魅力", "width": 40}
+				],
+			"editurl": "control.php?f=playerPlus&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"itemSale": {
+			"title": "拍賣品列表",
+			"columns": [
+					{"field":"s_id", "title": "ID", "width": 40},
+					{"field":"p_id", "title": "物品ID", "width": 0},
+					{"field":"p_name", "title": "賣家", "width": 120},
+					{"field":"d_id", "title": "物品ID", "width": 0},
+					{"field":"d_name", "title": "拍賣品", "width": 120},
+					{"field":"d_type", "title": "物品類型", "width": 40},
+					{"field":"hs_id", "title": "鑲嵌ID", "width": 0},
+					{"field":"ps_id", "title": "精煉ID", "width": 0},
+					{"field":"item_num", "title": "數量", "width": 0},
+					{"field":"s_money", "title": "競標價", "width": 40},
+					{"field":"s_type", "title": "拍賣類型", "width": 40},
+					{"field":"e_money", "title": "結標價", "width": 40},
+					{"field":"e_p_id", "title": "下標玩家", "width": 0},
+					{"field":"e_p_name", "title": "下標玩家", "width": 40},
+					{"field":"dateline", "title": "日期", "width": 80}
+				],
+			"editurl": "control.php?f=itemSale&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"itemStone": {
+			"title": "魔石列表",
+			"columns": [
+					{"field":"d_id", "title": "ID", "width": 40},
+					{"field":"d_name", "title": "名稱", "width": 200},
+					{"field":"d_lv", "title": "等級", "width": 40},
+					{"field":"d_class", "title": "類別", "width": 40},
+					{"field":"s_at", "title": "物攻", "width": 40},
+					{"field":"s_mat", "title": "魔攻", "width": 40},
+					{"field":"s_df", "title": "物防", "width": 40},
+					{"field":"s_mdf", "title": "魔防", "width": 40},
+					{"field":"s_agl", "title": "速度", "width": 40},
+					{"field":"s_str", "title": "力量", "width": 40},
+					{"field":"s_life", "title": "生命", "width": 40},
+					{"field":"s_vit", "title": "體質", "width": 40},
+					{"field":"s_smart", "title": "智力", "width": 40},
+					{"field":"s_au", "title": "信仰", "width": 40},
+					{"field":"s_be", "title": "魅力", "width": 40},
+					{"field":"s_hpmax", "title": "HPMAX", "width": 40}
+				],
+			"editurl": "control.php?f=playerStone&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"itemSyn": {
+			"title": "合成表",
+			"columns": [
+					{"field":"syn_id", "title": "ID", "width": 40},
+					{"field":"syn_result", "title": "合成結果", "width": 0},
+					{"field":"d_name", "title": "合成結果", "width": 120},
+					{"field":"syn_element", "title": "材料", "width": 0},
+					{"field":"syn_name", "title": "材料", "width": 320},
+					{"field":"syn_topr", "title": "成功率", "width": 40},
+					{"field":"syn_num", "title": "數量", "width": 0},
+					{"field":"syn_mission", "title": "任務", "width": 40},
+					{"field":"syn_need_mission", "title": "前置任務", "width": 0},
+					{"field":"m_subject", "title": "前置任務", "width": 80}
+				],
+			"editurl": "control.php?f=itemSyn&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"itemUsed": {
+			"title": "消耗品列表",
+			"columns": [
+					{"field":"d_id", "title": "ID", "width": 40},
+					{"field":"d_name", "title": "道具名稱", "width": 200},
+					{"field":"d_type", "title": "類型", "width": 100},
+					{"field":"d_lv", "title": "等級", "width": 40},
+					{"field":"d_g_exp", "title": "增加經驗", "width": 0},
+					{"field":"d_g_bag", "title": "增加背包", "width": 0},
+					{"field":"ch_id", "title": "職業ID", "width": 0},
+					{"field":"skill_id", "title": "技能ID", "width": 0},
+					{"field":"use_time", "title": "時效", "width": 40},
+					{"field":"exp", "title": "EXP倍率", "width": 0},
+					{"field":"skill_exp", "title": "技能EXP倍率", "width": 0},
+					{"field":"at", "title": "AT倍率", "width": 0},
+					{"field":"mat", "title": "MAT倍率", "width": 0},
+					{"field":"df", "title": "DF倍率", "width": 0},
+					{"field":"mdf", "title": "MDF倍率", "width": 0},
+					{"field":"hp", "title": "HP倍率", "width": 0},
+					{"field":"sp", "title": "SP倍率", "width": 0}
+				],
+			"editurl": "control.php?f=playerBuff&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"monster": {
+			"title": "怪物列表",
+			"columns": [
+				{"field":"m_id", "title": "ID", "width": 50},
+				{"field":"*m_name", "title": "名稱", "width": 100},
+				{"field":"m_sat_name", "title": "必殺技", "width": 0},
+				{"field":"s_property", "title": "屬性", "width": 40},
+				{"field":"m_img", "title": "頭像", "width": 100},
+				{"field":"m_place", "title": "出沒地", "width": 60},
+				{"field":"m_subplace", "title": "子區域", "width": 0},
+				{"field":"m_lv", "title": "等級", "width": 40},
+				{"field":"m_meet", "title": "遭遇率", "width": 100},
+				{"field":"m_mission", "title": "任務ID", "width": 0},
+				{"field":"m_mission", "title": "任務", "width": 100},
+				{"field":"m_npc", "title": "NPC", "width": 40},
+				{"field":"m_npc_message", "title": "NPC訊息", "width": 0},
+				{"field":"hp", "title": "HP", "width": 0},
+				{"field":"sp", "title": "SP", "width": 0},
+				{"field":"at", "title": "物攻", "width": 0},
+				{"field":"df", "title": "物防", "width": 0},
+				{"field":"mat", "title": "魔攻", "width": 0},
+				{"field":"mdf", "title": "魔防", "width": 0},
+				{"field":"str", "title": "力量", "width": 0},
+				{"field":"smart", "title": "智力", "width": 0},
+				{"field":"agi", "title": "速度", "width": 0},
+				{"field":"life", "title": "生命", "width": 0},
+				{"field":"vit", "title": "體質", "width": 0},
+				{"field":"au", "title": "信仰", "width": 0},
+				{"field":"be", "title": "魅力", "width": 0},
+				{"field":"skill_1", "title": "技能1", "width": 0},
+				{"field":"skill_2", "title": "技能2", "width": 0},
+				{"field":"skill_3", "title": "技能3", "width": 0},
+				{"field":"skill_4", "title": "技能4", "width": 0},
+				{"field":"skill_5", "title": "技能5", "width": 0},
+				{"field":"time_1", "title": "機率1", "width": 0},
+				{"field":"time_2", "title": "機率2", "width": 0},
+				{"field":"time_3", "title": "機率3", "width": 0},
+				{"field":"m_job_exp", "title": "職業熟練度", "width": 0},
+				{"field":"d_id", "title": "掉落物品", "width": 0},
+				{"field":"m_topr", "title": "掉落機率", "width": 0}
+			],
+			"editurl": "control.php?f=monster&act=edit"
+		},
+	"player": 
+	{
+		"title": "玩家列表",
+		"columns": [[
+				{"field": "p_id", "title": "ID", "width": 50, "sortable": true},
+				{"field":"*p_name", "title": "名稱", "width": 100, "sortable": true},	
+				{"field":"*p_password", "title": "密碼", "width": 0, "sortable": true},
+				{"field":"p_email", "title": "信箱", "width": 140, "sortable": true},
+				{"field":"p_ipadd", "title": "IP紀錄", "width": 140, "sortable": true},
+				{"field":"p_act_time", "title": "行動時間", "width": 100, "sortable": true},
+				{"field":"act_num", "title": "行動力", "width": 0, "sortable": true},
+				{"field":"act_num_time", "title": "行動補充時間", "width": 0, "sortable": true},
+				{"field":"p_lock_time", "title": "封鎖時間", "width": 100, "sortable": true},
+				{"field":"p_st", "title": "VIP", "width": 50, "sortable": true},
+				{"field":"p_userlv", "title": "身份", "width": 0, "sortable": true},
+				{"field":"p_lock", "title": "封鎖", "width": 0, "sortable": true},
+				{"field":"p_npc", "title": "NPC", "width": 0, "sortable": true},
+				{"field":"s_property", "title": "屬性", "width": 0, "sortable": true},
+				{"field":"hp", "title": "HP", "width": 0, "sortable": true},
+				{"field":"hpmax", "title": "HP MAX", "width": 0, "sortable": true},
+				{"field":"sp", "title": "SP", "width": 0, "sortable": true},
+				{"field":"spmax", "title": "SP MAX", "width": 0, "sortable": true},
+				{"field":"ch_id", "title": "職業", "width": 0, "sortable": true},
+				{"field":"p_money", "title": "現金", "width": 0, "sortable": true},
+				{"field":"p_bank", "title": "存款", "width": 0, "sortable": true},
+				{"field":"p_cash", "title": "點數", "width": 0, "sortable": true},
+
+				{"field":"str", "title": "力量", "width": 0, "sortable": true},	
+				{"field":"smart", "title": "智力", "width": 0, "sortable": true},
+				{"field":"agi", "title": "敏捷", "width": 0, "sortable": true},
+				{"field":"life", "title": "生命", "width": 0, "sortable": true},
+				{"field":"vit", "title": "體質", "width": 0, "sortable": true},
+				{"field":"au", "title": "信仰", "width": 0, "sortable": true},
+				{"field":"be", "title": "魅力", "width": 0, "sortable": true},
+				{"field":"base_str", "title": "基礎力量", "width": 0, "sortable": true},
+				{"field":"base_smart", "title": "基礎智力", "width": 0, "sortable": true},
+				{"field":"base_agi", "title": "基礎敏捷", "width": 0, "sortable": true},
+				{"field":"base_life", "title": "基礎生命", "width": 0, "sortable": true},
+				{"field":"base_vit", "title": "基礎體質", "width": 0, "sortable": true},
+				{"field":"base_au", "title": "基礎信仰", "width": 0, "sortable": true},
+				{"field":"base_be", "title": "基礎魅力", "width": 0, "sortable": true},
+				{"field":"at", "title": "物理攻擊力", "width": 0, "sortable": true},
+				{"field":"df", "title": "物理防禦力", "width": 0, "sortable": true},
+				{"field":"mat", "title": "魔法攻擊力", "width": 0, "sortable": true},
+				{"field":"mdf", "title": "魔法防禦力", "width": 0, "sortable": true},
+
+				{"field":"p_exp", "title": "經驗", "width": 0, "sortable": true},
+				{"field":"p_nextexp", "title": "升級經驗", "width": 0, "sortable": true},
+				{"field":"p_lv", "title": "等級", "width": 0, "sortable": true},
+				{"field":"p_birth", "title": "出生地", "width": 0, "sortable": true},
+				{"field":"p_place", "title": "冒險地", "width": 0, "sortable": true},
+				{"field":"p_sat_name", "title": "必殺技", "width": 0, "sortable": true},
+				{"field":"p_win", "title": "勝場", "width": 0, "sortable": true},
+				{"field":"p_lost", "title": "敗場", "width": 0, "sortable": true},
+				{"field":"p_sex", "title": "性別", "width": 0, "sortable": true},
+				{"field":"p_img_set", "title": "圖像設置", "width": 0, "sortable": true},
+				{"field":"p_img_url", "title": "個人圖像", "width": 0, "sortable": true},
+				{"field":"p_pk_s", "title": "PK設置", "width": 0, "sortable": true},
+				{"field":"p_pk_money", "title": "PK獎金", "width": 0, "sortable": true},
+				{"field":"p_bag", "title": "背包格數", "width": 0, "sortable": true},
+				{"field":"p_depot", "title": "倉庫格數", "width": 0, "sortable": true},
+				{"field":"p_cp_st", "title": "冠軍", "width": 0, "sortable": true},
+				{"field":"p_cp_time", "title": "冠軍日期", "width": 0, "sortable": true},
+
+				{"field":"i_img", "title": "系統圖像", "width": 0, "sortable": true},
+				{"field":"p_g_id", "title": "公會", "width": 0, "sortable": true},
+				{"field":"t_id", "title": "隊伍", "width": 0, "sortable": true},
+				{"field":"p_support", "title": "支援對象", "width": 0, "sortable": true},
+				{"field":"p_recomm", "title": "推薦人", "width": 0, "sortable": true},
+				{"field":"p_attempts", "title": "驗證次數", "width": 0, "sortable": true},
+				{"field":"p_cdate", "title": "建立日期", "width": 0, "sortable": true},
+				{"field":"p_online_time", "title": "登入日期", "width": 0, "sortable": true},
+				{"field":"p_bbsid", "title": "論壇ID", "width": 0, "sortable": true}
+			]],
+			"contextMenu": {
+				"edit": ["編輯", "ui-icon-pencil", "edit", {
+					"edititem": ["編輯背包", "ui-icon-pencil", "playerItem", {
+						"editequipment": ["編輯裝備", "ui-icon-pencil", "playerEquipment"],
+						"editdepot": ["編輯倉庫", "ui-icon-pencil", "playerDepot"],
+						"editexchange": ["編輯資源", "ui-icon-pencil", "playerExchange"]
+					}],
+					"editchexp": ["編輯職業熟練", "`ui-icon-pencil", "playerChExp", {
+							"editskill": ["編輯技能", "ui-icon-pencil", "playerSkill"],
+							"editskillsetup": ["編輯裝備技能", "ui-icon-pencil", "playerSkillSetup"]
+					}],
+					"editmission": ["編輯任務", "ui-icon-pencil", "playerMission"],
+					"editpet": ["編輯寵物", "ui-icon-pencil", "playerPet"],
+					"editmercenary": ["編輯傭兵", "ui-icon-pencil", "playerMercenary"],
+					"editbuff": ["編輯狀態", "ui-icon-pencil", "playerBuff"],
+					"editmessage": ["編輯訊息", "ui-icon-pencil", "playerMessage", {
+						"editmail": ["編輯信箱", "ui-icon-pencil", "playerMail"],
+						"editfriend": ["編輯好友", "ui-icon-pencil", "playerFriend"]
+					}]
+				}]
+			},
+			"editurl": "control.php?f=player&act=edit",
+			"sortname": "p_id",
+			"toolbar": {
+				"全部": {"title": "所有玩家", "search": []},
+				"PC": {"title": "正常玩家", "search": ["p_npc", "eq", "0"]},
+				"NPC": {"title": "非玩家", "search": ["p_npc", "eq", "1"]},
+				"封鎖": {"title": "已封鎖玩家", "search": ["p_lock", "eq", "1"]},
+				"未封鎖": {"title": "未封鎖玩家", "search": ["p_lock", "eq", "0"]},
+				"冠軍": {"title": "冠軍玩家", "search": ["p_cp_st", "eq", "1"]}
+			},
+			"navBar": {
+				"add": {"width": 1000}, "edit": {"width": 1000}
+			}
+	},
+	"playerBuff": {
+			"title": "玩家增益列表",
+			"columns": [
+				{"field":"p_id", "title": "ID", "width": 40},
+				{"field":"p_name", "title": "名稱", "width": 60},
+				{"field":"end_time", "title": "結束時間", "width": 80},
+				{"field":"exp", "title": "經驗", "width": 40},
+				{"field":"skill_exp", "title": "技能經驗", "width": 60},
+				{"field":"at", "title": "物攻", "width": 40},
+				{"field":"mat", "title": "魔攻", "width": 40},
+				{"field":"df", "title": "物防", "width": 40},
+				{"field":"mdf", "title": "魔防", "width": 40},
+				{"field":"hp", "title": "HP", "width": 40},
+				{"field":"sp", "title": "SP", "width": 40}
+			],
+			"editurl": "control.php?f=playerBuff&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"playerChExp": {
+			"init": "initCharacterList",
+			"title": "職業熟練度列表",
+			"columns": [[
+					{"field":"*p_id", "title": "玩家ID", "width": 40},
+					{"field":"p_name", "title": "玩家", "width": 80},
+					{"field":"ch_6", "title": "ch_6", "width": 60},
+					{"field":"ch_7", "title": "ch_7", "width": 60},
+					{"field":"ch_8", "title": "ch_8", "width": 60},
+					{"field":"ch_9", "title": "ch_9", "width": 60},
+					{"field":"ch_10", "title": "ch_10", "width": 60},
+					{"field":"ch_11", "title": "ch_11", "width": 60},
+					{"field":"ch_12", "title": "ch_12", "width": 60},
+					{"field":"ch_13", "title": "ch_13", "width": 60},
+					{"field":"ch_14", "title": "ch_14", "width": 60},
+					{"field":"ch_15", "title": "ch_15", "width": 60},
+					{"field":"ch_16", "title": "ch_16", "width": 60},
+					{"field":"ch_17", "title": "ch_17", "width": 60},
+					{"field":"ch_18", "title": "ch_18", "width": 0},
+					{"field":"ch_19", "title": "ch_19", "width": 0},
+					{"field":"ch_20", "title": "ch_20", "width": 0},
+					{"field":"ch_21", "title": "ch_21", "width": 0},
+					{"field":"ch_22", "title": "ch_22", "width": 0},
+					{"field":"ch_23", "title": "ch_23", "width": 0},
+					{"field":"ch_24", "title": "ch_24", "width": 0},
+					{"field":"ch_25", "title": "ch_25", "width": 0},
+					{"field":"ch_26", "title": "ch_26", "width": 0},
+					{"field":"ch_27", "title": "ch_27", "width": 0},
+					{"field":"ch_28", "title": "ch_28", "width": 0},
+					{"field":"ch_29", "title": "ch_29", "width": 0},
+					{"field":"ch_30", "title": "ch_30", "width": 0},
+					{"field":"ch_31", "title": "ch_31", "width": 0},
+					{"field":"ch_32", "title": "ch_32", "width": 0},
+					{"field":"ch_33", "title": "ch_33", "width": 0},
+					{"field":"ch_34", "title": "ch_34", "width": 0},
+					{"field":"ch_35", "title": "ch_35", "width": 0},
+					{"field":"ch_36", "title": "ch_36", "width": 0},
+					{"field":"ch_37", "title": "ch_37", "width": 0},
+					{"field":"ch_38", "title": "ch_38", "width": 0},
+					{"field":"sk_6", "title": "sk_6", "width": 0},
+					{"field":"sk_7", "title": "sk_7", "width": 0},
+					{"field":"sk_8", "title": "sk_8", "width": 0},
+					{"field":"sk_9", "title": "sk_9", "width": 0},
+					{"field":"sk_10", "title": "sk_10", "width": 0},
+					{"field":"sk_11", "title": "sk_11", "width": 0},
+					{"field":"sk_12", "title": "sk_12", "width": 0},
+					{"field":"sk_13", "title": "sk_13", "width": 0},
+					{"field":"sk_14", "title": "sk_14", "width": 0},
+					{"field":"sk_15", "title": "sk_15", "width": 0},
+					{"field":"sk_16", "title": "sk_16", "width": 0},
+					{"field":"sk_17", "title": "sk_17", "width": 0}
+				]],
+			"editurl": "control.php?f=playerChExp&act=edit",
+			"navBar": {"add": {"width": 1000}, "edit": {"width": 1000}},
+			"sortname": "p_id"
+		},
+		"playerCP": {
+			"title": "冠軍資料",
+			"columns": [
+				{"field":"p_id", "title": "ID", "width": 40},
+				{"field":"p_birth", "title": "生日", "width": 100},
+				{"field":"p_name", "title": "名稱", "width": 100},
+				{"field":"at", "title": "物攻", "width": 0},
+				{"field":"df", "title": "物防", "width": 100},
+				{"field":"mat", "title": "魔攻", "width": 60},
+				{"field":"mdf", "title": "魔防", "width": 120},
+				{"field":"s_property", "title": "屬性", "width": 60},
+				{"field":"str", "title": "力量", "width": 0},
+				{"field":"life", "title": "生命", "width": 0},
+				{"field":"vit", "title": "體質", "width": 0},
+				{"field":"smart", "title": "智慧", "width": 0},
+				{"field":"agi", "title": "敏捷", "width": 0},
+				{"field":"hp", "title": "HP", "width": 0},
+				{"field":"p_luck", "title": "運氣", "width": 0},
+				{"field":"p_sat_name", "title": "必殺技名稱", "width": 0},
+				{"field":"hpmax", "title": "HPMAX", "width": 0},
+				{"field":"p_win_total", "title": "總勝場", "width": 0},
+				{"field":"p_lv", "title": "等級", "width": 0},
+				{"field":"a_id", "title": "武器", "width": 0},
+				{"field":"d_body_id", "title": "身體", "width": 0},
+				{"field":"d_foot_id", "title": "足部", "width": 0},
+				{"field":"d_hand_id", "title": "手部", "width": 0},
+				{"field":"d_head_id", "title": "頭部", "width": 0},
+				{"field":"d_item_id", "title": "道具", "width": 0},
+				{"field":"d_item_id2", "title": "消耗品", "width": 0},
+				{"field":"p_sex", "title": "性別", "width": 0},
+				{"field":"p_money", "title": "現金", "width": 0},
+				{"field":"p_exp", "title": "經驗值", "width": 0},
+				{"field":"p_nextexp", "title": "升級經驗值", "width": 0},
+				{"field":"p_win", "title": "勝場", "width": 0},
+				{"field":"p_lost", "title": "敗場", "width": 0},
+				{"field":"i_img", "title": "頭像", "width": 0},
+				{"field":"p_img_url", "title": "頭像網址", "width": 0},
+				{"field":"p_img_set", "title": "頭像設置", "width": 0},
+				{"field":"ch_id", "title": "職業", "width": 0},
+				{"field":"p_pid", "title": "玩家ID", "width": 0},
+				{"field":"au", "title": "魅力", "width": 0},
+				{"field":"be", "title": "信仰", "width": 0},
+				{"field":"sp", "title": "SP", "width": 0},
+				{"field":"spmax", "title": "SPMAX", "width": 0},
+				{"field":"base_str", "title": "基本力量", "width": 0},
+				{"field":"base_vit", "title": "基本體質", "width": 0},
+				{"field":"base_agi", "title": "基本敏捷", "width": 0},
+				{"field":"base_au", "title": "基本魅力", "width": 0},
+				{"field":"base_be", "title": "基本信仰", "width": 0},
+				{"field":"base_life", "title": "基本生命", "width": 0},
+				{"field":"base_smart", "title": "基本智慧", "width": 0},
+				{"field":"p_ch_s_id", "title": "技能", "width": 0},
+				{"field":"p_g_id", "title": "公會", "width": 0},
+				{"field":"p_place", "title": "冒險地", "width": 0},
+				{"field":"p_cdate", "title": "出生日", "width": 0}
+			],
+			"editurl": "control.php?f=playerCP&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"playerDepot": {
+			"title": "玩家倉庫列表",
+			"columns": [
+				{"field":"id", "title": "ID", "width": 40},
+				{"field":"*p_id", "title": "玩家ID", "width": 0},
+				{"field":"p_name", "title": "持有玩家", "width": 80},
+				{"field":"*d_id", "title": "物品ID", "width": 0},
+				{"field":"d_name", "title": "物品名稱", "width": 80},
+				{"field":"d_type", "title": "分類類型", "width": 80},
+				{"field":"d_num", "title": "數量", "width": 40},
+				{"field":"hs_id", "title": "鑲嵌ID", "width": 60},
+				{"field":"ps_id", "title": "精煉ID", "width": 60}
+			],
+			"editurl": "control.php?f=playerDepot&act=edit",
+			"navBar": {"add": false, "del": false},
+			"sortname": "id"
+		},
+		"playerEquipment": {
+			"title": "玩家裝備列表",
+			"columns": [
+				{"field":"p_id", "title": "玩家ID", "width": 40},
+				{"field":"p_name", "title": "玩家", "width": 80},
+				{"field":"a_id", "title": "武器ID", "width": 0},
+				{"field":"a_name", "title": "武器名稱", "width": 80},
+				{"field":"d_body_id", "title": "身體ID", "width": 0},
+				{"field":"body_name", "title": "身體名稱", "width": 80},
+				{"field":"d_head_id", "title": "頭部ID", "width": 0},
+				{"field":"head_name", "title": "頭部名稱", "width": 80},
+				{"field":"d_hand_id", "title": "手部ID", "width": 0},
+				{"field":"hand_name", "title": "手部名稱", "width": 80},
+				{"field":"d_foot_id", "title": "足部ID", "width": 0},
+				{"field":"foot_name", "title": "足部名稱", "width": 80},
+				{"field":"d_item_id", "title": "道具ID", "width": 0},
+				{"field":"item_name", "title": "道具名稱", "width": 80},
+				{"field":"d_item_id2", "title": "消耗品ID", "width": 0},
+				{"field":"item_name2", "title": "消耗品名稱", "width": 80},
+				{"field":"s_a_id", "title": "武器魔石ID", "width": 0},
+				{"field":"s_body_id", "title": "身體魔石ID", "width": 0},
+				{"field":"s_head_id", "title": "頭部魔石ID", "width": 0},
+				{"field":"s_hand_id", "title": "手部魔石ID", "width": 0},
+				{"field":"s_foot_id", "title": "足部魔石ID", "width": 0},
+				{"field":"s_item_id", "title": "道具魔石ID", "width": 0},
+				{"field":"p_a_id", "title": "武器精煉ID", "width": 0},
+				{"field":"p_body_id", "title": "身體精煉ID", "width": 0},
+				{"field":"p_head_id", "title": "頭部精煉ID", "width": 0},
+				{"field":"p_hand_id", "title": "手部精煉ID", "width": 0},
+				{"field":"p_foot_id", "title": "足部精煉ID", "width": 0},
+				{"field":"p_item_id", "title": "道具精煉ID", "width": 0}
+			],
+			"editurl": "control.php?f=playerEquipment&act=edit",
+			"navBar": {"add": false, "del": false},
+			"sortname": "p_id"
+		},
+		"playerExchange": {
+			"title": "玩家資源列表",
+			"columns": [
+				{"field":"el_id", "title": "ID", "width": 40},
+				{"field":"*p_id", "title": "玩家ID", "width": 0},
+				{"field":"p_name", "title": "持有玩家", "width": 80},
+				{"field":"*ex_id", "title": "資源ID", "width": 0},
+				{"field":"ex_name", "title": "資源名稱", "width": 80},
+				{"field":"el_amount", "title": "數量", "width": 80},
+				{"field":"el_money", "title": "成本", "width": 120}
+			],
+			"editurl": "control.php?f=playerExchange&act=edit",
+			"sortname": "p_id"
+		},
+		"playerFriend": {
+			"title": "玩家好友列表",
+			"columns": [
+				{"field":"*p_id", "title": "玩家ID", "width": 80},
+				{"field":"p_name", "title": "玩家名稱", "width": 200},
+				{"field":"*f_id", "title": "好友ID", "width": 0},
+				{"field":"f_name", "title": "好友名稱", "width": 200}
+			],
+			"editurl": "control.php?f=playerFriend&act=edit",
+			"sortname": "p_id"
+		},
+		"playerItem": {
+			"title": "玩家物品列表",
+			"columns": [
+				{"field":"p_id", "title": "ID", "width": 40},
+				{"field":"p_name", "title": "名稱", "width": 60},
+				{"field":"a_id", "title": "武器", "width": 80},
+				{"field":"d_body_id", "title": "身體", "width": 80},
+				{"field":"d_foot_id", "title": "足部", "width": 80},
+				{"field":"d_hand_id", "title": "手部", "width": 80},
+				{"field":"d_head_id", "title": "頭部", "width": 80},
+				{"field":"d_item_id", "title": "道具", "width": 80},
+				{"field":"d_stone_id", "title": "魔石", "width": 80},
+				{"field":"d_honor_id", "title": "勳章", "width": 80},
+				{"field":"d_key_id", "title": "鑰匙", "width": 80},
+				{"field":"d_plus_id", "title": "精煉石", "width": 80}
+			],
+			"editurl": "control.php?f=playerItem&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"playerKey": {
+			"title": "啟用鑰匙列表",
+			"columns": [
+				{"field":"p_id", "title": "ID", "width": 80},
+				{"field":"p_name", "title": "玩家名稱", "width": 80},
+				{"field":"area_id", "title": "地區ID", "width": 0},
+				{"field":"area_name", "title": "地區名稱", "width": 120},
+				{"field":"area_time", "title": "開放時間", "width": 120}
+			],
+			"editurl": "control.php?f=playerKey&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"playerLog": {
+			"title": "行為紀錄",
+			"columns": [
+				{"field":"id", "title": "ID", "width": 40},
+				{"field":"*p_id", "title": "玩家ID", "width": 0},
+				{"field":"*p_id", "title": "玩家", "width": 80},
+				{"field":"type", "title": "類型", "width": 80},
+				{"field":"*title", "title": "標題", "width": 320},
+				{"field":"sql_text", "title": "SQL內容", "width": 0},
+				{"field":"datetime", "title": "日期", "width": 80}
+			],
+			"editurl": "control.php?f=playerLog&act=edit"
+		},
+		"playerMail": {
+			"title": "玩家信件列表",
+			"columns": [
+				{"field":"id", "title": "ID", "width": 40},
+				{"field":"*p_id", "title": "收件人ID", "width": 0},
+				{"field":"p_name", "title": "收件人", "width": 80},
+				{"field":"*p_name", "title": "寄件人", "width": 80},
+				{"field":"*m_subject", "title": "主旨", "width": 80},
+				{"field":"m_body", "title": "內文", "width": 0},
+				{"field":"m_read", "title": "已讀", "width": 40},
+				{"field":"m_time", "title": "寄件時間", "width": 80}
+			],
+			"editurl": "control.php?f=playerMail&act=edit",
+			"sortname": "p_id"
+		},
+		"playerMercenary": {
+			"title": "受僱傭兵列表",
+			"columns": [
+				{"field":"id", "title": "ID", "width": 40},
+				{"field":"*p_id", "title": "僱用玩家ID", "width": 0},
+				{"field":"p_name", "title": "僱用玩家", "width": 60},
+				{"field":"*me_id", "title": "傭兵ID", "width": 0},
+				{"field":"me_name_raw", "title": "傭兵原名", "width": 80},
+				{"field":"me_name", "title": "傭兵名稱", "width": 80},
+				{"field":"me_status", "title": "狀態", "width": 60},
+				{"field":"me_count", "title": "戰鬥次數", "width": 80},
+				{"field":"me_place", "title": "戰鬥地點", "width": 80},
+				{"field":"me_fight_time", "title": "戰鬥時間", "width": 80}
+			],
+			"editurl": "control.php?f=playerMercenary&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"playerMessage": {
+			"title": "玩家情報中心列表",
+			"columns": [
+				{"field":"m_id", "title": "ID", "width": 40},
+				{"field":"*p_id", "title": "玩家ID", "width": 0},
+				{"field":"p_name", "title": "接訊玩家", "width": 80},
+				{"field":"*title", "title": "訊息內容", "width": 320},
+				{"field":"from_pid", "title": "來源ID", "width": 0},
+				{"field":"from_name", "title": "發信者", "width": 80},
+				{"field":"dateline", "title": "發信時間", "width": 80}
+			],
+			"editurl": "control.php?f=playerMessage&act=edit"
+		},
+		"playerMission": {
+			"title": "任務紀錄列表",
+			"columns": [
+				{"field":"*p_id", "title": "玩家ID", "width": 40},
+				{"field":"p_name", "title": "玩家", "width": 100},
+				{"field":"*m_id", "title": "任務ID", "width": 0},
+				{"field":"m_name", "title": "任務", "width": 240},
+				{"field":"m_status", "title": "狀態", "width": 100},
+				{"field":"m_kill_num", "title": "殘餘數量", "width": 120}
+			],
+			"editurl": "control.php?f=playerMission&act=edit",
+			"sortname": "p_id"
+		},
+		"playerPet": {
+			"title": "寵物列表",
+				"columns": [
+					{"field":"pe_id", "title": "ID", "width": 40},
+					{"field":"*pe_p_id", "title": "飼主ID", "width": 0},
+					{"field":"p_name", "title": "飼主名稱", "width": 60},
+					{"field":"*pe_name", "title": "寵物名稱", "width": 100},
+					{"field":"pe_mname", "title": "原型名稱", "width": 100},
+					{"field":"pe_at", "title": "AT", "width": 40},
+					{"field":"pe_mt", "title": "MT", "width": 40},
+					{"field":"pe_fu", "title": "飽腹度", "width": 0},
+					{"field":"pe_def", "title": "DEF", "width": 40},
+					{"field":"pe_hu", "title": "疲勞", "width": 0},
+					{"field":"pe_type", "title": "個性", "width": 40},
+					{"field":"pe_age", "title": "pe_age(unused)", "width": 0},
+					{"field":"pe_he", "title": "親密", "width": 0},
+					{"field":"pe_fi", "title": "出擊值", "width": 0},
+					{"field":"pe_dateline", "title": "特訓日期", "width": 0},
+					{"field":"*pe_m_id", "title": "原型ID", "width": 0},
+					{"field":"pe_st", "title": "狀態", "width": 40},
+					{"field":"pe_money", "title": "拍賣價位", "width": 0},
+					{"field":"pe_s_dateline", "title": "拍賣結標日期", "width": 0},
+					{"field":"pe_b_dateline", "title": "出生日期", "width": 0},
+					{"field":"pe_f_dateline", "title": "pe_f_dateline(unused)", "width": 0},
+					{"field":"pe_b_old", "title": "年紀", "width": 40},
+					{"field":"pe_mimg", "title": "系統圖像", "width": 0},
+					{"field":"pe_img_url", "title": "頭像網址", "width": 0},
+					{"field":"pe_img_set", "title": "個人頭像", "width": 0},
+					{"field":"p_send", "title": "綁定", "width": 40}
+				],
+				"editurl": "control.php?f=playerPet&act=edit",
+				"navBar": {"add": false, "del": false}
+		},
+		"playerSkill": {
+			"title": "已學技能列表",
+			"columns": [
+				{"field":"*p_id", "title": "玩家ID", "width": 40},
+				{"field":"p_name", "title": "玩家名稱", "width": 100},
+				{"field":"*s_id", "title": "技能ID", "width": 0},
+				{"field":"s_name", "title": "技能名稱", "width": 100},
+				{"field":"main_sid", "title": "父類別技能", "width": 0},
+				{"field":"main_name", "title": "父類別技能", "width": 120},
+				{"field":"s_lv", "title": "設定", "width": 60}
+			],
+			"editurl": "control.php?f=playerSkill&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"playerSkillSetup": {
+			"title": "裝備技能列表",
+			"columns": [
+				{"field":"*p_id", "title": "玩家ID", "width": 40},
+				{"field":"p_name", "title": "玩家名稱", "width": 100},
+				{"field":"skill_1", "title": "技能1", "width": 0},
+				{"field":"name1", "title": "技能1", "width": 100},
+				{"field":"skill_2", "title": "技能2", "width": 0},
+				{"field":"name_2", "title": "技能2", "width": 100},
+				{"field":"skill_3", "title": "技能3", "width": 0},
+				{"field":"name_3", "title": "技能3", "width": 100},
+				{"field":"skill_4", "title": "技能4", "width": 0},
+				{"field":"name_4", "title": "技能4", "width": 100},
+				{"field":"skill_5", "title": "技能5", "width": 0},
+				{"field":"name_5", "title": "技能5", "width": 100},
+				{"field":"time_1", "title": "頻率1", "width": 60},
+				{"field":"time_2", "title": "頻率2", "width": 60},
+				{"field":"time_3", "title": "頻率3", "width": 60},
+				{"field":"time_4", "title": "頻率4", "width": 60},
+				{"field":"time_5", "title": "頻率5", "width": 60}
+			],
+			"editurl": "control.php?f=playerSkillSetup&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"syn": {
+			"showList": {
+				"title": "合成道具列表",
+				"columns": [
+					{"field":"syn_id", "title": "ID", "width": 50},
+					{"field":"*syn_result", "title": "結果ID", "width": 0},
+					{"field":"d_name", "title": "合成結果", "width": 120},
+					{"field":"*syn_element", "title": "材料", "width": 0},
+					{"field":"syn_element_name", "title": "材料", "width": 600},
+					{"field":"*syn_topr", "title": "機率", "width": 40},
+					{"field":"syn_num", "title": "數量", "width": 0},
+					{"field":"syn_mission", "title": "任務", "width": 40},
+					{"field":"syn_need_mission", "title": "前置任務", "width": 0},
+					{"field":"m_subject", "title": "前置任務", "width": 140}
+				],
+				"editurl": "control.php?f=syn&act=edit"
+			}
+		},
+		"team": {
+			"title": "隊伍列表",
+			"columns": [
+					{"field":"*t_id", "title": "ID", "width": 40},
+					{"field":"p_id", "title": "隊長", "width": 0},
+					{"field":"p_name", "title": "隊長", "width": 160},
+					{"field":"t_name", "title": "隊伍名稱", "width": 160},
+					{"field":"t_peo", "title": "人數", "width": 40},
+					{"field":"t_time", "title": "建立時間", "width": 120}
+				],
+			"editurl": "control.php?f=team&act=edit",
+			"navBar": {"add": false, "del": false}
+		},
+		"teamJoin": {
+			"title": "加入隊伍請求",
+			"columns": [
+					{"field":"*t_j_id", "title": "ID", "width": 40},
+					{"field":"*t_id", "title": "隊伍", "width": 0},
+					{"field":"t_name", "title": "隊長", "width": 160},
+					{"field":"*p_id", "title": "請求者", "width": 0},
+					{"field":"p_name", "title": "請求者", "width": 160},
+					{"field":"t_j_dateline", "title": "請求日期", "width": 160}
+				],
+			"editurl": "control.php?f=teamJoin&act=edit",
+			"navBar": {"add": false, "del": false}
+		}
+}

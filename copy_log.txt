@@ -1,0 +1,202 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  已啟動 : Thu Sep 24 18:42:40 2015
+
+    來源 : C:\wamp\www\wogap\
+  目的地 = e:\wogap\
+
+    檔案 : *.*
+	    
+Exc 檔案 : copy_to_E.bat
+	    
+Exc 目錄 : vendor
+	    node_modules
+	    laravel/vendor
+	    
+    選項 : *.* /L /S /E /COPY:DAT /PURGE /MIR /XO /R:1000000 /W:30 
+
+-------------------------------------------------------------------------------
+
+	                   8	C:\wamp\www\wogap\
+	  *其他檔案 		     149	copy_to_C.bat
+	    較新     		       0	copy_log.txt
+	                   6	C:\wamp\www\wogap\client\
+	                  37	C:\wamp\www\wogap\client\controllers\
+	                   8	C:\wamp\www\wogap\client\core\
+	                   2	C:\wamp\www\wogap\client\css\
+	                   4	C:\wamp\www\wogap\client\example\
+	                  19	C:\wamp\www\wogap\client\images\
+	                   4	C:\wamp\www\wogap\client\images\psd\
+	                   2	C:\wamp\www\wogap\client\include\
+	                  11	C:\wamp\www\wogap\client\js\
+	    較新     		   22986	main.all.js
+	    較新     		   72055	templates.js
+	                   4	C:\wamp\www\wogap\client\json\
+	    新檔案  		     765	grid.playeritem.json
+	                  36	C:\wamp\www\wogap\client\models\
+	                   4	C:\wamp\www\wogap\client\socket\
+	                   6	C:\wamp\www\wogap\client\traits\
+	                   2	C:\wamp\www\wogap\client\views\
+	                  10	C:\wamp\www\wogap\laravel\
+	                   2	C:\wamp\www\wogap\laravel\app\
+	    較新     		    1062	routes.php
+	                   1	C:\wamp\www\wogap\laravel\app\commands\
+	                  12	C:\wamp\www\wogap\laravel\app\config\
+	    較新     		    7551	app.php
+	                   2	C:\wamp\www\wogap\laravel\app\config\local\
+	                   1	C:\wamp\www\wogap\laravel\app\config\packages\
+	                   2	C:\wamp\www\wogap\laravel\app\config\testing\
+	                   6	C:\wamp\www\wogap\laravel\app\controllers\
+	    新檔案  		    1550	EditorController.php
+	    較新     		    3262	PlayerController.php
+	    新檔案  		     485	PlayerItemController.php
+	                   2	C:\wamp\www\wogap\laravel\app\database\
+	                   1	C:\wamp\www\wogap\laravel\app\database\migrations\
+	                   2	C:\wamp\www\wogap\laravel\app\database\seeds\
+	                   0	C:\wamp\www\wogap\laravel\app\lang\
+	                   3	C:\wamp\www\wogap\laravel\app\lang\en\
+	                   3	C:\wamp\www\wogap\laravel\app\models\
+	    較新     		     178	DBWOGPlayer.php
+	    新檔案  		     180	DBWOGPlayerItem.php
+	                   3	C:\wamp\www\wogap\laravel\app\start\
+	                   1	C:\wamp\www\wogap\laravel\app\storage\
+	                   1	C:\wamp\www\wogap\laravel\app\storage\cache\
+	                   2	C:\wamp\www\wogap\laravel\app\storage\logs\
+	    較新     		   11375	laravel.log
+	                   2	C:\wamp\www\wogap\laravel\app\storage\meta\
+	                   2	C:\wamp\www\wogap\laravel\app\storage\sessions\
+	  *其他檔案 		     197	48fbf1e76e42f319f9dbafff8554fc09d0eeaa3a
+	  *其他檔案 		     197	5b2540b3383d2c1f7209c994efc148a9beb13555
+	    新檔案  		     197	3bbed399ea14363955ee934a81b823954cf58f59
+	                   3	C:\wamp\www\wogap\laravel\app\storage\views\
+	                   2	C:\wamp\www\wogap\laravel\app\tests\
+	                   1	C:\wamp\www\wogap\laravel\app\views\
+	                   0	C:\wamp\www\wogap\laravel\app\views\emails\
+	                   1	C:\wamp\www\wogap\laravel\app\views\emails\auth\
+	                   4	C:\wamp\www\wogap\laravel\bootstrap\
+	                   4	C:\wamp\www\wogap\laravel\public\
+	                   1	C:\wamp\www\wogap\laravel\public\packages\
+	                   0	C:\wamp\www\wogap\libs\
+	                   2	C:\wamp\www\wogap\libs\easyui\
+	                   8	C:\wamp\www\wogap\libs\ember\
+	                   3	C:\wamp\www\wogap\libs\jquery\
+	                   1	C:\wamp\www\wogap\libs-css\
+	                   2	C:\wamp\www\wogap\libs-css\easyui-themes\
+	    較新     		    2712	icon.css
+	                  29	C:\wamp\www\wogap\libs-css\easyui-themes\black\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\black\images\
+	                  29	C:\wamp\www\wogap\libs-css\easyui-themes\bootstrap\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\bootstrap\images\
+	                   3	C:\wamp\www\wogap\libs-css\easyui-themes\custom-icons\
+	    新檔案  		     321	mini-lock-off.png
+	    新檔案  		     332	mini-lock-on.png
+	                  29	C:\wamp\www\wogap\libs-css\easyui-themes\default\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\default\images\
+	                  31	C:\wamp\www\wogap\libs-css\easyui-themes\gray\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\gray\images\
+	                  30	C:\wamp\www\wogap\libs-css\easyui-themes\icons\
+	                  29	C:\wamp\www\wogap\libs-css\easyui-themes\metro\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\metro\images\
+	                  29	C:\wamp\www\wogap\libs-css\easyui-themes\metro-blue\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\metro-blue\images\
+	                  29	C:\wamp\www\wogap\libs-css\easyui-themes\metro-gray\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\metro-gray\images\
+	                  29	C:\wamp\www\wogap\libs-css\easyui-themes\metro-green\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\metro-green\images\
+	                  29	C:\wamp\www\wogap\libs-css\easyui-themes\metro-orange\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\metro-orange\images\
+	                  29	C:\wamp\www\wogap\libs-css\easyui-themes\metro-red\
+	                  19	C:\wamp\www\wogap\libs-css\easyui-themes\metro-red\images\
+	                   3	C:\wamp\www\wogap\nbproject\
+	                   3	C:\wamp\www\wogap\nbproject\private\
+	    較新     		    1505	private.xml
+	                   2	C:\wamp\www\wogap\server\
+	                   2	C:\wamp\www\wogap\server\application\
+	                   2	C:\wamp\www\wogap\server\application\cache\
+	                  15	C:\wamp\www\wogap\server\application\config\
+	                   4	C:\wamp\www\wogap\server\application\controllers\
+	                   1	C:\wamp\www\wogap\server\application\core\
+	                   1	C:\wamp\www\wogap\server\application\helpers\
+	                   2	C:\wamp\www\wogap\server\application\hooks\
+	                   1	C:\wamp\www\wogap\server\application\language\
+	                   1	C:\wamp\www\wogap\server\application\language\english\
+	                   1	C:\wamp\www\wogap\server\application\libraries\
+	                   1	C:\wamp\www\wogap\server\application\logs\
+	                   2	C:\wamp\www\wogap\server\application\models\
+	                   0	C:\wamp\www\wogap\server\application\nbproject\
+	                   1	C:\wamp\www\wogap\server\application\nbproject\private\
+	                   1	C:\wamp\www\wogap\server\application\third_party\
+	                   3	C:\wamp\www\wogap\server\application\views\
+	                   1	C:\wamp\www\wogap\server\application\views\errors\
+	                   6	C:\wamp\www\wogap\server\application\views\errors\cli\
+	                   6	C:\wamp\www\wogap\server\application\views\errors\html\
+	                   0	C:\wamp\www\wogap\src\
+	                   1	C:\wamp\www\wogap\src\babel\
+	                   3	C:\wamp\www\wogap\src\ci\
+	                   2	C:\wamp\www\wogap\src\ci\system\
+	                  18	C:\wamp\www\wogap\src\ci\system\core\
+	                   5	C:\wamp\www\wogap\src\ci\system\core\compat\
+	                   8	C:\wamp\www\wogap\src\ci\system\database\
+	                   1	C:\wamp\www\wogap\src\ci\system\database\drivers\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\cubrid\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\ibase\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\mssql\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\mysql\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\mysqli\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\oci8\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\odbc\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\pdo\
+	                  25	C:\wamp\www\wogap\src\ci\system\database\drivers\pdo\subdrivers\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\postgre\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\sqlite\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\sqlite3\
+	                   5	C:\wamp\www\wogap\src\ci\system\database\drivers\sqlsrv\
+	                   2	C:\wamp\www\wogap\src\ci\system\fonts\
+	                  22	C:\wamp\www\wogap\src\ci\system\helpers\
+	                   1	C:\wamp\www\wogap\src\ci\system\language\
+	                  14	C:\wamp\www\wogap\src\ci\system\language\english\
+	                  24	C:\wamp\www\wogap\src\ci\system\libraries\
+	                   2	C:\wamp\www\wogap\src\ci\system\libraries\Cache\
+	                   7	C:\wamp\www\wogap\src\ci\system\libraries\Cache\drivers\
+	                   2	C:\wamp\www\wogap\src\ci\system\libraries\Javascript\
+	                   4	C:\wamp\www\wogap\src\ci\system\libraries\Session\
+	                   5	C:\wamp\www\wogap\src\ci\system\libraries\Session\drivers\
+	                   8	C:\wamp\www\wogap\src\ci\user_guide\
+	                   1	C:\wamp\www\wogap\src\ci\user_guide\_downloads\
+	                   2	C:\wamp\www\wogap\src\ci\user_guide\_images\
+	                  19	C:\wamp\www\wogap\src\ci\user_guide\_static\
+	                   2	C:\wamp\www\wogap\src\ci\user_guide\_static\css\
+	                   5	C:\wamp\www\wogap\src\ci\user_guide\_static\fonts\
+	                   2	C:\wamp\www\wogap\src\ci\user_guide\_static\js\
+	                   1	C:\wamp\www\wogap\src\ci\user_guide\contributing\
+	                  15	C:\wamp\www\wogap\src\ci\user_guide\database\
+	                   1	C:\wamp\www\wogap\src\ci\user_guide\documentation\
+	                  30	C:\wamp\www\wogap\src\ci\user_guide\general\
+	                  22	C:\wamp\www\wogap\src\ci\user_guide\helpers\
+	                  35	C:\wamp\www\wogap\src\ci\user_guide\installation\
+	                  31	C:\wamp\www\wogap\src\ci\user_guide\libraries\
+	                   7	C:\wamp\www\wogap\src\ci\user_guide\overview\
+	                   5	C:\wamp\www\wogap\src\ci\user_guide\tutorial\
+	                   3	C:\wamp\www\wogap\src\compiled-templates\
+	                   3	C:\wamp\www\wogap\src\js\
+	    較新     		    2930	main.js
+	    較新     		   18354	router.js
+	                   1	C:\wamp\www\wogap\src\less\
+	                   0	C:\wamp\www\wogap\src\temp\
+	                   8	C:\wamp\www\wogap\src\templates\
+	    較新     		       0	player.hbs
+	    較新     		     338	submenu.hbs
+	                   1	C:\wamp\www\wogap\src\templates\bars\
+
+-------------------------------------------------------------------------------
+
+                  總計       已複製        略過        不符        失敗        額外
+      目錄 :       148         0       148         0         0         0
+      檔案 :      1225        21      1204         0         0         3
+     位元組 :   22.06 m   144.6 k   21.91 m         0         0       543
+      時間 :   0:00:00   0:00:00                       0:00:00   0:00:00
+
+     已結束 : Thu Sep 24 18:42:40 2015

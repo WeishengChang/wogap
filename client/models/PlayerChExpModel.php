@@ -1,0 +1,53 @@
+<?php
+class PlayerChExpModel extends ImplicitWOGAPModel {
+	public $table = 'wog_ch_exp';
+}
+
+PlayerChExpModel::setParams(array(
+	'ch_6' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_7' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_8' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_9' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_10' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_11' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_12' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_13' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_14' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_15' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_16' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_17' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_18' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_19' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_20' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_21' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_22' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_23' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_24' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_25' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_26' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_27' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_28' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_29' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_30' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_31' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_32' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_33' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_34' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_35' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_36' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_37' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'ch_38' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_6' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_7' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_8' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_9' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_10' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_11' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_12' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_13' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_14' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_15' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_16' => array('filter'=>FILTER_SANITIZE_NUMBER_INT),
+	'sk_17' => array('filter'=>FILTER_SANITIZE_NUMBER_INT)
+));
+?>

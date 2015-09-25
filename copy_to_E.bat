@@ -1,0 +1,1 @@
+robocopy "." "e:\wogap" /MIR /XD "vendor" "node_modules" "laravel/vendor" /XF "copy_to_E.bat" /XO /LOG:"copy_log.txt" /L

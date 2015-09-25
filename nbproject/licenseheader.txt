@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}WOG AP created on ${date}, ${time}
+${licensePrefix} Copyright(c) 2014, All Right Reserved. 
+<#if licenseLast??>
+${licenseLast}
+</#if>

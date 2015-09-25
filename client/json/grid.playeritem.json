@@ -1,0 +1,16 @@
+{
+"columns": [[
+		{"field": "p_id", "title": "ID", "width": 40, "sortable": true},
+		{"field":"p_name", "title": "名稱", "width": 100, "sortable": true, "required": true},	
+		{"field":"a_id", "title": "武器", "width": 80},
+		{"field":"d_body_id", "title": "身體", "width": 80},
+		{"field":"d_foot_id", "title": "足部", "width": 80},
+		{"field":"d_hand_id", "title": "手部", "width": 80},
+		{"field":"d_head_id", "title": "頭部", "width": 80},
+		{"field":"d_item_id", "title": "道具", "width": 80},
+		{"field":"d_stone_id", "title": "魔石", "width": 80},
+		{"field":"d_honor_id", "title": "勳章", "width": 80},
+		{"field":"d_key_id", "title": "鑰匙", "width": 80},
+		{"field":"d_plus_id", "title": "精煉石", "width": 80}
+   ]]
+}

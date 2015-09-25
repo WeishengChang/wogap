@@ -1,0 +1,17 @@
+<div class="easyui-layout" data-options="fit:true">
+	<div data-options="region:'north'" style="height:52px">
+		{{#link-to 'logout'}}<button class="easyui-linkbutton" data-options="iconCls:'icon-edit',iconAlign:'top'">登出</button>{{/link-to}}
+		{{#link-to 'management'}}<button class="easyui-linkbutton" data-options="iconCls:'icon-man',iconAlign:'top'">管理</button>{{/link-to}}
+		{{#link-to 'stats'}}<button class="easyui-linkbutton" data-options="iconCls:'icon-large-chart',iconAlign:'top'">統計</button>{{/link-to}}
+	</div>
+	<div id="submenu" data-options="region:'west'" style="width:200px">
+		{{outlet "submenu"}}
+	</div>
+	<div id="tabs" data-options="region:'center'" class="easyui-tabs">
+		<div title="首頁">
+			你好~~
+		</div>
+	</div>
+</div>
+
+<div id="tabOutlet">{{outlet "tabOutlet"}}</div>

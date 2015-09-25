@@ -1,0 +1,19 @@
+{
+ "name": "WOG",
+ "version": "4.5.1",
+ "description": "WOG AP",
+ "author": {"name": "WSChang", "email": "s54042121@gmail.com"},
+ "private": true,
+ "dependencies": {
+	"grunt": "~0.4.0"
+ },
+ "devDependencies": {
+	"grunt-contrib-concat": "~0.1.1",
+	"grunt-ember-templates": ">=0.5.0",
+	"grunt-newer": "~1.1.1",
+	"grunt-babel": "~5.0.0",
+	"grunt-contrib-uglify": "~0.9.1",
+	"grunt-contrib-watch": "~0.6.1"
+},
+ "liscense": "MIT"
+}

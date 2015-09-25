@@ -1,0 +1,135 @@
+IDEA:
+wog_player_up: 加入時間戳記，供統計、防作弊用
+wog_ch_skill: 增加非戰鬥用技能
+消耗2行動與三體敵人戰鬥(捕捉器可抓其中一隻、每區可能有預設組合)
+多消耗一體力，進行機率遭遇菁英(能力隨屬性增強、掉落率三倍&必掉一件物品)或首領(能力隨屬性增強、掉落率五倍&必掉兩件物品)，當用在團體戰鬥上時，機率碰上變異種(有特殊強化、掉落率七倍&必掉落兩件物品)、光種(減傷25%、掉落率十倍&必掉落三件物品)、暗種(攻擊150%、防禦50%，掉落率如光種)
+公會打工：公會提供工作機會給其他玩家使用，如修築城牆、蒐集資源等等
+地城探索(行動消耗不定)
+config介面
+安裝導引
+簡易版畫面、手機版
+用綠圈紅叉表示checkbox
+補上資料庫註解(加上用UPDATE更新上註解的Patch)
+
+[BUG] 先以右鍵點選新增/編輯時，畫面設定無法與 新增/編輯 的預設值一致(寬度跑掉)
+[BUG] wog_player_arm 沒有主鍵 =>  設定p_id為主鍵
+[BUG] wog_friend_list 沒有主鍵 =>  設定p_id,f_id為主鍵
+[BUG] wog_player_cp 沒有主鍵 =>  設定hero_npc,p_id為主鍵
+[BUG] wog_key_list 沒有主鍵 =>  設定p_id,area_id為主鍵
+[BUG] wog_skill_book 沒有主鍵 =>  設定p_id,s_id為主鍵
+[BUG] wog_skill_setup 沒有主鍵 =>  設定p_id為主鍵
+[BUG] wog_df_used 沒有主鍵 =>  設定d_id為主鍵
+[BUG] wog_plus_list 沒有主鍵 =>  設定d_id為主鍵
+[BUG] wog_key_main 沒有主鍵 =>  設定d_id為主鍵
+[BUG] wog_mission_book沒有主鍵 => 將unique key(m_id, p_id)改為主鍵
+[BUG] wog_player_buffer 沒有主鍵 =>  將index key(p_id)改為主鍵
+[OPT] wog_ch_skill幫main_sid, need_sid & ch_id加上index，以加快SQL查詢速度
+
+1. [2014/07/16 OK]登入系統
+2. 玩家管理: 各項目都應包含新增、編輯、刪除、檢視四種功能
+	玩家 (wog_player)
+		1. [OK]裝備 (wog_player_arm)
+			1. 魔石 (wog_stone_setup)
+			2. 強化 (wog_plus_setup)
+		2. [OK]物品 (wog_item)
+			1. 魔石 (wog_stone_setup)
+			2. 強化 (wog_plus_setup)
+		3. [OK]倉庫 (wog_player_depot)
+			1. 魔石 (wog_stone_setup)
+			2. 強化 (wog_plus_setup)
+		4. [OK]英雄 (wog_player_cp)
+		5. [OK]訊息 (wog_message、wog_log_main、wog_message_box)
+		6. [OK]增益 (wog_player_buff)
+		7. [OK]已用鑰匙 (wog_key_list)
+		8. [OK]僱傭兵 (wog_mercenary_list)
+			1. 行動記錄 (wog_mercenary_book)
+		9. [OK]已學技能 (wog_skill_book)
+		10. [OK]穿戴技能 (wog_skill_setup)
+		11. [OK]職業熟練 (wog_ch_exp)
+		12. [OK]資源 (wog_exchange_list)
+		13. [OK]好友 (wog_friend_list)
+		14. [OK]任務紀錄 (wog_mission_book)
+		15. [OK]寵物 (wog_pet)
+		16. wog_player_reitem
+		17. 升級紀錄 (wog_player_up)
+		18. wog_sns_player
+		19. wog_vip_log
+		
+	[OK]物品 (wog_df)
+		- [OK]消耗品 (wog_used)
+		- [OK]魔石   (wog_stone_list)
+		- [OK]強化石 (wog_plus_list)
+		- [OK]鑰匙   (wog_key_main)
+	[OK]勳章所 (wog_honor_main)
+	[OK]合成 (wog_syn)
+	[OK]拍賣 (wog_sale)
+		- 
+	[OK]市場 (wog_exchange_main)
+		- [OK]紀錄 (wog_exchange_book)
+	[OK]隊伍 (wog_team_main)
+		- [OK]加入要求 (wog_team_join)
+	[OK]頭像 (wog_img)
+	[OK]職業 (wog_character)
+		- [OK]技能 (wog_ch_skill)
+	[OK]怪物 (wog_monster)
+	冠軍 (wog_cp)
+	區域建議 (wog_area_lv)
+	任務 (wog_mission_main)
+		- 重複任務 (wog_mission_repeat)
+	公會 (wog_group_main)
+		- 兵種 (wog_weapon_list)
+		- 倉庫 (wog_group_depot)
+			- 紀錄 (wog_group_depot_msg)
+		- wog_group_detect
+		- 活動紀錄 (wog_group_event)
+		- 戰鬥紀錄 (wog_group_fight_book)
+		- 資源 (wog_group_exchange)
+		- wog_group_item
+		- 活動 (wog_group_job)
+		- 加入要求 (wog_group_join)
+		- wog_group_market
+		- wog_group_market_job
+		- wog_group_member_book
+		- wog_group_member_point
+		- 任務紀錄 (wog_group_mission_log)
+		- NPC寶物 (wog_group_npc_item)
+		- 權限 (wog_group_permissions)
+		- 戰力 (wog_group_point)
+		- wog_group_point_list
+		- wog_group_point_temp
+		- NPC兵力? (wog_group_weapon)
+	公會地圖 (wog_group_map)
+	公會兵種 (wog_weapon_main)
+	公會設施 (wog_build_main)
+		- 升級需求 (wog_build_list)
+	公會任務 (wog_group_mission)
+2.1. 基本資料
+2.2. 
+3. 統計
+3.1 數值分佈
+			財富分佈
+				畫出全部玩家/特定比例玩家(如現金最多的10%玩家、存款最少的10%玩家、某工會的玩家等等)的現金與存款曲線，以百分比來顯示玩家持有現金比例，不足100人則按比例顯示可調出符合特定區間的玩家資料，如最貧窮的10%玩家的玩家資料
+			公會人數
+				顯示公會規模，兵力規模
+			物品稀有度
+				特定物品的玩家持有數，
+3.2 活耀程度
+3.3 道具持有
+
+HISTORY
+[2014/07/24]
+hack jquery.ajax, 傳入status code給datafilter，供辨識自訂錯誤訊息用
+[2014/07/17]
+ember.js BUG: link-to stats.bars->link-to bars才正確，bars是resource，其namespace預設是用root的，要附屬在stats下則要設定stats.bars的resource資料
+#link-to連結到stats.bars，但bars為stats下的resource時，會出現uncaught error
+[2014/07/16]
+Metro.min.css加入.panel-header.small style
+ember.js nested route的BUG(stats.bars)
+
+note:
+[[  metro-bootstrap.min.css  ]]
+1. @font-face內，有遠端讀取google上的font file，改成local font可增加效率
+
+[[  Metro UI CSS  ]]
+1. required JS Library: jQuery+Widget+mousewheel
+2. Fluent Menu要讓initFluentMenus()初始化要加上data-role="fluentmenu"，所有UI應該都有相對應的role value
