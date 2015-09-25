@@ -23,6 +23,10 @@ Route::group(['prefix' => 'player'], function() {
 	Route::post('add', ['uses' => 'playerController@add']);
 	Route::post('edit', ['uses' => 'playerController@edit']);
 	Route::post('del/{id}', ['uses' => 'playerController@del']);
+	Route::group(['prefix' => 'equipment'], function() {
+		Route::post('show', ['uses' => 'playerEquipmentController@show']);
+		Route::post('edit', ['uses' => 'playerEquipmentController@edit']);
+	});
 });
 Route::group(['prefix' => 'playeritem'], function() {
 	Route::post('show', ['uses' => 'playerItemController@show']);

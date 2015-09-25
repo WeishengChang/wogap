@@ -2360,6 +2360,39 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       templates: []
     };
   }());
+  var child2 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 9,
+            "column": 10
+          },
+          "end": {
+            "line": 9,
+            "column": 43
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("裝備");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
   return {
     meta: {
       "revision": "Ember@2.0.0+3296a952",
@@ -2412,7 +2445,7 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       var el5 = dom.createTextNode("\n				");
       dom.appendChild(el4, el5);
       var el5 = dom.createElement("span");
-      var el6 = dom.createTextNode("裝備");
+      var el6 = dom.createComment("");
       dom.appendChild(el5, el6);
       dom.appendChild(el4, el5);
       var el5 = dom.createTextNode("\n			");
@@ -2455,16 +2488,19 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
     },
     buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
       var element0 = dom.childAt(fragment, [0, 1]);
-      var morphs = new Array(2);
+      var element1 = dom.childAt(element0, [3]);
+      var morphs = new Array(3);
       morphs[0] = dom.createMorphAt(dom.childAt(element0, [1]),0,0);
-      morphs[1] = dom.createMorphAt(dom.childAt(element0, [3, 1, 1]),0,0);
+      morphs[1] = dom.createMorphAt(dom.childAt(element1, [1, 1]),0,0);
+      morphs[2] = dom.createMorphAt(dom.childAt(element1, [3, 1]),0,0);
       return morphs;
     },
     statements: [
       ["block","link-to",["player"],[],0,null,["loc",[null,[3,8],[3,45]]]],
-      ["block","link-to",["playeritem"],[],1,null,["loc",[null,[6,10],[6,49]]]]
+      ["block","link-to",["playeritem"],[],1,null,["loc",[null,[6,10],[6,49]]]],
+      ["block","link-to",["player.equipment"],[],2,null,["loc",[null,[9,10],[9,55]]]]
     ],
     locals: [],
-    templates: [child0, child1]
+    templates: [child0, child1, child2]
   };
 }()));

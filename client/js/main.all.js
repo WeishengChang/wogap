@@ -129,6 +129,10 @@ App.Router.map(function() {
 			this.route('add');
 			this.route('edit', {path: '/edit/:id'});
 			this.route('delete');
+			
+			this.route('equipment', {path: '/equipment'}, function() {
+				this.route('edit', {path: '/edit/:id'});
+			});
 		});
 		this.route('playerHero');
 		this.route('playerCP');
@@ -137,7 +141,7 @@ App.Router.map(function() {
 			this.route('edit', {path: '/edit/:id'});
 			this.route('delete');
 		});
-		this.route('playerEquipment');
+		
 		this.route('playerDepot');
 		this.route('playerExchange');
 		this.route('playerChExp');
@@ -479,8 +483,12 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 				exclude = exclude.concat(childs);
 			});
 			if(columns.length > exclude.length) {
-				text.push('<tr><td colspan="4" class="editor-group-title">其他</td></tr>');
-				text.push(createForm.call(route, columns, [], exclude));
+				var remain = createForm.call(route, columns, [], exclude);
+				if(remain) {
+					text.push('<tr><td colspan="4" class="editor-group-title">其他</td></tr>');
+					text.push(remain);
+				}
+				
 			}
 		} else {
 			text.push(route.createForm(columns, [], []));
@@ -513,7 +521,7 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 			});
 		} else {
 			$.each(columns || [], function(k, column) {
-				if($.inArray(k, exclude) !== -1 || $.inArray(column.field, exclude) !== -1) {
+				if($.inArray(k, exclude) !== -1 || $.inArray(column.field, exclude) !== -1 || column.readonly === true) {
 					return;
 				}
 				if(i%2 === 0) {
@@ -704,7 +712,7 @@ App.PlayeritemRoute = App.TabDatagridRoute.extend({
 			{field: "a_id", type: 'itemlist'}
 		], //擴充
 		columnsGroup: {
-			"基本資料": ['p_id', 'p_name'],
+			"基本資料": ['p_id'],
 			"裝備": ['a_id', 'd_head_id', 'd_body_id', 'd_hand_id', 'd_foot_id', 'd_item_id'],
 			"能力": ['d_stone_id', 'd_plus_id', 'd_key_id', 'd_honor_id'],
 		},
@@ -730,6 +738,55 @@ App.PlayeritemRoute = App.TabDatagridRoute.extend({
 App.PlayeritemEditRoute = App.EditorRoute.extend({
 	title: "編輯玩家物品",
 	targetModel: "playeritem",
+	loadSelected: true,
+	actions: {
+		save: function() {
+		}
+	}
+});
+
+App.PlayerEquipmentRoute = App.TabDatagridRoute.extend({
+	title: "玩家裝備管理",
+	gridParamsUrl: 'json/grid.playerequipment.json',
+	gridParams: {
+		url: SERVER_PATH+'player/equipment/show',
+		autoRowHeight: false,
+		pagination: true,
+		columns: [
+			{field: "a_id", type: 'itemlist'}
+		], //擴充
+		columnsGroup: { //TODO: grouptype, 能將群組中的特定欄位組合成一個選取功能
+			"基本資料": ['p_id'],
+			"武器": ['a_id', 's_a_id', 'p_a_id'],
+			"頭部": ['d_head_id', 's_head_id', 'p_head_id'],
+			"身體": ['d_body_id', 's_body_id', 'p_body_id'],
+			"手部": ['d_hand_id', 's_hand_id', 'p_hand_id'],
+			"足部": ['d_foot_id', 's_foot_id', 'p_foot_id'],
+			"道具": ['d_item_id', 'd_item_num', 's_item_id', 'p_item_id'],
+			"消耗品": ['d_item_id2', 'd_item_num2'],
+		},
+		toolbar: [
+			{
+				iconCls: 'icon-edit',
+				text: '編輯',
+				iconAlign: 'top',
+				action: 'edit'
+			}
+		]
+	},
+	actions: {
+		edit: function() {
+			if(this._super() === false) {
+				return;
+			}
+			this.transitionTo("player.equipment.edit", this.gridParams.selected.p_id);
+		},
+	}
+});
+
+App.PlayerEquipmentEditRoute = App.EditorRoute.extend({
+	title: "編輯玩家物品",
+	targetModel: "player.equipment",
 	loadSelected: true,
 	actions: {
 		save: function() {

@@ -1,0 +1,35 @@
+{
+"columns": [[
+				
+		{"field": "p_id", "title": "ID", "width": 40, "sortable": true},
+		{"field":"p_name", "title": "名稱", "width": 100, "sortable": true, "readonly": true},	
+		{"field":"a_id", "title": "武器ID", "hidden": true},
+		{"field":"a_name", "title": "武器", "width": 80, "readonly": true},
+		{"field":"d_body_id", "title": "身體ID", "hidden": true},
+		{"field":"body_name", "title": "身體", "width": 80, "readonly": true},
+		{"field":"d_head_id", "title": "頭部ID", "hidden": true},
+		{"field":"head_name", "title": "頭部", "width": 80, "readonly": true},
+		{"field":"d_hand_id", "title": "手部ID", "hidden": true},
+		{"field":"hand_name", "title": "手部", "width": 80, "readonly": true},
+		{"field":"d_foot_id", "title": "足部ID", "hidden": true},
+		{"field":"foot_name", "title": "足部", "width": 80, "readonly": true},
+		{"field":"d_item_id", "title": "道具ID", "hidden": true},
+		{"field":"item_name", "title": "道具", "width": 80, "readonly": true},
+		{"field":"d_item_id2", "title": "消耗品ID", "hidden": true},
+		{"field":"item_name2", "title": "消耗品", "width": 80, "readonly": true},
+		{"field":"s_a_id", "title": "武器魔石ID", "hidden": true},
+		{"field":"s_body_id", "title": "身體魔石ID", "hidden": true},
+		{"field":"s_head_id", "title": "頭部魔石ID", "hidden": true},
+		{"field":"s_hand_id", "title": "手部魔石ID", "hidden": true},
+		{"field":"s_foot_id", "title": "足部魔石ID", "hidden": true},
+		{"field":"s_item_id", "title": "道具魔石ID", "hidden": true},
+		{"field":"p_a_id", "title": "武器精煉ID", "hidden": true},
+		{"field":"p_body_id", "title": "身體精煉ID", "hidden": true},
+		{"field":"p_head_id", "title": "頭部精煉ID", "hidden": true},
+		{"field":"p_hand_id", "title": "手部精煉ID", "hidden": true},
+		{"field":"p_foot_id", "title": "足部精煉ID", "hidden": true},
+		{"field":"p_item_id", "title": "道具精煉ID", "hidden": true},
+		{"field":"d_item_num", "title": "道具數量", "hidden": true},
+		{"field":"d_item_num2", "title": "消耗品數量", "hidden": true}
+   ]]
+}
