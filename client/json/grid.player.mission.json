@@ -1,0 +1,11 @@
+{
+"columns": [[
+		{"field":"id", "title": "ID", "hidden": true},
+		{"field":"p_id", "title": "玩家ID", "width": 40},
+		{"field":"p_name", "title": "玩家", "width": 100, "readonly": true},
+		{"field":"m_id", "title": "任務ID", "hidden": true},
+		{"field":"m_name", "title": "任務", "width": 320, "readonly": true},
+		{"field":"m_status", "title": "狀態", "width": 100},
+		{"field":"m_kill_num", "title": "殘餘數量", "width": 120}
+   ]]
+}

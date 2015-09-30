@@ -8,9 +8,15 @@ class EditorController extends Controller {
 	}
 	public function add() {
 		$data = Input::all();
+		if(method_exists($this, 'beforeValidation')) {
+			$this->beforeValidation($data);
+		}
 		$validator = Validator::make($data, $this->rules);
 		if($validator->fails()) {
 			return Response::alert($validator->messages());
+		}
+		if(method_exists($this, 'afterValidation')) {
+			$this->afterValidation($data);
 		}
 		$player = new $this->dbname($data);
 		$player->save();
@@ -21,6 +27,9 @@ class EditorController extends Controller {
 		$validator = Validator::make($data, $this->rules);
 		if($validator->fails()) {
 			return Response::alert($validator->messages()->first());
+		}
+		if(method_exists($this, 'afterValidation')) {
+			$this->afterValidation($data);
 		}
 		$player = call_user_func(array($this->dbname, 'find'), $data[App::make($this->dbname)->getKeyName()]);
 		$player->fill($data);

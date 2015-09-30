@@ -1,0 +1,11 @@
+{
+"columns": [[
+		{"field":"id", "title": "ID", "width": 40},
+		{"field":"p_id", "title": "玩家ID", "width": 40},
+		{"field":"p_name", "title": "玩家名稱", "width": 100, "readonly": true},
+		{"field":"s_id", "title": "技能ID", "hidden": true},
+		{"field":"name", "title": "技能", "width": 100, "readonly": true},
+		{"field":"main_sid", "title": "父類別技能", "hidden": true},
+		{"field":"main_name", "title": "父類別", "width": 120, "readonly": true}
+   ]]
+}

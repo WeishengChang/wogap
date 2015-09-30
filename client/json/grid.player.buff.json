@@ -1,0 +1,15 @@
+{
+"columns": [[
+		{"field":"p_id", "title": "ID", "width": 40},
+		{"field":"p_name", "title": "名稱", "width": 60, "readonly": true},
+		{"field":"end_time", "title": "結束時間", "width": 80},
+		{"field":"exp", "title": "經驗", "width": 40},
+		{"field":"skill_exp", "title": "技能經驗", "width": 60},
+		{"field":"at", "title": "物攻", "width": 40},
+		{"field":"mat", "title": "魔攻", "width": 40},
+		{"field":"df", "title": "物防", "width": 40},
+		{"field":"mdf", "title": "魔防", "width": 40},
+		{"field":"hp", "title": "HP", "width": 40},
+		{"field":"sp", "title": "SP", "width": 40}
+   ]]
+}

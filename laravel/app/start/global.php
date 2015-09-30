@@ -78,6 +78,13 @@ App::down(function()
 |
 */
 
+App::missing(function($e) {
+    $url = Request::fullUrl();
+    $userAgent = Request::header('user-agent');
+    Log::warning("404 for URL: $url requested by user agent: $userAgent");
+    return Response::view('errors.not-found', array(), 404);
+});
+
 require app_path().'/filters.php';
 
 /*

@@ -1,0 +1,30 @@
+{
+"columns": [[
+		{"field":"pe_id", "title": "ID", "width": 40},
+		{"field":"pe_p_id", "title": "飼主ID", "hidden": true},
+		{"field":"p_name", "title": "飼主", "width": 60, "readonly": true},
+		{"field":"pe_name", "title": "寵物名稱", "width": 100},
+		{"field":"pe_mname", "title": "原型名稱", "hidden": true, "readonly": true},
+		{"field":"pe_at", "title": "AT", "width": 40},
+		{"field":"pe_mt", "title": "MT", "width": 40},
+		{"field":"pe_fu", "title": "飽腹度", "hidden": true},
+		{"field":"pe_def", "title": "DEF", "width": 40},
+		{"field":"pe_hu", "title": "疲勞", "hidden": true},
+		{"field":"pe_type", "title": "個性", "width": 40},
+		{"field":"pe_age", "title": "pe_age(unused)", "hidden": true},
+		{"field":"pe_he", "title": "親密", "hidden": true},
+		{"field":"pe_fi", "title": "出擊值", "hidden": true},
+		{"field":"pe_dateline", "title": "特訓日期", "hidden": true},
+		{"field":"pe_m_id", "title": "原型ID", "hidden": true},
+		{"field":"pe_st", "title": "狀態", "width": 40},
+		{"field":"pe_money", "title": "拍賣價位", "hidden": true},
+		{"field":"pe_s_dateline", "title": "拍賣結標日期", "hidden": true},
+		{"field":"pe_b_dateline", "title": "出生日期", "hidden": true},
+		{"field":"pe_f_dateline", "title": "pe_f_dateline(unused)", "hidden": true},
+		{"field":"pe_b_old", "title": "年紀", "width": 40},
+		{"field":"pe_mimg", "title": "系統圖像", "hidden": true},
+		{"field":"pe_img_url", "title": "頭像網址", "hidden": true},
+		{"field":"pe_img_set", "title": "個人頭像", "hidden": true},
+		{"field":"p_send", "title": "綁定", "width": 40}
+   ]]
+}

@@ -117,6 +117,14 @@ config介面
 3.3 道具持有
 
 HISTORY
+[2015/09/30]
+wog_skill_book變更結構
+add primary key id
+remove uqikey key
+wog_mission_book變更結構
+add primary key id
+wog_friend_list變更結構
+add primary key id
 [2014/07/24]
 hack jquery.ajax, 傳入status code給datafilter，供辨識自訂錯誤訊息用
 [2014/07/17]

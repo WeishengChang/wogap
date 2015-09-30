@@ -1,0 +1,14 @@
+{
+"columns": [[
+		{"field":"id", "title": "ID", "width": 40},
+		{"field":"p_id", "title": "玩家ID", "hidden": true},
+		{"field":"p_name", "title": "玩家", "width": 60, "readonly": true},
+		{"field":"me_id", "title": "傭兵ID", "hidden": true},
+		{"field":"me_name_raw", "title": "傭兵原名", "hidden": true, "readonly": true},
+		{"field":"me_name", "title": "名稱", "width": 80},
+		{"field":"me_status", "title": "狀態", "width": 60},
+		{"field":"me_count", "title": "戰鬥次數", "width": 80},
+		{"field":"me_place", "title": "戰鬥地點", "width": 80},
+		{"field":"me_fight_time", "title": "戰鬥時間", "width": 80}
+   ]]
+}

@@ -1,0 +1,21 @@
+{
+"columns": [[
+		{"field":"p_id", "title": "玩家ID", "width": 60},
+		{"field":"p_name", "title": "玩家名稱", "width": 120, "readonly": true},
+		{"field":"skill_1", "title": "技能1", "hidden": true},
+		{"field":"name_1", "title": "技能1", "width": 120, "readonly": true},
+		{"field":"skill_2", "title": "技能2", "hidden": true},
+		{"field":"name_2", "title": "技能2", "width": 120, "readonly": true},
+		{"field":"skill_3", "title": "技能3", "hidden": true},
+		{"field":"name_3", "title": "技能3", "width": 120, "readonly": true},
+		{"field":"skill_4", "title": "技能4", "hidden": true},
+		{"field":"name_4", "title": "技能4", "width": 120, "readonly": true},
+		{"field":"skill_5", "title": "技能5", "hidden": true},
+		{"field":"name_5", "title": "技能5", "width": 120, "readonly": true},
+		{"field":"time_1", "title": "頻率1", "hidden": true},
+		{"field":"time_2", "title": "頻率2", "hidden": true},
+		{"field":"time_3", "title": "頻率3", "hidden": true},
+		{"field":"time_4", "title": "頻率4", "hidden": true},
+		{"field":"time_5", "title": "頻率5", "hidden": true}
+   ]]
+}
