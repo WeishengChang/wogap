@@ -1,0 +1,41 @@
+{
+"columns": [[
+		{"field":"d_id", "title": "ID", "width": 50},
+		{"field":"*d_name", "title": "名稱", "width": 200},
+		{"field":"d_money", "title": "價位", "hidden": true},
+		{"field":"d_type", "title": "類型", "width": 60},
+		{"field":"d_fie", "title": "背包類型", "width": 60},
+		{"field":"d_dbst", "title": "dbst", "width": 40},
+		{"field":"d_hole", "title": "洞數", "width": 40},
+		{"field":"d_plus", "title": "精煉", "width": 40},
+		{"field":"d_lv", "title": "LV", "width": 40},
+		{"field":"d_send", "title": "綁定", "width": 40},
+		{"field":"d_vip", "title": "VIP", "width": 40},
+
+		{"field":"d_mstr", "title": "力量需求", "hidden": true},
+		{"field":"d_msmart", "title": "智力需求", "hidden": true},
+		{"field":"d_magl", "title": "敏捷需求", "hidden": true},
+		{"field":"d_mau", "title": "信仰需求", "hidden": true},
+		{"field":"d_at", "title": "物理攻擊", "hidden": true},
+		{"field":"d_df", "title": "物理防禦", "hidden": true},
+		{"field":"d_mat", "title": "魔法攻擊", "hidden": true},
+		{"field":"d_mdf", "title": "魔法防禦", "hidden": true},
+
+		{"field":"d_g_hp", "title": "恢復HP", "hidden": true},
+		{"field":"d_g_sp", "title": "恢復SP", "hidden": true},
+		{"field":"d_g_str", "title": "增加力量", "hidden": true},
+		{"field":"d_g_smart", "title": "增加智力", "hidden": true},
+		{"field":"d_g_agi", "title": "增加敏捷", "hidden": true},
+		{"field":"d_g_life", "title": "增加生命", "hidden": true},
+		{"field":"d_g_vit", "title": "增加體質", "hidden": true},
+		{"field":"d_g_au", "title": "增加信仰", "hidden": true},
+		{"field":"d_g_be", "title": "增加魅力", "hidden": true},
+
+		{"field":"ch_id", "title": "職業", "hidden": true},
+		{"field":"ch_name", "title": "職業", "width": 40},
+		{"field":"d_s", "title": "屬性", "hidden": true},
+		{"field":"skill", "title": "技能", "hidden": true},
+		{"field":"stime", "title": "技能發動率", "hidden": true},
+		{"field":"ch_pro", "title": "職業熟練度", "hidden": true}
+   ]]
+}

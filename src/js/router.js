@@ -1,4 +1,13 @@
 var SERVER_PATH = '../laravel/public/index.php/';
+
+function WOGDate(timestamp) {
+	this.date = new Date((+timestamp)*1000);
+	return this;
+}
+WOGDate.prototype.toString = function() {
+	return this.date.toLocaleString("ja-JP", {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"});
+}
+
 App.Router.map(function() {
 	this.route('home');
 	this.route('logout');
@@ -27,47 +36,51 @@ App.Router.map(function() {
 			this.route('chexp', {path: '/chexp'}, function() {
 				this.route('edit', {path: '/edit/:id'});
 			});
-			this.route('skill', {path: '/skill/:mode'}, function() {
+			this.route('skill', {path: '/skill'}, function() {
 				this.route('edit', {path: '/edit/:id'});
-				
-				this.route('setup', {path: '/skill/:mode'}, function() {
-					this.route('edit', {path: '/edit/:id'});
+				this.route('setup', {path: '/setup'}, function() {
+					this.route('edit', {path: '/edit/:id2'});
 				});
 			});
-			this.route('mission', {path: '/mission/:mode'}, function() {
+			this.route('mission', {path: '/mission'}, function() {
 				this.route('edit', {path: '/edit/:id'});
 			});
-			this.route('pet', {path: '/pet/:mode'}, function() {
+			this.route('pet', {path: '/pet'}, function() {
 				this.route('add');
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
-			this.route('mercenary', {path: '/mercenary/:mode'}, function() {
+			this.route('mercenary', {path: '/mercenary'}, function() {
 				this.route('add');
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
-			this.route('buff', {path: '/buff/:mode'}, function() {
+			this.route('buff', {path: '/buff'}, function() {
 				this.route('add');
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
-			this.route('message', {path: '/message/:mode'}, function() {
+			this.route('message', {path: '/message'}, function() {
 				this.route('add');
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
-			this.route('log', {path: '/log/:mode'}, function() {
+			this.route('log', {path: '/log'}, function() {
 				this.route('add');
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
-			this.route('mail', {path: '/mail/:mode'}, function() {
+			this.route('mail', {path: '/mail'}, function() {
 				this.route('add');
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
-			this.route('friend', {path: '/friend/:mode'}, function() {
+			this.route('friend', {path: '/friend'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
+			this.route('item', {path: '/item/:type', resetNamespace: true}, function() {
 				this.route('add');
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
@@ -77,7 +90,7 @@ App.Router.map(function() {
 		this.route('playerCP');
 		this.route('playerKey');
 		
-		this.route('item', {path: '/item/:type'});
+		
 		this.route('itemUsed');
 		this.route('itemStone');
 		this.route('itemPlus');
@@ -230,7 +243,6 @@ App.TabDatagridRoute = App.TabRoute.extend({
 		
 		function _adjustGridParams(route, p) {
 			if(p.adjust == true) return p;
-			//console.log(p);
 			p.adjust = true;
 			if(!route.actions) route.actions = {};
 			$.each(p.toolbar, function(k, v) {
@@ -278,6 +290,7 @@ App.TabDatagridRoute = App.TabRoute.extend({
 		this._super();
 		if(!this.gridParams && !this.gridParams) return;
 		var route = this;
+		var $panel = $(route.panel);
 		//綁上資料表格參數
 		//讓easyUI的toolbar新增action屬性(string)，可以對應到Ember Route 的Action
 		if(route.gridParams && route.gridParams.toolbar) {
@@ -292,7 +305,19 @@ App.TabDatagridRoute = App.TabRoute.extend({
 			});
 		}
 		//實體化
-		this.gridPanel = $('<div/>').appendTo(this.panel).datagrid(route.gridParams);
+		//在ember的最後一個階段才做實體化，避免同時載入多個頁面
+		Ember.run.scheduleOnce("destroy", function() {
+			if($panel.is(':visible')) {
+				route.gridPanel = $('<div/>').appendTo(route.panel).datagrid(route.gridParams);
+			} else {
+				$panel.panel({
+					onOpen:function() {
+						if(route.gridPanel) return;
+						route.gridPanel = $('<div/>').appendTo(route.panel).datagrid(route.gridParams);
+					}
+				});
+			}
+		});
 	},
 	actions: {
 		add: function() { //按下[新增]的按鈕的預設行為
@@ -581,6 +606,11 @@ App.ApplicationRoute = Ember.Route.extend({
 		this._super();
 		//2014/07/16: init fluent menu manually via container
 		$.parser.parse('body');
+		$('#tabs').tabs({
+			onSelect: function() {
+				console.log(this, arguments);
+			},
+		});
 		//TODO: fluent menu的顯示狀態隨著route path而改變 (2014/08/15)
 	}
 });
@@ -837,6 +867,9 @@ App.PlayerMessageRoute = App.TabDatagridRoute.extend({
 		pagination: true,
 		//擴充
 		columns: [
+			{field: "p_name", formatter: function(val, row) { return val+"("+row.p_id+")"; }},
+			{field: "from_name", formatter: function(val, row) { return row.from_pid ? (val ? val+"("+row.from_pid+")" : "未知玩家("+row.from_pid+")" ) : "系統訊息" ; }},
+			{field: "dateline", formatter: function(val, row) { return new WOGDate(val); }}
 		],
 		columnsGroup: {
 			"基本資料": ['m_id'],
@@ -849,16 +882,18 @@ App.PlayerLogRoute = App.TabDatagridRoute.extend({
 	title: "商城紀錄管理",
 	gridParamsUrl: 'json/grid.player.log.json',
 	gridParams: {
-		primaryKey: 'm_id',
+		primaryKey: 'id',
 		autoRowHeight: false,
 		pagination: true,
 		//擴充
 		columns: [
+			{field: "d_name", formatter: function(val, row) { return val+" * "+row.num; }},
+			{field: "datetime", formatter: function(val, row) { return new WOGDate(val); }}
 		],
 		columnsGroup: {
-			"基本資料": ['m_id'],
+			"基本資料": ['id'],
 		},
-		toolbar: ['edit']
+		toolbar: ['add', 'edit', 'delete']
 	}
 });
 
@@ -871,6 +906,8 @@ App.PlayerMailRoute = App.TabDatagridRoute.extend({
 		pagination: true,
 		//擴充
 		columns: [
+			{field: "to_name", formatter: function(val, row) { return val+"("+row.p_id+")"; }},
+			{field: "m_time", formatter: function(val, row) { return new WOGDate(val); }}
 		],
 		columnsGroup: {
 			"基本資料": ['id'],
@@ -888,9 +925,30 @@ App.PlayerFriendRoute = App.TabDatagridRoute.extend({
 		pagination: true,
 		//擴充
 		columns: [
+			{field: "p_name", formatter: function(val, row) { return val+"("+row.p_id+")"; }},
+			{field: "f_name", formatter: function(val, row) { return val+"("+row.f_id+")"; }},
 		],
 		columnsGroup: {
 			"基本資料": ['id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ItemRoute = App.TabDatagridRoute.extend({
+	title: "物品管理",
+	gridParamsUrl: 'json/grid.item.json',
+	gridParams: {
+		primaryKey: 'd_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+			{field: "p_name", formatter: function(val, row) { return val+"("+row.p_id+")"; }},
+			{field: "f_name", formatter: function(val, row) { return val+"("+row.f_id+")"; }},
+		],
+		columnsGroup: {
+			"基本資料": ['d_id'],
 		},
 		toolbar: ['add', 'edit', 'delete']
 	}

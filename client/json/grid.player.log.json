@@ -1,0 +1,12 @@
+{
+"columns": [[
+		{"field":"id", "title": "ID", "width": 40},
+		{"field":"p_id", "title": "玩家ID", "hidden": true},
+		{"field":"p_name", "title": "玩家", "width": 100, "readonly": true},
+		{"field":"d_id", "title": "物品ＩＤ", "hidden": true},
+		{"field":"d_name", "title": "購買物品", "width": 100, "readonly": true},
+		{"field":"num", "title": "數量", "hidden": true},
+		{"field":"type", "title": "類型", "width": 80},
+		{"field":"datetime", "title": "日期", "width": 120}
+   ]]
+}

@@ -12,15 +12,18 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/wogap/src/js/router.js</file>
-            <file>file:/C:/wamp/www/wogap/laravel/app/routes.php</file>
-            <file>file:/C:/wamp/www/wogap/client/json/wogmodel.jqgrid.json</file>
-            <file>file:/C:/wamp/www/wogap/src/templates/submenu.hbs</file>
             <file>file:/C:/wamp/www/wogap/src/templates/management.hbs</file>
+            <file>file:/C:/wamp/www/wogap/src/js/router.js</file>
+            <file>file:/C:/wamp/www/wogap/client/json/wogmodel.jqgrid.json</file>
+            <file>file:/C:/wamp/www/wogap/client/json/grid.item.json</file>
+            <file>file:/C:/wamp/www/wogap/laravel/app/controllers/PlayerFriendController.php</file>
+            <file>file:/C:/wamp/www/wogap/laravel/app/controllers/ItemCotroller.php</file>
+            <file>file:/C:/wamp/www/wogap/laravel/app/models/DBWOGItem.php</file>
             <file>file:/C:/wamp/www/wogap/client/history.txt</file>
-            <file>file:/C:/wamp/www/wogap/client/json/grid.player.mission.json</file>
-            <file>file:/C:/wamp/www/wogap/laravel/app/controllers/PlayerPetController.php</file>
-            <file>file:/C:/wamp/www/wogap/laravel/app/models/DBWOGPlayerPet.php</file>
+            <file>file:/C:/wamp/www/wogap/src/templates/submenu.hbs</file>
+            <file>file:/C:/wamp/www/wogap/laravel/app/routes.php</file>
+            <file>file:/C:/wamp/www/wogap/laravel/app/models/DBWOGPlayerMessage.php</file>
+            <file>file:/C:/wamp/www/wogap/laravel/app/models/DBWOGCharacter.php</file>
         </group>
     </open-files>
 </project-private>

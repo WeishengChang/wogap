@@ -8,6 +8,15 @@ $.mixOptions = function(o1, o2) {
 	});
 	return o1;
 };
+
+//show, hide允許綁定事件如on('show', function() {...})
+$.each(['show', 'hide'], function (i, ev) {
+	var el = $.fn[ev];
+	$.fn[ev] = function () {
+	  this.trigger(ev);
+	  return el.apply(this, arguments);
+	};
+});
 /*
 $(document).ajaxSuccess(function(e, xhr, req, text) {
 	if(xhr.status == 299) {

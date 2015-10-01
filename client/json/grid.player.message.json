@@ -1,0 +1,11 @@
+{
+"columns": [[
+		{"field":"m_id", "title": "ID", "width": 40},
+		{"field":"p_id", "title": "玩家ID", "hidden": true},
+		{"field":"p_name", "title": "收信玩家", "width": 100, "readonly": true},
+		{"field":"title", "title": "訊息內容", "width": 400},
+		{"field":"from_pid", "title": "來源ID", "hidden": true},
+		{"field":"from_name", "title": "發信者", "width": 100, "readonly": true},
+		{"field":"dateline", "title": "發信時間", "width": 120}
+   ]]
+}

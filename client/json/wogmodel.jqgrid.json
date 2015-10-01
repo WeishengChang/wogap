@@ -505,7 +505,6 @@
 					}]
 				}]
 			},
-			editurl: 'control.php?f=player&act=edit',
 			sortname: 'p_id',
 			toolbar: {
 				'全部': {title: '所有玩家', search: []},
@@ -518,96 +517,6 @@
 			navBar: {
 				add: {width: 1000}, edit: {width: 1000}
 			}
-		},
-		playerBuff: {
-			title: '玩家增益列表',
-			columns: [
-				$.gridField.id("p_id", "ID", 40),
-				$.gridField.readonly("p_name", "名稱", 60),
-				$.gridField.text("end_time", "結束時間", 80),
-				$.gridField.text("exp", "經驗", 40),
-				$.gridField.text("skill_exp", "技能經驗", 60),
-				$.gridField.text("at", "物攻", 40),
-				$.gridField.text("mat", "魔攻", 40),
-				$.gridField.text("df", "物防", 40),
-				$.gridField.text("mdf", "魔防", 40),
-				$.gridField.text("hp", "HP", 40),
-				$.gridField.text("sp", "SP", 40)
-			],
-			editurl: "control.php?f=playerBuff&act=edit",
-			navBar: {add: false, del: false}
-		},
-		playerChExp: {
-			init: function() {
-				if(typeof $.WOGGrid.CharacterName != 'undefined') return true;
-				return $.get('control.php?f=DynamicData&act=getMasteryName').done(function(json) {	
-					$.WOGGrid.CharacterName = {};
-					$.each(json, function(k, v) {
-						$.WOGGrid.CharacterName[k] = v;
-					});
-				});
-			},
-			title: "職業熟練度列表",
-			columns: function(p) {
-				function chName(ch_id) {
-					if($.WOGGrid.CharacterName[ch_id]) return $.WOGGrid.CharacterName[ch_id];
-					else return 'ch_'+ch_id;
-				}
-				function skName(ch_id) {return chName(ch_id)+'技能';}
-				
-				return [
-					$.gridField.text("*p_id", "玩家ID", 40, '', [1, 1]),
-					$.gridField.readonly("p_name", "玩家", 80),
-					$.gridField.text("ch_6", chName(6), 60, '0', [1, 2]),
-					$.gridField.text("ch_7", chName(7), 60, '0', [2, 2]),
-					$.gridField.text("ch_8", chName(8), 60, '0', [3, 2]),
-					$.gridField.text("ch_9", chName(9), 60, '0', [4, 2]),
-					$.gridField.text("ch_10", chName(10), 60, '0', [5, 2]),
-					$.gridField.text("ch_11", chName(11), 60, '0', [6, 2]),
-					$.gridField.text("ch_12", chName(12), 60, '0', [7, 2]),
-					$.gridField.text("ch_13", chName(13), 60, '0', [8, 2]),
-					$.gridField.text("ch_14", chName(14), 60, '0', [9, 2]),
-					$.gridField.text("ch_15", chName(15), 60, '0', [10, 2]),
-					$.gridField.text("ch_16", chName(16), 60, '0', [11, 2]),
-					$.gridField.text("ch_17", chName(17), 60, '0', [12, 2]),
-					$.gridField.text("ch_18", chName(18), 0, '0', [13, 2]),
-					$.gridField.text("ch_19", chName(19), 0, '0', [14, 2]),
-					$.gridField.text("ch_20", chName(20), 0, '0', [15, 2]),
-					$.gridField.text("ch_21", chName(21), 0, '0', [1, 3]),
-					$.gridField.text("ch_22", chName(22), 0, '0', [2, 3]),
-					$.gridField.text("ch_23", chName(23), 0, '0', [3, 3]),
-					$.gridField.text("ch_24", chName(24), 0, '0', [4, 3]),
-					$.gridField.text("ch_25", chName(25), 0, '0', [5, 3]),
-					$.gridField.text("ch_26", chName(26), 0, '0', [6, 3]),
-					$.gridField.text("ch_27", chName(27), 0, '0', [7, 3]),
-					$.gridField.text("ch_28", chName(28), 0, '0', [8, 3]),
-					$.gridField.text("ch_29", chName(29), 0, '0', [9, 3]),
-					$.gridField.text("ch_30", chName(30), 0, '0', [10, 3]),
-					$.gridField.text("ch_31", chName(31), 0, '0', [11, 3]),
-					$.gridField.text("ch_32", chName(32), 0, '0', [12, 3]),
-					$.gridField.text("ch_33", chName(33), 0, '0', [13, 3]),
-					$.gridField.text("ch_34", chName(34), 0, '0', [14, 3]),
-					$.gridField.text("ch_35", chName(35), 0, '0', [15, 3]),
-					$.gridField.text("ch_36", chName(36), 0, '0', [1, 4]),
-					$.gridField.text("ch_37", chName(37), 0, '0', [2, 4]),
-					$.gridField.text("ch_38", chName(38), 0, '0', [3, 4]),
-					$.gridField.text("sk_6", skName(6), 0, '0', [1, 5]),
-					$.gridField.text("sk_7", skName(7), 0, '0', [2, 5]),
-					$.gridField.text("sk_8", skName(8), 0, '0', [3, 5]),
-					$.gridField.text("sk_9", skName(9), 0, '0', [4, 5]),
-					$.gridField.text("sk_10", skName(10), 0, '0', [5, 5]),
-					$.gridField.text("sk_11", skName(11), 0, '0', [6, 5]),
-					$.gridField.text("sk_12", skName(12), 0, '0', [7, 5]),
-					$.gridField.text("sk_13", skName(13), 0, '0', [8, 5]),
-					$.gridField.text("sk_14", skName(14), 0, '0', [9, 5]),
-					$.gridField.text("sk_15", skName(15), 0, '0', [10, 5]),
-					$.gridField.text("sk_16", skName(16), 0, '0', [11, 5]),
-					$.gridField.text("sk_17", skName(17), 0, '0', [12, 5]),
-				];
-			},
-			editurl: "control.php?f=playerChExp&act=edit",
-			navBar: {add: {width: 1000}, edit: {width: 1000}},
-			sortname: 'p_id'
 		},
 		playerCP: {
 			title: '冠軍資料',
@@ -665,40 +574,7 @@
 				$.gridField.text("p_place", "冒險地", 0),
 				$.gridField.text("p_cdate", "出生日", 0)
 			],
-			editurl: "control.php?f=playerCP&act=edit",
 			navBar: {add: false, del: false}
-		},
-		playerDepot: {
-			title: "玩家倉庫列表",
-			columns: [
-				
-			],
-			editurl: "control.php?f=playerDepot&act=edit",
-			navBar: {add: false, del: false},
-			sortname: 'id'
-		},
-		playerEquipment: {
-			title: "玩家裝備列表",
-			navBar: {add: false, del: false},
-			sortname: 'p_id'
-		},
-		playerExchange: {
-			title: "玩家資源列表",
-			columns: [
-			],
-			editurl: "control.php?f=playerExchange&act=edit",
-			sortname: 'p_id'
-		},
-		playerFriend: {
-			title: "玩家好友列表",
-			columns: [
-				$.gridField.text("*p_id", "玩家ID", 80, '', [1, 1]),
-				$.gridField.readonly("p_name", "玩家名稱", 200),
-				$.gridField.text("*f_id", "好友ID", 0, '', [2, 1]),
-				$.gridField.readonly("f_name", "好友名稱", 200)
-			],
-			editurl: "control.php?f=playerFriend&act=edit",
-			sortname: 'p_id'
 		},
 		playerHero: {
 			title: '英雄列表',
@@ -712,25 +588,6 @@
 				$.gridField.checkbox("p_cp_st", "設定", 0)
 			],
 			editurl: "control.php?f=playerHero&act=edit",
-			navBar: {add: false, del: false}
-		},
-		playerItem: {
-			title: '玩家物品列表',
-			columns: [
-				$.gridField.id("p_id", "ID", 40),
-				$.gridField.readonly("p_name", "名稱", 60),
-				$.gridField.text("a_id", "武器", 80),
-				$.gridField.text("d_body_id", "身體", 80),
-				$.gridField.text("d_foot_id", "足部", 80),
-				$.gridField.text("d_hand_id", "手部", 80),
-				$.gridField.text("d_head_id", "頭部", 80),
-				$.gridField.text("d_item_id", "道具", 80),
-				$.gridField.text("d_stone_id", "魔石", 80),
-				$.gridField.text("d_honor_id", "勳章", 80),
-				$.gridField.text("d_key_id", "鑰匙", 80),
-				$.gridField.text("d_plus_id", "精煉石", 80)
-			],
-			editurl: "control.php?f=playerItem&act=edit",
 			navBar: {add: false, del: false}
 		},
 		playerKey: {
@@ -757,64 +614,6 @@
 				$.gridField.text("datetime", "日期", 80),
 			],
 			editurl: "control.php?f=playerLog&act=edit"
-		},
-		playerMail: {
-			title: "玩家信件列表",
-			columns: [
-				$.gridField.id("id", "ID", 40, '', [1, 1]),
-				$.gridField.text("*p_id", "收件人ID", 0, '', [2, 1]),
-				$.gridField.readonly("p_name", "收件人", 80),
-				$.gridField.text("*p_name", "寄件人", 80, '', [3, 1]),
-				$.gridField.text("*m_subject", "主旨", 80, '', [4, 1]),
-				$.gridField.textarea("m_body", "內文", 0, '', [5, 1]),
-				$.gridField.checkbox("m_read", "已讀", 40, '0', [5, 1]),
-				$.gridField.text("m_time", "寄件時間", 80, '0', [6, 1])
-			],
-			editurl: "control.php?f=playerMail&act=edit",
-			sortname: 'p_id'
-		},
-		playerMercenary: {
-			title: "受僱傭兵列表",
-			columns: [
-				$.gridField.id("id", "ID", 40, '', [1, 1]),
-				$.gridField.text("*p_id", "僱用玩家ID", 0, '', [2, 1]),
-				$.gridField.readonly("p_name", "僱用玩家", 60),
-				$.gridField.text("*me_id", "傭兵ID", 0, '', [3, 1]),
-				$.gridField.readonly("me_name_raw", "傭兵原名", 80),
-				$.gridField.text("me_name", "傭兵名稱", 80, '沒有名稱', [4, 1]),
-				$.gridField.text("me_status", "狀態", 60,$.wog.mercenaryStatus, [1, 2]),
-				$.gridField.text("me_count", "戰鬥次數", 80, '0', [2, 2]),
-				$.gridField.text("me_place", "戰鬥地點", 80, $.wog.place, [3, 2]),
-				$.gridField.text("me_fight_time", "戰鬥時間", 80, '0', [4, 2])
-			],
-			editurl: "control.php?f=playerMercenary&act=edit",
-			navBar: {add: false, del: false}
-		},
-		playerMessage: {
-			title: "玩家情報中心列表",
-			columns: [
-				$.gridField.id("m_id", "ID", 40, '', [1, 1]),
-				$.gridField.text("*p_id", "玩家ID", 0, '', [2, 1]),
-				$.gridField.readonly("p_name", "接訊玩家", 80),
-				$.gridField.textarea("*title", "訊息內容", 320, '', [3, 1]),
-				$.gridField.text("from_pid", "來源ID", 0, '0', [4, 1]),
-				$.gridField.readonly("from_name", "發信者", 80),
-				$.gridField.text("dateline", "發信時間", 80, '0', [5, 1])
-			],
-			editurl: "control.php?f=playerMessage&act=edit"
-		},
-		playerMission: {
-			title: '任務紀錄列表',
-			columns: [
-				$.gridField.id("*p_id", "玩家ID", 40),
-				$.gridField.readonly("p_name", "玩家", 100),
-				$.gridField.text("*m_id", "任務ID", 0),
-				$.gridField.readonly("m_name", "任務", 240),
-				$.gridField.text("m_status", "狀態", 100),
-				$.gridField.text("m_kill_num", "殘餘數量", 120)
-			],
-			editurl: "control.php?f=playerMission&act=edit",
-			sortname: 'p_id'
 		},
 		playerPet: {
 			title: function(p) {
@@ -851,44 +650,7 @@
 				editurl: "control.php?f=playerPet&act=edit",
 				navBar: {add: false, del: false}
 		},
-		playerSkill: {
-			title: '已學技能列表',
-			columns: [
-				$.gridField.id("*p_id", "玩家ID", 40),
-				$.gridField.readonly("p_name", "玩家名稱", 100),
-				$.gridField.text("*s_id", "技能ID", 0),
-				$.gridField.readonly("s_name", "技能名稱", 100),
-				$.gridField.text("main_sid", "父類別技能", 0),
-				$.gridField.readonly("main_name", "父類別技能", 120),
-				$.gridField.checkbox("s_lv", "設定", 60)
-			],
-			editurl: "control.php?f=playerSkill&act=edit",
-			navBar: {add: false, del: false}
-		},
-		playerSkillSetup: {
-			title: '裝備技能列表',
-			columns: [
-				$.gridField.id("*p_id", "玩家ID", 40),
-				$.gridField.readonly("p_name", "玩家名稱", 100),
-				$.gridField.text("skill_1", "技能1", 0),
-				$.gridField.readonly("name1", "技能1", 100),
-				$.gridField.text("skill_2", "技能2", 0),
-				$.gridField.readonly("name_2", "技能2", 100),
-				$.gridField.checkbox("skill_3", "技能3", 0),
-				$.gridField.readonly("name_3", "技能3", 100),
-				$.gridField.checkbox("skill_4", "技能4", 0),
-				$.gridField.readonly("name_4", "技能4", 100),
-				$.gridField.checkbox("skill_5", "技能5", 0),
-				$.gridField.readonly("name_5", "技能5", 100),
-				$.gridField.text("time_1", "頻率1", 60),
-				$.gridField.text("time_2", "頻率2", 60),
-				$.gridField.text("time_3", "頻率3", 60),
-				$.gridField.text("time_4", "頻率4", 60),
-				$.gridField.text("time_5", "頻率5", 60),
-			],
-			editurl: "control.php?f=playerSkillSetup&act=edit",
-			navBar: {add: false, del: false}
-		},
+		
 		syn: {
 			showList: {
 				title: "合成道具列表",

@@ -1,0 +1,12 @@
+{
+"columns": [[
+		{"field":"id", "title": "ID", "width": 40},
+		{"field":"p_id", "title": "收件人ID", "hidden": true},
+		{"field":"to_name", "title": "收件人", "width": 80, "readonly": true},
+		{"field":"p_name", "title": "寄件人", "width": 80},
+		{"field":"m_subject", "title": "主旨", "width": 80},
+		{"field":"m_body", "title": "內文", "hidden": true},
+		{"field":"m_read", "title": "已讀", "width": 40},
+		{"field":"m_time", "title": "寄件時間", "width": 120}
+   ]]
+}

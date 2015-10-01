@@ -1,0 +1,9 @@
+{
+"columns": [[
+		{"field":"id", "title": "ID", "width": 60},
+		{"field":"p_id", "title": "玩家ID", "hidden": true},
+		{"field":"p_name", "title": "玩家", "width": 100, "readonly": true},
+		{"field":"f_id", "title": "好友ID", "hidden": true},
+		{"field":"f_name", "title": "好友", "width": 100, "readonly": true}
+   ]]
+}

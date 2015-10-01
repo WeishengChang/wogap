@@ -2,16 +2,11 @@
 require_once 'EditorController.php';
 class PlayerMessageController extends EditorController {
 	public $rules = [
+		'm_id' => '',
 		'p_id' => 'required|numeric',
-		'end_time' => 'numeric',
-		'exp' => 'numeric',
-		'skill_exp' => 'numeric',
-		'at' => 'numeric',
-		'mat' => 'numeric',
-		'df' => 'numeric',
-		'mdf' => 'numeric',
-		'hp' => 'numeric',
-		'sp' => 'numeric',
+		'title' => 'required|string',
+		'from_pid' => 'numeric',
+		'dateline' => 'numeric'
 	];
 	
 	public function afterValidation(&$data) {
@@ -27,10 +22,11 @@ class PlayerMessageController extends EditorController {
 				'total' => call_user_func(array($this->dbname, 'count')), 
 				'rows'=> call_user_func(array($this->dbname, 'from'), 'wog_message AS pm')
 					->leftJoin('wog_player AS p', 'pm.p_id', '=', 'p.p_id')
+					->leftJoin('wog_player AS fp', 'pm.from_pid', '=', 'fp.p_id')
 					->orderBy('pm.'.$sort, $order)
 					->skip(($page-1)*$rows)
 					->take($rows)
-					->get(['pm.*', 'p.p_name']),
+					->get(['pm.*', 'p.p_name', 'fp.p_name AS from_name']),
 		];
 		return Response::json($list);
 	}
