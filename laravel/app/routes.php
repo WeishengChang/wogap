@@ -102,3 +102,15 @@ Route::group(['prefix' => 'player'], function() {
 		Route::post('del/{id}', ['uses' => 'playerFriendController@del']);
 	});
 });
+Route::group(['prefix' => 'item'], function() {
+	Route::post('add', ['uses' => 'itemController@add']);
+	Route::post('show', ['uses' => 'itemController@show']);
+	Route::post('edit', ['uses' => 'itemController@edit']);
+	Route::post('del/{id}', ['uses' => 'itemController@del']);
+	Route::group(['prefix' => 'used'], function() {
+		Route::post('show', ['uses' => 'itemUsedController@show']);
+		Route::post('add', ['uses' => 'itemUsedController@add']);
+		Route::post('edit', ['uses' => 'itemUsedController@edit']);
+		Route::post('del/{id}', ['uses' => 'itemUsedController@del']);
+	});
+});

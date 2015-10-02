@@ -30,6 +30,7 @@ class EditorController extends Controller {
 		}
 		if(method_exists($this, 'afterValidation')) {
 			$this->afterValidation($data);
+			
 		}
 		$player = call_user_func(array($this->dbname, 'find'), $data[App::make($this->dbname)->getKeyName()]);
 		$player->fill($data);

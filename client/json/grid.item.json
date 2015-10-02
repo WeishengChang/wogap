@@ -1,12 +1,12 @@
 {
 "columns": [[
-		{"field":"d_id", "title": "ID", "width": 50},
-		{"field":"*d_name", "title": "名稱", "width": 200},
+		{"field":"d_id", "title": "ID", "width": 50, "sortable": true},
+		{"field":"d_name", "title": "名稱", "width": 200},
 		{"field":"d_money", "title": "價位", "hidden": true},
 		{"field":"d_type", "title": "類型", "width": 60},
 		{"field":"d_fie", "title": "背包類型", "width": 60},
 		{"field":"d_dbst", "title": "dbst", "width": 40},
-		{"field":"d_hole", "title": "洞數", "width": 40},
+		{"field":"d_hole", "title": "洞數", "hidden": true},
 		{"field":"d_plus", "title": "精煉", "width": 40},
 		{"field":"d_lv", "title": "LV", "width": 40},
 		{"field":"d_send", "title": "綁定", "width": 40},
@@ -32,9 +32,10 @@
 		{"field":"d_g_be", "title": "增加魅力", "hidden": true},
 
 		{"field":"ch_id", "title": "職業", "hidden": true},
-		{"field":"ch_name", "title": "職業", "width": 40},
+		{"field":"ch_name", "title": "職業", "width": 40, "sortable": true, "readonly": true},
 		{"field":"d_s", "title": "屬性", "hidden": true},
 		{"field":"skill", "title": "技能", "hidden": true},
+		{"field":"sk_name", "title": "技能", "width": 40, "sortable": true, "readonly": true},
 		{"field":"stime", "title": "技能發動率", "hidden": true},
 		{"field":"ch_pro", "title": "職業熟練度", "hidden": true}
    ]]

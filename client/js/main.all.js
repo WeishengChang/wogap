@@ -211,7 +211,12 @@ App.Router.map(function() {
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
-			this.route('item', {path: '/item/:type', resetNamespace: true}, function() {
+		});
+		this.route('item', {path: '/item/:type', resetNamespace: true}, function() {
+			this.route('add');
+			this.route('edit', {path: '/edit/:id'});
+			this.route('delete');
+			this.route('used', {path: '/used'}, function() {
 				this.route('add');
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
@@ -1075,8 +1080,25 @@ App.ItemRoute = App.TabDatagridRoute.extend({
 		pagination: true,
 		//擴充
 		columns: [
-			{field: "p_name", formatter: function(val, row) { return val+"("+row.p_id+")"; }},
+			{field: "d_name", formatter: function(val, row) { return row.d_type < 6 ? val+"("+row.d_hole+")" : val; }},
 			{field: "f_name", formatter: function(val, row) { return val+"("+row.f_id+")"; }},
+		],
+		columnsGroup: {
+			"基本資料": ['d_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ItemUsedRoute = App.TabDatagridRoute.extend({
+	title: "消耗品管理",
+	gridParamsUrl: 'json/grid.item.used.json',
+	gridParams: {
+		primaryKey: 'd_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
 		],
 		columnsGroup: {
 			"基本資料": ['d_id'],

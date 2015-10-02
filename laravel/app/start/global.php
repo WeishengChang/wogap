@@ -92,5 +92,5 @@ require app_path().'/filters.php';
  */
 Response::macro('alert', function($message, $status = 400)
 {
-	return Response::json($message, $status);
+	abort(500, $message);
 });
