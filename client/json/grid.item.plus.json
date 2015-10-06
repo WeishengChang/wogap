@@ -1,0 +1,19 @@
+{
+"columns": [[
+	{"field":"d_id", "title": "ID", "width": 40},
+	{"field":"d_name", "title": "名稱", "width": 200, "readonly": true},
+	{"field":"d_lv", "title": "等級", "width": 40},
+	{"field":"d_type", "title": "類別", "width": 40},
+	{"field":"d_at", "title": "物攻", "width": 40},
+	{"field":"d_mat", "title": "魔攻", "width": 40},
+	{"field":"d_df", "title": "物防", "width": 40},
+	{"field":"d_mdf", "title": "魔防", "width": 40},
+	{"field":"d_str", "title": "力量", "width": 40},
+	{"field":"d_agi", "title": "速度", "width": 40},
+	{"field":"d_smart", "title": "智力", "width": 40},
+	{"field":"d_life", "title": "生命", "width": 40},
+	{"field":"d_vit", "title": "體質", "width": 40},
+	{"field":"d_au", "title": "信仰", "width": 40},
+	{"field":"d_be", "title": "魅力", "width": 40}
+   ]]
+}

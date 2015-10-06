@@ -2254,6 +2254,72 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       templates: []
     };
   }());
+  var child18 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 32,
+            "column": 13
+          },
+          "end": {
+            "line": 32,
+            "column": 40
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("魔石");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
+  var child19 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 33,
+            "column": 13
+          },
+          "end": {
+            "line": 33,
+            "column": 40
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("精煉石");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
   return {
     meta: {
       "revision": "Ember@2.0.0+3296a952",
@@ -2264,7 +2330,7 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
           "column": 0
         },
         "end": {
-          "line": 34,
+          "line": 36,
           "column": 5
         }
       }
@@ -2446,6 +2512,22 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el5, el6);
       dom.appendChild(el4, el5);
       dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n			");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("li");
+      var el5 = dom.createElement("span");
+      var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n			");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("li");
+      var el5 = dom.createElement("span");
+      var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
       var el4 = dom.createTextNode("\n		");
       dom.appendChild(el3, el4);
       dom.appendChild(el2, el3);
@@ -2462,7 +2544,8 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       var element1 = dom.childAt(element0, [1]);
       var element2 = dom.childAt(element1, [3]);
       var element3 = dom.childAt(element0, [3]);
-      var morphs = new Array(18);
+      var element4 = dom.childAt(element3, [3]);
+      var morphs = new Array(20);
       morphs[0] = dom.createMorphAt(dom.childAt(element1, [1]),0,0);
       morphs[1] = dom.createMorphAt(dom.childAt(element2, [1, 1]),0,0);
       morphs[2] = dom.createMorphAt(dom.childAt(element2, [3, 1]),0,0);
@@ -2480,7 +2563,9 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       morphs[14] = dom.createMorphAt(dom.childAt(element2, [27, 0]),0,0);
       morphs[15] = dom.createMorphAt(dom.childAt(element2, [29, 0]),0,0);
       morphs[16] = dom.createMorphAt(dom.childAt(element3, [1]),0,0);
-      morphs[17] = dom.createMorphAt(dom.childAt(element3, [3, 1, 0]),0,0);
+      morphs[17] = dom.createMorphAt(dom.childAt(element4, [1, 0]),0,0);
+      morphs[18] = dom.createMorphAt(dom.childAt(element4, [3, 0]),0,0);
+      morphs[19] = dom.createMorphAt(dom.childAt(element4, [5, 0]),0,0);
       return morphs;
     },
     statements: [
@@ -2501,9 +2586,11 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       ["block","link-to",["player.mail"],[],14,null,["loc",[null,[24,13],[24,53]]]],
       ["block","link-to",["player.friend"],[],15,null,["loc",[null,[25,13],[25,55]]]],
       ["block","link-to",["item"],[],16,null,["loc",[null,[29,8],[29,43]]]],
-      ["block","link-to",["item.used"],[],17,null,["loc",[null,[31,13],[31,52]]]]
+      ["block","link-to",["item.used"],[],17,null,["loc",[null,[31,13],[31,52]]]],
+      ["block","link-to",["item.stone"],[],18,null,["loc",[null,[32,13],[32,52]]]],
+      ["block","link-to",["item.plus"],[],19,null,["loc",[null,[33,13],[33,52]]]]
     ],
     locals: [],
-    templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9, child10, child11, child12, child13, child14, child15, child16, child17]
+    templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9, child10, child11, child12, child13, child14, child15, child16, child17, child18, child19]
   };
 }()));

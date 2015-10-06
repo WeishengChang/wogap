@@ -113,4 +113,16 @@ Route::group(['prefix' => 'item'], function() {
 		Route::post('edit', ['uses' => 'itemUsedController@edit']);
 		Route::post('del/{id}', ['uses' => 'itemUsedController@del']);
 	});
+	Route::group(['prefix' => 'stone'], function() {
+		Route::post('show', ['uses' => 'itemStoneController@show']);
+		Route::post('add', ['uses' => 'itemStoneController@add']);
+		Route::post('edit', ['uses' => 'itemStoneController@edit']);
+		Route::post('del/{id}', ['uses' => 'itemStoneController@del']);
+	});
+	Route::group(['prefix' => 'plus'], function() {
+		Route::post('show', ['uses' => 'itemPlusController@show']);
+		Route::post('add', ['uses' => 'itemPlusController@add']);
+		Route::post('edit', ['uses' => 'itemPlusController@edit']);
+		Route::post('del/{id}', ['uses' => 'itemPlusController@del']);
+	});
 });

@@ -18,6 +18,7 @@ class EditorController extends Controller {
 		if(method_exists($this, 'afterValidation')) {
 			$this->afterValidation($data);
 		}
+        unset($data['pkval']);
 		$player = new $this->dbname($data);
 		$player->save();
 		return Response::json(['reload'=>TRUE]);

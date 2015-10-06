@@ -90,14 +90,21 @@ App.Router.map(function() {
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
+			this.route('stone', {path: '/stone'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
+			this.route('plus', {path: '/plus'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
 		});
 		this.route('playerHero');
 		this.route('playerCP');
 		this.route('playerKey');
 		
-		
-		this.route('itemUsed');
-		this.route('itemStone');
 		this.route('itemPlus');
 		this.route('itemKey');
 		this.route('itemHonor');
@@ -961,6 +968,40 @@ App.ItemRoute = App.TabDatagridRoute.extend({
 App.ItemUsedRoute = App.TabDatagridRoute.extend({
 	title: "消耗品管理",
 	gridParamsUrl: 'json/grid.item.used.json',
+	gridParams: {
+		primaryKey: 'd_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+		],
+		columnsGroup: {
+			"基本資料": ['d_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ItemStoneRoute = App.TabDatagridRoute.extend({
+	title: "魔石管理",
+	gridParamsUrl: 'json/grid.item.stone.json',
+	gridParams: {
+		primaryKey: 'd_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+		],
+		columnsGroup: {
+			"基本資料": ['d_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ItemPlusRoute = App.TabDatagridRoute.extend({
+	title: "精煉石管理",
+	gridParamsUrl: 'json/grid.item.plus.json',
 	gridParams: {
 		primaryKey: 'd_id',
 		autoRowHeight: false,

@@ -1,49 +1,42 @@
 <?php
 require_once 'EditorController.php';
-class ItemUsedController extends EditorController {
+class ItemPlusController extends EditorController {
 	public $rules = [
 		'd_id' => '',
-		'd_lv' => 'numeric',
 		'd_type' => 'numeric',
-		'd_g_exp' => 'numeric',
-		'd_g_bag' => 'numeric',
-		'ch_id' => 'numeric',
-		'skill_id' => 'numeric',
-		'use_time' => 'numeric',
-		'exp' => 'numeric',
-		'skill_exp' => 'numeric',
-		'at' => 'numeric',
-		'mat' => 'numeric',
-		'df' => 'numeric',
-		'mdf' => 'numeric',
-		'hp' => 'numeric',
-		'sp' => 'numeric'
+		'd_lv' => 'numeric',
+		'd_at' => 'numeric',
+		'd_mat' => 'numeric',
+		'd_df' => 'numeric',
+		'd_mdf' => 'numeric',
+		'd_agi' => 'numeric',
+		'd_str' => 'numeric',
+		'd_life' => 'numeric',
+		'd_vit' => 'numeric',
+		'd_smart' => 'numeric',
+		'd_au' => 'numeric',
+		'd_be' => 'numeric'
 	];
 	
-	public $dbname = 'DBWOGItemUsed';
+	public $dbname = 'DBWOGItemPlus';
 	public function afterValidation(&$data) {
 		$item = DBWOGItem::find($data['d_id']);
-		if (!$item) 
+		if (!$item)
         {
-			Response::alert("物品(d_id={$data['d_id']})不存在");
+            Response::alert("物品(d_id={$data['d_id']})不存在");
         }
-        if ($data['pkval'])
-        {
-            $itemUsed = DBWOGItemUsed::with('item')->find($data['d_id']);
-            if ($itemUsed && $data['d_id'] != $data['pkval'])
-            {
-                Response::alert("{$itemUsed->item->d_name}(d_id={$data['d_id']})已有定義，不可重複定義");
-            }
+        $stone = DBWOGItemStone::with('item')->find($data['d_id']);
+        if($stone && $data['d_id'] != $data['pkval']) {
+            Response::alert("{$stone->item->d_name}(d_id={$data['d_id']})已有定義，不可重複定義");
         }
-        
 	}
 	public function show() {
 		$page = Input::get("page");
 		$rows = Input::get("rows");
 		$sort = Input::get("sort", App::make($this->dbname)->getKeyName());
 		$order = Input::get("order", 'ASC');
-		$table = 'wog_df_used';
-		$alias = 'du';
+		$table = 'wog_plus_list';
+		$alias = 'dp';
 		$prefix = $alias.'.';
 		switch($sort) {
 			case 'd_name':
