@@ -1,0 +1,19 @@
+{
+	"columns": [[
+		{"field":"s_id", "title": "ID", "width": 40},
+		{"field":"s_name", "title": "技能名稱", "width": 60},
+		{"field":"ch_id", "title": "相關職業ID", "width": 60},
+		{"field":"s_text", "title": "說明", "width": 100},
+		{"field":"ch_exp", "title": "需求熟練", "width": 60},
+		{"field":"type", "title": "類型", "width": 40},
+		{"field":"stime", "title": "機率", "width": 40},
+		{"field":"s_sp", "title": "消耗SP", "width": 40},
+		{"field":"s_st", "title": "ST", "width": 40},
+		{"field":"s_count", "title": "持續回合", "width": 60},
+		{"field":"s_money", "title": "學習金額", "width": 60},
+		{"field":"s_lv", "title": "技能等級", "width": 0},
+		{"field":"main_sid", "title": "分類", "width": 60},
+		{"field":"need_sid", "title": "前置技能", "width": 60},
+		{"field":"s_master", "title": "禁學", "width": 40}
+   ]]
+}

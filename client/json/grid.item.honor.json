@@ -1,0 +1,14 @@
+{
+	"columns": [[
+		{"field":"h_id", "title": "ID", "width": 40},
+		{"field":"item_id", "title": "物品ID", "hidden": true},
+		{"field":"d_name", "title": "名稱", "width": 120, "readonly": true},
+		{"field":"h_type", "title": "類型", "width": 80},
+		{"field":"h_1", "title": "勳章1", "width": 40},
+		{"field":"h_2", "title": "勳章2", "width": 40},
+		{"field":"h_3", "title": "勳章3", "width": 40},
+		{"field":"h_4", "title": "勳章4", "width": 40},
+		{"field":"h_5", "title": "勳章5", "width": 40},
+		{"field":"item_num", "title": "數量", "hidden": true}
+   ]]
+}

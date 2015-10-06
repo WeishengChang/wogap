@@ -1,0 +1,16 @@
+{
+	"columns": [[
+		{"field":"s_id", "title": "ID", "width": 40},
+		{"field":"p_id", "title": "賣家", "width": 120},
+		{"field":"d_id", "title": "拍賣品", "width": 120},
+		{"field":"d_type", "title": "物品類型", "width": 40},
+		{"field":"hs_id", "title": "鑲嵌ID", "hidden": true},
+		{"field":"ps_id", "title": "精煉ID", "hidden": true},
+		{"field":"item_num", "title": "數量", "hidden": true},
+		{"field":"s_money", "title": "競標價", "width": 40},
+		{"field":"s_type", "title": "拍賣類型", "width": 40},
+		{"field":"e_money", "title": "結標價", "width": 40},
+		{"field":"e_p_id", "title": "下標玩家", "width": 120},
+		{"field":"dateline", "title": "日期", "width": 80}
+   ]]
+}

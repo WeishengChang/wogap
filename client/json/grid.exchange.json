@@ -1,0 +1,12 @@
+{
+	"columns": [[
+		{"field":"ex_id", "title": "ID", "width": 40},
+		{"field":"ex_name", "title": "名稱", "width": 80},
+		{"field":"ex_money", "title": "售價", "width": 120},
+		{"field":"ex_amount", "title": "數量", "width": 40},
+		{"field":"ex_change", "title": "變動", "width": 40},
+		{"field":"ex_chg_num", "title": "變動量", "width": 60},
+		{"field":"ex_change_time", "title": "變動時間", "width": 80},
+		{"field":"ex_resupply_time", "title": "補充時間", "width": 80}
+   ]]
+}

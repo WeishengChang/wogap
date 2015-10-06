@@ -1,0 +1,11 @@
+{
+"columns": [[
+	{"field":"syn_id", "title": "ID", "width": 40},
+	{"field":"syn_result", "title": "合成結果", "width": 120},
+	{"field":"syn_element", "title": "材料", "width": 320},
+	{"field":"syn_topr", "title": "成功率", "width": 40},
+	{"field":"syn_num", "title": "數量", "hidden": true},
+	{"field":"syn_mission", "title": "任務", "width": 40},
+	{"field":"syn_need_mission", "title": "前置任務", "width": 80}
+   ]]
+}

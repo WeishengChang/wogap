@@ -5,7 +5,7 @@ class DBWOGCharacter extends Eloquent {
 		protected $primaryKey = 'ch_id';
 		protected $guarded = [];
 		public $timestamps = FALSE;
-		public function parent() {
-			return $this->belongsTo('DBWOGCharacter', 'ch_main')->select(['ch_name AS main_name']);
+		public function main() {
+			return $this->belongsTo('DBWOGCharacter', 'ch_main')->select(['ch_id', 'ch_name']);
 		}
 }

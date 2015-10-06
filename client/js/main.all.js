@@ -231,6 +231,46 @@ App.Router.map(function() {
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
+			this.route('key', {path: '/key'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
+			this.route('honor', {path: '/honor'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
+			this.route('syn', {path: '/syn'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
+			this.route('sale', {path: '/sale'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
+		});
+		this.route('exchange', {path: '/exchange', resetNamespace: true}, function() {
+			this.route('add');
+			this.route('edit', {path: '/edit/:id'});
+			this.route('delete');
+			this.route('log', {path: '/log'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
+		});
+		this.route('character', {path: '/character', resetNamespace: true}, function() {
+			this.route('add');
+			this.route('edit', {path: '/edit/:id'});
+			this.route('delete');
+			this.route('skill', {path: '/skill'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+			});
 		});
 		this.route('playerHero');
 		this.route('playerCP');
@@ -241,13 +281,10 @@ App.Router.map(function() {
 		this.route('itemHonor');
 		this.route('itemSale');
 		this.route('itemSyn');
-		this.route('exchange');
 		this.route('exchangeBook');
 		this.route('team');
 		this.route('teamJoin');
 		this.route('avatar');
-		this.route('character');
-		this.route('characterSkill');
 		this.route('monster');
 	});
 	this.route('config');
@@ -1142,6 +1179,153 @@ App.ItemPlusRoute = App.TabDatagridRoute.extend({
 		],
 		columnsGroup: {
 			"基本資料": ['d_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ItemKeyRoute = App.TabDatagridRoute.extend({
+	title: "鑰匙管理",
+	gridParamsUrl: 'json/grid.item.key.json',
+	gridParams: {
+		primaryKey: 'd_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+		],
+		columnsGroup: {
+			"基本資料": ['d_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ItemHonorRoute = App.TabDatagridRoute.extend({
+	title: "勳章管理",
+	gridParamsUrl: 'json/grid.item.honor.json',
+	gridParams: {
+		primaryKey: 'h_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+		],
+		columnsGroup: {
+			"基本資料": ['d_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ItemSynRoute = App.TabDatagridRoute.extend({
+	title: "合成管理",
+	gridParamsUrl: 'json/grid.item.syn.json',
+	gridParams: {
+		primaryKey: 'syn_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+			{field: 'syn_result', formatter: function(val, row) {return row.d_name || val;}},
+			{field: 'syn_element', formatter: function(val, row) {return row.syn_name || val;}},
+			{field: 'syn_need_mission', formatter: function(val, row) {return row.m_subject || val;}}
+		],
+		columnsGroup: {
+			"基本資料": ['syn_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ItemSaleRoute = App.TabDatagridRoute.extend({
+	title: "拍賣管理",
+	gridParamsUrl: 'json/grid.item.sale.json',
+	gridParams: {
+		primaryKey: 's_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+			{field: 'p_id', formatter: function(val, row) {return row.p_name || val;}},
+			{field: 'd_id', formatter: function(val, row) {return row.d_name || val;}},
+		],
+		columnsGroup: {
+			"基本資料": ['s_id', 'p_id', 'd_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ExchangeRoute = App.TabDatagridRoute.extend({
+	title: "資源管理",
+	gridParamsUrl: 'json/grid.exchange.json',
+	gridParams: {
+		primaryKey: 'ex_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+		],
+		columnsGroup: {
+			"基本資料": ['ex_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.ExchangeLogRoute = App.TabDatagridRoute.extend({
+	title: "資源紀錄管理",
+	gridParamsUrl: 'json/grid.exchange.log.json',
+	gridParams: {
+		primaryKey: 'eb_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+			{field: "ex_id", formatter: function(val, row) { return row.ex_name || val; }},
+			{field: "eb_time", formatter: function(val, row) { return new WOGDate(val); }}
+		],
+		columnsGroup: {
+			"基本資料": ['eb_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.CharacterRoute = App.TabDatagridRoute.extend({
+	title: "職業管理",
+	gridParamsUrl: 'json/grid.character.json',
+	gridParams: {
+		primaryKey: 'ch_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+			{field: "ch_main", formatter: function(val, row) { return val?row.main_name || val : "無"; }}
+		],
+		columnsGroup: {
+			"基本資料": ['ch_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.CharacterSkillRoute = App.TabDatagridRoute.extend({
+	title: "職業技能管理",
+	gridParamsUrl: 'json/grid.character.skill.json',
+	gridParams: {
+		primaryKey: 's_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+			{field: "ch_id", formatter: function(val, row) { return row.ch_name || val; }},
+			{field: "main_sid", formatter: function(val, row) { return row.main_name || val; }},
+			{field: "need_sid", formatter: function(val, row) { return row.need_name || val; }},
+		],
+		columnsGroup: {
+			"基本資料": ['s_id'],
 		},
 		toolbar: ['add', 'edit', 'delete']
 	}

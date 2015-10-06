@@ -125,4 +125,53 @@ Route::group(['prefix' => 'item'], function() {
 		Route::post('edit', ['uses' => 'itemPlusController@edit']);
 		Route::post('del/{id}', ['uses' => 'itemPlusController@del']);
 	});
+	Route::group(['prefix' => 'key'], function() {
+		Route::post('show', ['uses' => 'itemKeyController@show']);
+		Route::post('add', ['uses' => 'itemKeyController@add']);
+		Route::post('edit', ['uses' => 'itemKeyController@edit']);
+		Route::post('del/{id}', ['uses' => 'itemKeyController@del']);
+	});
+	Route::group(['prefix' => 'honor'], function() {
+		Route::post('show', ['uses' => 'itemHonorController@show']);
+		Route::post('add', ['uses' => 'itemHonorController@add']);
+		Route::post('edit', ['uses' => 'itemHonorController@edit']);
+		Route::post('del/{id}', ['uses' => 'itemHonorController@del']);
+	});
+	Route::group(['prefix' => 'syn'], function() {
+		Route::post('show', ['uses' => 'itemSynController@show']);
+		Route::post('add', ['uses' => 'itemSynController@add']);
+		Route::post('edit', ['uses' => 'itemSynController@edit']);
+		Route::post('del/{id}', ['uses' => 'itemSynController@del']);
+	});
+	Route::group(['prefix' => 'sale'], function() {
+		Route::post('show', ['uses' => 'itemSaleController@show']);
+		Route::post('add', ['uses' => 'itemSaleController@add']);
+		Route::post('edit', ['uses' => 'itemSaleController@edit']);
+		Route::post('del/{id}', ['uses' => 'itemSaleController@del']);
+	});
+	
+});
+Route::group(['prefix' => 'character'], function() {
+    Route::post('show', ['uses' => 'characterController@show']);
+    Route::post('add', ['uses' => 'characterController@add']);
+    Route::post('edit', ['uses' => 'characterController@edit']);
+    Route::post('del/{id}', ['uses' => 'characterController@del']);
+	Route::group(['prefix' => 'skill'], function() {
+		Route::post('show', ['uses' => 'characterSkillController@show']);
+		Route::post('add', ['uses' => 'characterSkillController@add']);
+		Route::post('edit', ['uses' => 'characterSkillController@edit']);
+		Route::post('del/{id}', ['uses' => 'characterSkillController@del']);
+	});
+});
+Route::group(['prefix' => 'exchange'], function() {
+    Route::post('show', ['uses' => 'ExchangeController@show']);
+    Route::post('add', ['uses' => 'ExchangeController@add']);
+    Route::post('edit', ['uses' => 'ExchangeController@edit']);
+    Route::post('del/{id}', ['uses' => 'ExchangeController@del']);
+	Route::group(['prefix' => 'log'], function() {
+		Route::post('show', ['uses' => 'ExchangeLogController@show']);
+		Route::post('add', ['uses' => 'ExchangeLogController@add']);
+		Route::post('edit', ['uses' => 'ExchangeLogController@edit']);
+		Route::post('del/{id}', ['uses' => 'ExchangeLogController@del']);
+	});
 });

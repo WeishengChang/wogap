@@ -1,0 +1,16 @@
+{
+	"columns": [[
+		{"field":"ch_id", "title": "ID", "width": 40},
+		{"field":"ch_name", "title": "職業名稱", "width": 120},
+		{"field":"ch_str", "title": "力量成長", "width": 60},
+		{"field":"ch_smart", "title": "智力成長", "width": 60},
+		{"field":"ch_agi", "title": "速度成長", "width": 60},
+		{"field":"ch_life", "title": "生命成長", "width": 60},
+		{"field":"ch_vit", "title": "體質成長", "width": 60},
+		{"field":"ch_au", "title": "信仰成長", "width": 60},
+		{"field":"ch_be", "title": "魅力成長", "width": 60},
+		{"field":"ch_mlv", "title": "限制等級", "width": 60},
+		{"field":"ch_map", "title": "限制熟練", "width": 60},
+		{"field":"ch_main", "title": "前置職業", "width": 120}
+   ]]
+}

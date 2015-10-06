@@ -1,31 +1,20 @@
 <?php
 require_once 'EditorController.php';
-class ItemPlusController extends EditorController {
+class ItemkeyController extends EditorController {
 	public $rules = [
 		'd_id' => '',
-		'd_type' => 'numeric',
-		'd_lv' => 'numeric',
-		'd_at' => 'numeric',
-		'd_mat' => 'numeric',
-		'd_df' => 'numeric',
-		'd_mdf' => 'numeric',
-		'd_agi' => 'numeric',
-		'd_str' => 'numeric',
-		'd_life' => 'numeric',
-		'd_vit' => 'numeric',
-		'd_smart' => 'numeric',
-		'd_au' => 'numeric',
-		'd_be' => 'numeric'
+		'area_id' => 'numeric',
+		'area_time' => 'numeric'
 	];
 	
-	public $dbname = 'DBWOGItemPlus';
+	public $dbname = 'DBWOGItemKey';
 	public function afterValidation(&$data) {
 		$item = DBWOGItem::find($data['d_id']);
 		if (!$item)
         {
             Response::alert("物品(d_id={$data['d_id']})不存在");
         }
-        $stone = DBWOGItemPlus::with('item')->find($data['d_id']);
+        $stone = DBWOGItemKey::with('item')->find($data['d_id']);
         if($stone && $data['d_id'] != $data['pkval']) {
             Response::alert("{$stone->item->d_name}(d_id={$data['d_id']})已有定義，不可重複定義");
         }
@@ -35,7 +24,7 @@ class ItemPlusController extends EditorController {
 		$rows = Input::get("rows");
 		$sort = Input::get("sort", App::make($this->dbname)->getKeyName());
 		$order = Input::get("order", 'ASC');
-		$table = 'wog_plus_list';
+		$table = 'wog_key_main';
 		$alias = 'dp';
 		$prefix = $alias.'.';
 		switch($sort) {

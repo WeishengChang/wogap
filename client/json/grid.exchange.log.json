@@ -1,0 +1,8 @@
+{
+	"columns": [[
+		{"field":"eb_id", "title": "ID", "width": 40},
+		{"field":"ex_id", "title": "相關資源", "width": 80},
+		{"field":"eb_body", "title": "訊息", "width": 480},
+		{"field":"eb_time", "title": "變動時間", "width": 120}
+   ]]
+}

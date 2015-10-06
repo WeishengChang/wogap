@@ -836,308 +836,11 @@ Ember.TEMPLATES["management"] = Ember.HTMLBars.template((function() {
         "loc": {
           "source": null,
           "start": {
-            "line": 11,
-            "column": 1
-          },
-          "end": {
-            "line": 11,
-            "column": 27
-          }
-        }
-      },
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("消耗品");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes() { return []; },
-      statements: [
-
-      ],
-      locals: [],
-      templates: []
-    };
-  }());
-  var child8 = (function() {
-    return {
-      meta: {
-        "revision": "Ember@2.0.0+3296a952",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 12,
-            "column": 1
-          },
-          "end": {
-            "line": 12,
-            "column": 27
-          }
-        }
-      },
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("魔石");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes() { return []; },
-      statements: [
-
-      ],
-      locals: [],
-      templates: []
-    };
-  }());
-  var child9 = (function() {
-    return {
-      meta: {
-        "revision": "Ember@2.0.0+3296a952",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 13,
-            "column": 1
-          },
-          "end": {
-            "line": 13,
-            "column": 27
-          }
-        }
-      },
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("精煉石");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes() { return []; },
-      statements: [
-
-      ],
-      locals: [],
-      templates: []
-    };
-  }());
-  var child10 = (function() {
-    return {
-      meta: {
-        "revision": "Ember@2.0.0+3296a952",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 14,
-            "column": 1
-          },
-          "end": {
-            "line": 14,
-            "column": 25
-          }
-        }
-      },
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("鑰匙");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes() { return []; },
-      statements: [
-
-      ],
-      locals: [],
-      templates: []
-    };
-  }());
-  var child11 = (function() {
-    return {
-      meta: {
-        "revision": "Ember@2.0.0+3296a952",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 15,
-            "column": 1
-          },
-          "end": {
-            "line": 15,
-            "column": 29
-          }
-        }
-      },
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("勳章交換");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes() { return []; },
-      statements: [
-
-      ],
-      locals: [],
-      templates: []
-    };
-  }());
-  var child12 = (function() {
-    return {
-      meta: {
-        "revision": "Ember@2.0.0+3296a952",
-        "loc": {
-          "source": null,
-          "start": {
             "line": 16,
             "column": 1
           },
           "end": {
             "line": 16,
-            "column": 26
-          }
-        }
-      },
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("拍賣");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes() { return []; },
-      statements: [
-
-      ],
-      locals: [],
-      templates: []
-    };
-  }());
-  var child13 = (function() {
-    return {
-      meta: {
-        "revision": "Ember@2.0.0+3296a952",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 17,
-            "column": 1
-          },
-          "end": {
-            "line": 17,
-            "column": 25
-          }
-        }
-      },
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("合成");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes() { return []; },
-      statements: [
-
-      ],
-      locals: [],
-      templates: []
-    };
-  }());
-  var child14 = (function() {
-    return {
-      meta: {
-        "revision": "Ember@2.0.0+3296a952",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 18,
-            "column": 1
-          },
-          "end": {
-            "line": 18,
-            "column": 28
-          }
-        }
-      },
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("資源市場");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes() { return []; },
-      statements: [
-
-      ],
-      locals: [],
-      templates: []
-    };
-  }());
-  var child15 = (function() {
-    return {
-      meta: {
-        "revision": "Ember@2.0.0+3296a952",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 19,
-            "column": 1
-          },
-          "end": {
-            "line": 19,
-            "column": 30
-          }
-        }
-      },
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("紀錄");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes() { return []; },
-      statements: [
-
-      ],
-      locals: [],
-      templates: []
-    };
-  }());
-  var child16 = (function() {
-    return {
-      meta: {
-        "revision": "Ember@2.0.0+3296a952",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 25,
-            "column": 1
-          },
-          "end": {
-            "line": 25,
             "column": 22
           }
         }
@@ -1159,18 +862,18 @@ Ember.TEMPLATES["management"] = Ember.HTMLBars.template((function() {
       templates: []
     };
   }());
-  var child17 = (function() {
+  var child8 = (function() {
     return {
       meta: {
         "revision": "Ember@2.0.0+3296a952",
         "loc": {
           "source": null,
           "start": {
-            "line": 26,
+            "line": 17,
             "column": 1
           },
           "end": {
-            "line": 26,
+            "line": 17,
             "column": 28
           }
         }
@@ -1192,18 +895,18 @@ Ember.TEMPLATES["management"] = Ember.HTMLBars.template((function() {
       templates: []
     };
   }());
-  var child18 = (function() {
+  var child9 = (function() {
     return {
       meta: {
         "revision": "Ember@2.0.0+3296a952",
         "loc": {
           "source": null,
           "start": {
-            "line": 27,
+            "line": 18,
             "column": 1
           },
           "end": {
-            "line": 27,
+            "line": 18,
             "column": 24
           }
         }
@@ -1235,7 +938,7 @@ Ember.TEMPLATES["management"] = Ember.HTMLBars.template((function() {
           "column": 0
         },
         "end": {
-          "line": 29,
+          "line": 20,
           "column": 6
         }
       }
@@ -1299,46 +1002,6 @@ Ember.TEMPLATES["management"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el2, el3);
       var el3 = dom.createTextNode("\n	");
       dom.appendChild(el2, el3);
-      var el3 = dom.createComment("");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createComment("");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createComment("");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createComment("");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createElement("br");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createComment("");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createComment("");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createComment("");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createElement("br");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createComment("");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createComment("");
-      dom.appendChild(el2, el3);
-      var el3 = dom.createTextNode("\n	");
-      dom.appendChild(el2, el3);
       dom.appendChild(el1, el2);
       var el2 = dom.createTextNode("\n	");
       dom.appendChild(el1, el2);
@@ -1378,28 +1041,18 @@ Ember.TEMPLATES["management"] = Ember.HTMLBars.template((function() {
     buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
       var element0 = dom.childAt(fragment, [0]);
       var element1 = dom.childAt(element0, [1]);
-      var element2 = dom.childAt(element0, [3]);
-      var element3 = dom.childAt(element0, [7]);
-      var morphs = new Array(19);
+      var element2 = dom.childAt(element0, [7]);
+      var morphs = new Array(10);
       morphs[0] = dom.createMorphAt(element1,1,1);
       morphs[1] = dom.createMorphAt(element1,3,3);
       morphs[2] = dom.createMorphAt(element1,5,5);
       morphs[3] = dom.createMorphAt(element1,8,8);
       morphs[4] = dom.createMorphAt(element1,11,11);
       morphs[5] = dom.createMorphAt(element1,13,13);
-      morphs[6] = dom.createMorphAt(element2,1,1);
-      morphs[7] = dom.createMorphAt(element2,4,4);
-      morphs[8] = dom.createMorphAt(element2,6,6);
-      morphs[9] = dom.createMorphAt(element2,8,8);
-      morphs[10] = dom.createMorphAt(element2,10,10);
-      morphs[11] = dom.createMorphAt(element2,13,13);
-      morphs[12] = dom.createMorphAt(element2,15,15);
-      morphs[13] = dom.createMorphAt(element2,17,17);
-      morphs[14] = dom.createMorphAt(element2,20,20);
-      morphs[15] = dom.createMorphAt(element2,22,22);
-      morphs[16] = dom.createMorphAt(element3,1,1);
-      morphs[17] = dom.createMorphAt(element3,3,3);
-      morphs[18] = dom.createMorphAt(element3,6,6);
+      morphs[6] = dom.createMorphAt(dom.childAt(element0, [3]),1,1);
+      morphs[7] = dom.createMorphAt(element2,1,1);
+      morphs[8] = dom.createMorphAt(element2,3,3);
+      morphs[9] = dom.createMorphAt(element2,6,6);
       return morphs;
     },
     statements: [
@@ -1410,21 +1063,12 @@ Ember.TEMPLATES["management"] = Ember.HTMLBars.template((function() {
       ["block","link-to",["characterSkill"],[],4,null,["loc",[null,[6,1],[6,44]]]],
       ["block","link-to",["monster"],[],5,null,["loc",[null,[7,1],[7,37]]]],
       ["block","link-to",["item","all"],[],6,null,["loc",[null,[10,1],[10,42]]]],
-      ["block","link-to",["itemUsed"],[],7,null,["loc",[null,[11,1],[11,39]]]],
-      ["block","link-to",["itemStone"],[],8,null,["loc",[null,[12,1],[12,39]]]],
-      ["block","link-to",["itemPlus"],[],9,null,["loc",[null,[13,1],[13,39]]]],
-      ["block","link-to",["itemKey"],[],10,null,["loc",[null,[14,1],[14,37]]]],
-      ["block","link-to",["itemHonor"],[],11,null,["loc",[null,[15,1],[15,41]]]],
-      ["block","link-to",["itemSale"],[],12,null,["loc",[null,[16,1],[16,38]]]],
-      ["block","link-to",["itemSyn"],[],13,null,["loc",[null,[17,1],[17,37]]]],
-      ["block","link-to",["exchange"],[],14,null,["loc",[null,[18,1],[18,40]]]],
-      ["block","link-to",["exchangeBook"],[],15,null,["loc",[null,[19,1],[19,42]]]],
-      ["block","link-to",["team"],[],16,null,["loc",[null,[25,1],[25,34]]]],
-      ["block","link-to",["teamJoin"],[],17,null,["loc",[null,[26,1],[26,40]]]],
-      ["block","link-to",["avatar"],[],18,null,["loc",[null,[27,1],[27,36]]]]
+      ["block","link-to",["team"],[],7,null,["loc",[null,[16,1],[16,34]]]],
+      ["block","link-to",["teamJoin"],[],8,null,["loc",[null,[17,1],[17,40]]]],
+      ["block","link-to",["avatar"],[],9,null,["loc",[null,[18,1],[18,36]]]]
     ],
     locals: [],
-    templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9, child10, child11, child12, child13, child14, child15, child16, child17, child18]
+    templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9]
   };
 }()));
 
@@ -2320,6 +1964,270 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       templates: []
     };
   }());
+  var child20 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 34,
+            "column": 13
+          },
+          "end": {
+            "line": 34,
+            "column": 38
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("鑰匙");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
+  var child21 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 35,
+            "column": 13
+          },
+          "end": {
+            "line": 35,
+            "column": 42
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("勳章換物");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
+  var child22 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 36,
+            "column": 13
+          },
+          "end": {
+            "line": 36,
+            "column": 38
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("合成");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
+  var child23 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 37,
+            "column": 13
+          },
+          "end": {
+            "line": 37,
+            "column": 39
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("拍賣");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
+  var child24 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 41,
+            "column": 11
+          },
+          "end": {
+            "line": 41,
+            "column": 39
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("職業管理");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
+  var child25 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 43,
+            "column": 13
+          },
+          "end": {
+            "line": 43,
+            "column": 45
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("技能");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
+  var child26 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 47,
+            "column": 11
+          },
+          "end": {
+            "line": 47,
+            "column": 38
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("資源管理");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
+  var child27 = (function() {
+    return {
+      meta: {
+        "revision": "Ember@2.0.0+3296a952",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 49,
+            "column": 13
+          },
+          "end": {
+            "line": 49,
+            "column": 44
+          }
+        }
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("市場紀錄");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
+      ],
+      locals: [],
+      templates: []
+    };
+  }());
   return {
     meta: {
       "revision": "Ember@2.0.0+3296a952",
@@ -2330,7 +2238,7 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
           "column": 0
         },
         "end": {
-          "line": 36,
+          "line": 52,
           "column": 5
         }
       }
@@ -2528,6 +2436,86 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el5, el6);
       dom.appendChild(el4, el5);
       dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n			");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("li");
+      var el5 = dom.createElement("span");
+      var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n			");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("li");
+      var el5 = dom.createElement("span");
+      var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n			");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("li");
+      var el5 = dom.createElement("span");
+      var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n			");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("li");
+      var el5 = dom.createElement("span");
+      var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n		");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n	");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode("\n\n	");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("li");
+      var el3 = dom.createElement("span");
+      var el4 = dom.createComment("");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n		");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("ul");
+      var el4 = dom.createTextNode("\n			");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("li");
+      var el5 = dom.createElement("span");
+      var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
+      var el4 = dom.createTextNode("\n		");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n	");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode("\n\n	");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("li");
+      var el3 = dom.createElement("span");
+      var el4 = dom.createComment("");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode("\n		");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("ul");
+      var el4 = dom.createTextNode("\n			");
+      dom.appendChild(el3, el4);
+      var el4 = dom.createElement("li");
+      var el5 = dom.createElement("span");
+      var el6 = dom.createComment("");
+      dom.appendChild(el5, el6);
+      dom.appendChild(el4, el5);
+      dom.appendChild(el3, el4);
       var el4 = dom.createTextNode("\n		");
       dom.appendChild(el3, el4);
       dom.appendChild(el2, el3);
@@ -2545,7 +2533,9 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       var element2 = dom.childAt(element1, [3]);
       var element3 = dom.childAt(element0, [3]);
       var element4 = dom.childAt(element3, [3]);
-      var morphs = new Array(20);
+      var element5 = dom.childAt(element0, [5]);
+      var element6 = dom.childAt(element0, [7]);
+      var morphs = new Array(28);
       morphs[0] = dom.createMorphAt(dom.childAt(element1, [1]),0,0);
       morphs[1] = dom.createMorphAt(dom.childAt(element2, [1, 1]),0,0);
       morphs[2] = dom.createMorphAt(dom.childAt(element2, [3, 1]),0,0);
@@ -2566,6 +2556,14 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       morphs[17] = dom.createMorphAt(dom.childAt(element4, [1, 0]),0,0);
       morphs[18] = dom.createMorphAt(dom.childAt(element4, [3, 0]),0,0);
       morphs[19] = dom.createMorphAt(dom.childAt(element4, [5, 0]),0,0);
+      morphs[20] = dom.createMorphAt(dom.childAt(element4, [7, 0]),0,0);
+      morphs[21] = dom.createMorphAt(dom.childAt(element4, [9, 0]),0,0);
+      morphs[22] = dom.createMorphAt(dom.childAt(element4, [11, 0]),0,0);
+      morphs[23] = dom.createMorphAt(dom.childAt(element4, [13, 0]),0,0);
+      morphs[24] = dom.createMorphAt(dom.childAt(element5, [0]),0,0);
+      morphs[25] = dom.createMorphAt(dom.childAt(element5, [2, 1, 0]),0,0);
+      morphs[26] = dom.createMorphAt(dom.childAt(element6, [0]),0,0);
+      morphs[27] = dom.createMorphAt(dom.childAt(element6, [2, 1, 0]),0,0);
       return morphs;
     },
     statements: [
@@ -2588,9 +2586,17 @@ Ember.TEMPLATES["submenu"] = Ember.HTMLBars.template((function() {
       ["block","link-to",["item"],[],16,null,["loc",[null,[29,8],[29,43]]]],
       ["block","link-to",["item.used"],[],17,null,["loc",[null,[31,13],[31,52]]]],
       ["block","link-to",["item.stone"],[],18,null,["loc",[null,[32,13],[32,52]]]],
-      ["block","link-to",["item.plus"],[],19,null,["loc",[null,[33,13],[33,52]]]]
+      ["block","link-to",["item.plus"],[],19,null,["loc",[null,[33,13],[33,52]]]],
+      ["block","link-to",["item.key"],[],20,null,["loc",[null,[34,13],[34,50]]]],
+      ["block","link-to",["item.honor"],[],21,null,["loc",[null,[35,13],[35,54]]]],
+      ["block","link-to",["item.syn"],[],22,null,["loc",[null,[36,13],[36,50]]]],
+      ["block","link-to",["item.sale"],[],23,null,["loc",[null,[37,13],[37,51]]]],
+      ["block","link-to",["character"],[],24,null,["loc",[null,[41,11],[41,51]]]],
+      ["block","link-to",["character.skill"],[],25,null,["loc",[null,[43,13],[43,57]]]],
+      ["block","link-to",["exchange"],[],26,null,["loc",[null,[47,11],[47,50]]]],
+      ["block","link-to",["exchange.log"],[],27,null,["loc",[null,[49,13],[49,56]]]]
     ],
     locals: [],
-    templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9, child10, child11, child12, child13, child14, child15, child16, child17, child18, child19]
+    templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9, child10, child11, child12, child13, child14, child15, child16, child17, child18, child19, child20, child21, child22, child23, child24, child25, child26, child27]
   };
 }()));
