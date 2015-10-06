@@ -1,21 +1,21 @@
 {
 "columns": [[
-		{"field":"d_id", "title": "ID", "width": 40},
-		{"field":"d_name", "title": "道具名稱", "width": 200, "sortable": true, "readonly": true},
-		{"field":"d_type", "title": "類型", "width": 100},
-		{"field":"d_lv", "title": "等級", "width": 40},
-		{"field":"d_g_exp", "title": "增加經驗", "hidden": true},
-		{"field":"d_g_bag", "title": "增加背包", "hidden": true},
-		{"field":"ch_id", "title": "職業ID", "hidden": true},
-		{"field":"skill_id", "title": "技能ID", "hidden": true},
-		{"field":"use_time", "title": "時效", "width": 40},
-		{"field":"exp", "title": "EXP倍率", "hidden": true},
-		{"field":"skill_exp", "title": "技能EXP倍率", "hidden": true},
-		{"field":"at", "title": "AT倍率", "hidden": true},
-		{"field":"mat", "title": "MAT倍率", "hidden": true},
-		{"field":"df", "title": "DF倍率", "hidden": true},
-		{"field":"mdf", "title": "MDF倍率", "hidden": true},
-		{"field":"hp", "title": "HP倍率", "hidden": true},
-		{"field":"sp", "title": "SP倍率", "hidden": true}
+	{"field":"d_id", "title": "ID", "width": 40},
+	{"field":"d_name", "title": "道具名稱", "width": 200, "sortable": true, "readonly": true},
+	{"field":"d_type", "title": "類型", "width": 100},
+	{"field":"d_lv", "title": "等級", "width": 40},
+	{"field":"d_g_exp", "title": "增加經驗", "hidden": true},
+	{"field":"d_g_bag", "title": "增加背包", "hidden": true},
+	{"field":"ch_id", "title": "職業ID", "hidden": true},
+	{"field":"skill_id", "title": "技能ID", "hidden": true},
+	{"field":"use_time", "title": "時效", "width": 40},
+	{"field":"exp", "title": "EXP倍率", "hidden": true},
+	{"field":"skill_exp", "title": "技能EXP倍率", "hidden": true},
+	{"field":"at", "title": "AT倍率", "hidden": true},
+	{"field":"mat", "title": "MAT倍率", "hidden": true},
+	{"field":"df", "title": "DF倍率", "hidden": true},
+	{"field":"mdf", "title": "MDF倍率", "hidden": true},
+	{"field":"hp", "title": "HP倍率", "hidden": true},
+	{"field":"sp", "title": "SP倍率", "hidden": true}
    ]]
 }

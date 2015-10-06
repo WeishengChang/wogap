@@ -24,7 +24,11 @@ class ItemUsedController extends EditorController {
 	public function afterValidation(&$data) {
 		$item = DBWOGItem::find($data['d_id']);
 		if(!$item) 
-			Response::alert("物品不存在");
+			Response::alert("物品(d_id={$data['d_id']})不存在");
+        $itemUsed = DBWOGItemUsed::with('item')->find($data['d_id']);
+        if($itemUsed && $data['d_id'] != $data['pkval']) {
+            Response::alert("{$itemUsed->item->d_name}(d_id={$data['d_id']})已有定義，不可重複定義");
+        }
 	}
 	public function show() {
 		$page = Input::get("page");

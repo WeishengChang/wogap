@@ -468,6 +468,7 @@ App.TabDatagridRoute = App.TabRoute.extend({
 			}
 			//暫存選取列的資料，供editor dialog做載入用
 			this.gridParams['selected'] = this.gridParams._rawData[ $(this.getDatagrid()).datagrid('getRowIndex', row) ];
+			this.gridParams.selected.pkval = this.gridParams.selected[this.gridParams.primaryKey];
 			this.transitionTo(this.routeName+".edit", this.gridParams.selected[this.gridParams.primaryKey || "id"]);
 		},
 		del: function(url) {
@@ -532,7 +533,7 @@ App.Dialog = Ember.Mixin.create({
 							route.$_dialog.dialog('close');
 							//route.send('close');
 						}).fail(function(xhr) {
-							$.messager.notification(xhr.responseJSON);
+							$.messager.notification(xhr.responseJSON.error ? xhr.responseJSON.error.message : xhr.responseJSON);
 						});
 					}
 				},
@@ -569,9 +570,7 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 		}
 		var data = this.modelFor(this.targetModel);
 		this.parentRoute = data[0];
-			return data[1];
-		
-		
+		return data[1];
 	},
 	actions: {
 		close: function() {
@@ -599,8 +598,8 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 				this.transitionTo(this.getParentRoute());
 			} else {
 				$dialog.form('load', selected);
+				console.log(selected);
 			}
-			
 		}
 		//console.log(this.model.columns);
 	},
@@ -635,7 +634,7 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 		} else {
 			text.push(route.createForm(columns, [], []));
 		}
-		text.push('</table></form>');
+		text.push('</table><input type="hidden" name="pkval" value=""/></form>');
 		return text.join('');
 	},
 	createForm: function(columns, include, exclude, map) {

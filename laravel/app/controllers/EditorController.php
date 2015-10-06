@@ -32,7 +32,8 @@ class EditorController extends Controller {
 			$this->afterValidation($data);
 			
 		}
-		$player = call_user_func(array($this->dbname, 'find'), $data[App::make($this->dbname)->getKeyName()]);
+		$player = call_user_func(array($this->dbname, 'find'), $data['pkval']);
+        unset($data['pkval']);
 		$player->fill($data);
 		$player->save();
 		return Response::json(['reload'=>TRUE]);
