@@ -101,6 +101,18 @@ Route::group(['prefix' => 'player'], function() {
 		Route::post('edit', ['uses' => 'playerFriendController@edit']);
 		Route::post('del/{id}', ['uses' => 'playerFriendController@del']);
 	});
+	Route::group(['prefix' => 'team'], function() {
+		Route::post('show', ['uses' => 'playerTeamController@show']);
+		Route::post('add', ['uses' => 'playerTeamController@add']);
+		Route::post('edit', ['uses' => 'playerTeamController@edit']);
+		Route::post('del/{id}', ['uses' => 'playerTeamController@del']);
+        Route::group(['prefix' => 'join'], function() {
+            Route::post('show', ['uses' => 'playerTeamJoinController@show']);
+            Route::post('add', ['uses' => 'playerTeamJoinController@add']);
+            Route::post('edit', ['uses' => 'playerTeamJoinController@edit']);
+            Route::post('del/{id}', ['uses' => 'playerTeamJoinController@del']);
+        });
+	});
 });
 Route::group(['prefix' => 'item'], function() {
 	Route::post('add', ['uses' => 'itemController@add']);
@@ -174,4 +186,16 @@ Route::group(['prefix' => 'exchange'], function() {
 		Route::post('edit', ['uses' => 'ExchangeLogController@edit']);
 		Route::post('del/{id}', ['uses' => 'ExchangeLogController@del']);
 	});
+});
+Route::group(['prefix' => 'avatar'], function() {
+    Route::post('show', ['uses' => 'AvatarController@show']);
+    Route::post('add', ['uses' => 'AvatarController@add']);
+    Route::post('edit', ['uses' => 'AvatarController@edit']);
+    Route::post('del/{id}', ['uses' => 'AvatarController@del']);;
+});
+Route::group(['prefix' => 'monster'], function() {
+    Route::post('show', ['uses' => 'MonsterController@show']);
+    Route::post('add', ['uses' => 'MonsterController@add']);
+    Route::post('edit', ['uses' => 'MonsterController@edit']);
+    Route::post('del/{id}', ['uses' => 'MonsterController@del']);;
 });

@@ -1,0 +1,6 @@
+{
+	"columns": [[
+		{"field":"i_id", "title": "ID", "width": 80},
+		{"field":"i_filename", "title": "檔案路徑", "width": 400}
+   ]]
+}

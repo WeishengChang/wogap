@@ -52,7 +52,27 @@ module.exports = function (grunt) {
 							handlebarsPath: 'libs/ember/handlebars-v3.0.3.js'
 						},
 						files: {
-							"client/js/templates.js": ["src/templates/**/*.hbs"]
+							"src/temp/templates.raw.js": ["src/templates/**/*.hbs"]
+						}
+					}
+				},/*
+				compress: {
+					template: {
+						options: {
+							mode: 'gzip',
+						},
+						files: [
+							{src: ['src/temp/templates.raw.js'], dest: 'client/js/templates.min.js'}
+						]
+					}
+				},*/
+				uglify: {
+					template: {
+						compress: {
+							conditionals: true
+						},
+						files: {
+							'client/js/templates.min.js': ['src/temp/templates.raw.js']
 						}
 					}
 				},
@@ -67,7 +87,7 @@ module.exports = function (grunt) {
 					},
 					emberTemplate: {
 						files: ['src/templates/**/*.hbs', '!templates/chara_view2.hbs'],
-						tasks: ['emberTemplates:build']
+						tasks: ['emberTemplates:build', 'uglify:template']
 					}
 				},
 //				uglify: {
@@ -79,10 +99,11 @@ module.exports = function (grunt) {
 //				}
     });
     grunt.loadNpmTasks('grunt-contrib-watch');
-		grunt.loadNpmTasks('grunt-contrib-concat');
-		//grunt.loadNpmTasks('grunt-contrib-uglify');
-		grunt.loadNpmTasks('grunt-ember-templates');
-		//grunt.loadNpmTasks('grunt-newer');
-		//grunt.loadNpmTasks('grunt-babel');
-		grunt.registerTask('concat-lib', ['concat:libs']);
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	//grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-ember-templates');
+	//grunt.loadNpmTasks('grunt-newer');
+	//grunt.loadNpmTasks('grunt-babel');
+	grunt.registerTask('concat-lib', ['concat:libs']);
 };

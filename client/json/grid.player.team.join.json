@@ -1,0 +1,8 @@
+{
+	"columns": [[
+		{"field":"t_j_id", "title": "ID", "width": 40},
+		{"field":"t_id", "title": "隊伍", "width": 120},
+		{"field":"p_id", "title": "請求者", "width": 120},
+		{"field":"t_j_dateline", "title": "請求日期", "width": 160}
+   ]]
+}

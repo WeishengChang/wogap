@@ -1,12 +1,12 @@
 var SERVER_PATH = '../laravel/public/index.php/';
 
 function WOGDate(timestamp) {
-	this.date = new Date((+timestamp)*1000);
+	this.date = new Date(( +timestamp) * 1000);
 	return this;
 }
 WOGDate.prototype.toString = function() {
 	return this.date.toLocaleString("ja-JP", {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"});
-}
+};
 
 App.Router.map(function() {
 	this.route('home');
@@ -80,6 +80,17 @@ App.Router.map(function() {
 				this.route('edit', {path: '/edit/:id'});
 				this.route('delete');
 			});
+			this.route('team', {path: '/team'}, function() {
+				this.route('add');
+				this.route('edit', {path: '/edit/:id'});
+				this.route('delete');
+				
+				this.route('join', {path: '/join'}, function() {
+					this.route('add');
+					this.route('edit', {path: '/edit/:id'});
+					this.route('delete');
+				});
+			});
 		});
 		this.route('item', {path: '/item/:type', resetNamespace: true}, function() {
 			this.route('add');
@@ -145,16 +156,16 @@ App.Router.map(function() {
 		this.route('playerCP');
 		this.route('playerKey');
 		
-		this.route('itemPlus');
-		this.route('itemKey');
-		this.route('itemHonor');
-		this.route('itemSale');
-		this.route('itemSyn');
-		this.route('exchangeBook');
-		this.route('team');
-		this.route('teamJoin');
-		this.route('avatar');
-		this.route('monster');
+		this.route('avatar', {path: '/avatar', resetNamespace: true}, function() {
+			this.route('add');
+			this.route('edit', {path: '/edit/:id'});
+			this.route('delete');
+		});
+		this.route('monster', {path: '/monster', resetNamespace: true}, function() {
+			this.route('add');
+			this.route('edit', {path: '/edit/:id'});
+			this.route('delete');
+		});
 	});
 	this.route('config');
 	this.route('stats', function() {
@@ -201,7 +212,7 @@ App.TabRoute = Ember.Route.extend({
 				tools: [{
 					iconCls: 'icon-mini-lock-off',
 					handler: function() {
-						console.log(this, arguments);
+						//console.log(this, arguments);
 					}
 				}]
 			});
@@ -234,12 +245,14 @@ App.TabDatagridRoute = App.TabRoute.extend({
 		}
 		if(this.gridParamsUrl) {
 			return $.getJSON(this.gridParamsUrl).then(function(json) {
-				if(route.gridParams && route.gridParams.columns) {
-					route.gridParams.columns = [_mixColumns(json.columns[0] || [], route.gridParams.columns)];
+				var params = route.gridParams;
+				
+				if(params && params.columns) {
+					params.columns = [_mixColumns(json.columns[0] || [], params.columns)];
 					delete json.columns;
 				}
-				route.gridParams = $.extend(route.gridParams || {}, json || {});
-				delete route.gridParamsUrl;
+				params = $.extend(params || {}, json || {});
+				route.gridParamsUrl = null;
 				_filterHidden(route);
 				//console.log(route.gridParams);
 				_adjustGridParams(route, route.gridParams);
@@ -291,7 +304,7 @@ App.TabDatagridRoute = App.TabRoute.extend({
 		}
 		
 		function _adjustGridParams(route, p) {
-			if(p.adjust == true) return p;
+			if(p.adjust === true) return p;
 			p.adjust = true;
 			if(!route.actions) route.actions = {};
 			$.each(p.toolbar, function(k, v) {
@@ -370,7 +383,7 @@ App.TabDatagridRoute = App.TabRoute.extend({
 	},
 	actions: {
 		add: function() { //按下[新增]的按鈕的預設行為
-			this.gridParams['selected'] = null;
+			this.gridParams.selected = null;
 			this.transitionTo(this.routeName+".add");
 		},
 		edit: function() { //按下[編輯]的按鈕
@@ -380,7 +393,7 @@ App.TabDatagridRoute = App.TabRoute.extend({
 				return false;
 			}
 			//暫存選取列的資料，供editor dialog做載入用
-			this.gridParams['selected'] = this.gridParams._rawData[ $(this.getDatagrid()).datagrid('getRowIndex', row) ];
+			this.gridParams.selected = this.gridParams._rawData[ $(this.getDatagrid()).datagrid('getRowIndex', row) ];
 			this.gridParams.selected.pkval = this.gridParams.selected[this.gridParams.primaryKey];
 			this.transitionTo(this.routeName+".edit", this.gridParams.selected[this.gridParams.primaryKey || "id"]);
 		},
@@ -395,7 +408,7 @@ App.TabDatagridRoute = App.TabRoute.extend({
 				return false;
 			}
 			//暫存選取列的資料，供editor dialog做載入用
-			this.gridParams['selected'] = this.gridParams._rawData[ $(this.getDatagrid()).datagrid('getRowIndex', row) ];
+			this.gridParams.selected = this.gridParams._rawData[ $(this.getDatagrid()).datagrid('getRowIndex', row) ];
 			$.post(SERVER_PATH+this.routeName.split('.').join('/')+'/del/'+this.gridParams.selected[this.gridParams.primaryKey]).done(function(data) {
 				$.messager.notification("刪除成功");
 				if(data.reload === true) {
@@ -511,7 +524,7 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 				this.transitionTo(this.getParentRoute());
 			} else {
 				$dialog.form('load', selected);
-				console.log(selected);
+				//console.log(selected);
 			}
 		}
 		//console.log(this.model.columns);
@@ -612,17 +625,15 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 					return '<input name="'+column.field+'" class="easyui-switchbutton" data-options="value:\'1\'"/>';
 				case 'select':
 					return '<select name="'+column.field+'">'+_parseList(column.list || [])+'</select>';
-					break;
 				default:
 					//text.push('<input type="text" name="'+column.field+'" class="easyui-textbox" data-options="'+opts+'"/>');
 					return '<input type="text" name="'+column.field+'" data-options="'+opts+'"/>'; //有效能問題，暫時不使用easyui-textbox
-					break;
 			}
 		}
 		
 		function _parseList(list) {
 			var text = [];
-			if(typeof list === 'array') {
+			if(Array.isArray(list)) {
 				$.each(list, function(i, v) {
 					text.push('<option value="'+v+'">'+v+'</option>');
 				});
@@ -656,7 +667,7 @@ App.ApplicationRoute = Ember.Route.extend({
 		$.parser.parse('body');
 		$('#tabs').tabs({
 			onSelect: function() {
-				console.log(this, arguments);
+				//console.log(this, arguments);
 			},
 		});
 		//TODO: fluent menu的顯示狀態隨著route path而改變 (2014/08/15)
@@ -709,7 +720,11 @@ App.PlayerRoute = App.TabDatagridRoute.extend({
 				iconAlign: 'top',
 				handler: function() {}
 			}
-		]
+		],
+		contextMenu: [{
+			title: "編輯",
+			action: 'edit'
+		}]
 	}
 });
 
@@ -983,6 +998,45 @@ App.PlayerFriendRoute = App.TabDatagridRoute.extend({
 	}
 });
 
+App.PlayerTeamRoute = App.TabDatagridRoute.extend({
+	title: "隊伍管理",
+	gridParamsUrl: 'json/grid.player.team.json',
+	gridParams: {
+		primaryKey: 't_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+			{field: "p_id", formatter: function(val, row) { return row.p_name || val ; }},
+			{field: "t_time", formatter: function(val, row) { return new WOGDate(val); }}
+		],
+		columnsGroup: {
+			"基本資料": ['t_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.PlayerTeamJoinRoute = App.TabDatagridRoute.extend({
+	title: "隊伍入隊管理",
+	gridParamsUrl: 'json/grid.player.team.join.json',
+	gridParams: {
+		primaryKey: 't_j_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+			{field: "t_id", formatter: function(val, row) { return row.t_name || val ; }},
+			{field: "p_id", formatter: function(val, row) { return row.p_name || val ; }},
+			{field: "t_j_dateline", formatter: function(val, row) { return new WOGDate(val); }}
+		],
+		columnsGroup: {
+			"基本資料": ['t_j_id'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
 App.ItemRoute = App.TabDatagridRoute.extend({
 	title: "物品管理",
 	gridParamsUrl: 'json/grid.item.json',
@@ -1200,6 +1254,42 @@ App.CharacterSkillRoute = App.TabDatagridRoute.extend({
 	}
 });
 
+App.AvatarRoute = App.TabDatagridRoute.extend({
+	title: "頭像管理",
+	gridParamsUrl: 'json/grid.avatar.json',
+	gridParams: {
+		primaryKey: 'i_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columnsGroup: {
+			"基本資料": ['i_id', 'i_filename'],
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
+App.MonsterRoute = App.TabDatagridRoute.extend({
+	title: "怪物管理",
+	gridParamsUrl: 'json/grid.monster.json',
+	gridParams: {
+		primaryKey: 'm_id',
+		autoRowHeight: false,
+		pagination: true,
+		//擴充
+		columns: [
+			{field: "m_mission", formatter: function(val, row) { return val ? row.mission_name : "無" ; }},
+		],
+		columnsGroup: {
+			"基本資料": ['m_id', 'm_name', 's_property', 'm_img', 'm_place', 'm_subplace', 'm_meet', 'm_mission', 'm_npc', 'm_npc_message'],
+			"戰鬥能力": ['hp', 'sp', 'at', 'df', 'mat', 'mdf', 'str', 'smart', 'agi', 'life', 'vit', 'au', 'be'],
+			"技能": ['skill_1', 'time_1', 'skill_2', 'time_2', 'skill_3', 'time_3', 'skill_4', 'skill_5'],
+			"戰利品": ['d_id', 'm_topr', 'm_job_exp']
+		},
+		toolbar: ['add', 'edit', 'delete']
+	}
+});
+
 App.BarsController = Ember.Controller.extend({
 	field: ['現金', '存款', '財富'],
 	fieldMap: {
@@ -1229,7 +1319,7 @@ App.BarsBasicsRoute = Ember.Route.extend({
 		}
 	},
 	model: function(params) {
-		var fieldMap = this.controllerFor('bars').get('fieldMap')[params.field]
+		var fieldMap = this.controllerFor('bars').get('fieldMap')[params.field];
 		this.set('field', params.field);
 		return $.post('control.php', {'f': 'stats', act: 'barsBasics', 'field': params.field}).done(function(data) {
 			data.chartModel = {

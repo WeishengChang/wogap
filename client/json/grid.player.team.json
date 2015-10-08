@@ -1,0 +1,9 @@
+{
+	"columns": [[
+		{"field":"t_id", "title": "ID", "width": 40},
+		{"field":"p_id", "title": "隊長", "width": 160},
+		{"field":"t_name", "title": "隊伍名稱", "width": 160},
+		{"field":"t_peo", "title": "人數", "width": 40},
+		{"field":"t_time", "title": "建立時間", "width": 120}
+   ]]
+}
