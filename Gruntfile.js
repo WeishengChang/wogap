@@ -54,6 +54,16 @@ module.exports = function (grunt) {
 						files: {
 							"src/temp/templates.raw.js": ["src/templates/**/*.hbs"]
 						}
+					},
+					nocompression: {
+						options: {
+							templateBasePath: "src/templates/",
+							templateCompilerPath: 'libs/ember/ember-template-compiler-2.0.0.js',
+							handlebarsPath: 'libs/ember/handlebars-v3.0.3.js'
+						},
+						files: {
+							"client/js/templates.js": ["src/templates/**/*.hbs"]
+						}
 					}
 				},/*
 				compress: {
@@ -87,7 +97,8 @@ module.exports = function (grunt) {
 					},
 					emberTemplate: {
 						files: ['src/templates/**/*.hbs', '!templates/chara_view2.hbs'],
-						tasks: ['emberTemplates:build', 'uglify:template']
+						//tasks: ['emberTemplates:build', 'uglify:template']
+						tasks: ['emberTemplates:nocompression']
 					}
 				},
 //				uglify: {

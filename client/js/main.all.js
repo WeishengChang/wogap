@@ -325,7 +325,67 @@ Ember.Route.reopen({
 App.variable = {
 	sex: {1: '男', 2: '女'},
 	s_property: {1: '地', 2: '水', 3: '火', 4: '木', 5: '風', 6: '毒'},
-	userlv: {0: 'PC(普通玩家)', 1: 'SA(系統管理員)', 2: 'GM(遊戲管理員)'}
+	userlv: {0: 'PC(普通玩家)', 1: 'SA(系統管理員)', 2: 'GM(遊戲管理員)'},
+	place: {0: "未知區域",
+			1: "中央平原", 2: "試煉洞窟", 3: "黑暗沼澤", 4: "迷霧森林",
+			5: "古代遺跡", 6: "久遠戰場", 7: "王者之路", 8: "幻獸森林",
+			9: "星河異界", 10: "灼熱荒漠", 11: "無淵洞窟", 12: "天空之城",
+			13: "水晶之間", 14: "失落古船", 15: "最果之島", 16: "冷峰寒地",
+			17: "廢棄洞窟", 18: "日沒碉堡", 19: "靜止之城", 20: "黑耀神廟",
+			21: "血之魔域", 22: "星落大地"},
+	birth: {
+		0: "中央大陸",
+		1: "魔法王國",
+		2: "熱帶雨林",
+		3: "末日王城",
+		4: "禁區"
+	},
+	"itemtype": {
+		0: "武器",
+		1: "頭部",
+		2: "身體",
+		3: "手部",
+		4: "足部",
+		5: "道具",
+		6: "消耗品",
+		7: "魔石",
+		8: "勳章",
+		9: "鑰匙",
+		10: "精煉",
+		11: "戰鬥道具"
+	},
+	"bagtype": {
+		0: "武器",
+		1: "頭部",
+		2: "身體",
+		3: "手部",
+		4: "足部",
+		5: "道具",
+		7: "魔石",
+		8: "勳章",
+		9: "鑰匙",
+		10: "精煉"
+	},
+	'exchangeChange': {
+		0: '持平',
+		1: '上漲',
+		2: '下跌'
+	},
+	'mercenaryStatus': {
+		0: '休息中',
+		1: '戰鬥中'
+	},
+	"petStatus": {
+		0: '攜帶',
+		1: '拍賣',
+		2: '獸欄'
+	},
+	"petType": {
+		1: "積極",
+		2: "冷酷",
+		3: '鐵壁',
+		4: '危急'
+	},
 };
 App.TabRoute = Ember.Route.extend({
 	panel: null,
@@ -359,6 +419,7 @@ App.TabRoute = Ember.Route.extend({
 
 App.TabDatagridRoute = App.TabRoute.extend({
 	gridPanel: null,
+	cache: {},
 	getDatagrid: function() {
 		return this.gridPanel;
 	},
@@ -367,34 +428,49 @@ App.TabDatagridRoute = App.TabRoute.extend({
 		//example: 要使用PlayerRoute的model，targetModel要設定為player
 		//               之後就能在DialogRoute中呼叫this.model()抓回model(gridParams)
 		var route = this;
-		if(!route.gridParams.url) {
+		var promise = {};
+		if (!route.gridParams.url) {
 			//沒指定URL，則使用預設的格式: 當前route的subroute: show
 			route.gridParams.url = SERVER_PATH+this.routeName.split('.').join('/')+'/show';
 			/*if(params && params.mode && params.mode != 'undefined') {
 				route.grindParams.url += '/'+params.mode;
 			}*/
 		}
-		if(this.gridParamsUrl) {
-			return $.getJSON(this.gridParamsUrl).then(function(json) {
+		if (route.cacheUrl) {
+			var temp = [];
+			$.each(route.cacheUrl, function(k, url) {
+				temp.push($.getJSON(url).then(function(data) {
+					route.cache[k] = data;
+				}));
+			});
+			promise.cache = Ember.RSVP.all(temp);
+		}
+		if (this.gridParamsUrl) {
+			promise.params = $.getJSON(this.gridParamsUrl).then(function(json) {
 				var params = route.gridParams;
 				
-				if(params && params.columns) {
+				if (params && params.columns) {
 					params.columns = [_mixColumns(json.columns[0] || [], params.columns)];
 					delete json.columns;
 				}
 				params = $.extend(params || {}, json || {});
 				route.gridParamsUrl = null;
-				_filterHidden(route);
-				//console.log(route.gridParams);
-				_adjustGridParams(route, route.gridParams);
-				//console.log("route", route.actions, route.gridParams.actions);
-				return [route, route.gridParams || {}];
+				return params;
 			});
 		} else {
-			_adjustGridParams(this, this.gridParams);
-			//console.log("this ", this, this.gridParams.actions);
-			return [route, this.gridParams || {}];
+			promise.params = Ember.RSVP.resolve(false);
 		}
+		return Ember.RSVP.hash(promise).then(function(v) {
+			//cache不需要回傳資料，由此再恢復到原先的接口
+			if (v.params !== false) {
+				if (route.fieldCallback) {
+					v.params.columns[0] = route.fieldCallback.apply(route, [v.params.columns[0], route.cache]);
+				}
+				_filterHidden(route);
+				_adjustGridParams(route, route.gridParams);
+			}
+			return [route, route.gridParams];
+		});
 		
 		function _mixColumns(A, B) {
 			//先建立A的MAP
@@ -615,6 +691,7 @@ App.Dialog = Ember.Mixin.create({
 
 App.EditorRoute = Ember.Route.extend(App.Dialog, {
 	title: "編輯器",
+	cache: {},
 	targetModel: "",
 	loadSelected: false,
 	_cache_switch_list: [],
@@ -627,6 +704,9 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 		}
 		var data = this.modelFor(this.targetModel);
 		this.parentRoute = data[0];
+		if (data[0].cache) {
+			this.cache = data[0].cache;
+		}
 		return data[1];
 	},
 	actions: {
@@ -643,10 +723,16 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 	afterRender: function() {
 		var $dialog = this.getDialog();
 		this._super();
+		if(!this._cache_form) {
+			this._cache_form = this.createFormGroup.call(this);
+		}
 		$dialog
 			.dialog("setTitle", this.title)
-			.html(this.createFormGroup.call(this))
-			.dialog("open");
+			.html(this._cache_form)
+			.dialog("open")
+			.find('.ap-itemlist, .ap-itemlist2').textbox({
+				onClickButton: __showEditor
+				});
 		$.parser.parse($dialog.find('table'));
 		//先分析easyui的UI，再做form.load
 		if(this.get('loadSelected') === true) {
@@ -657,6 +743,10 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 				$dialog.form('load', selected);
 				//console.log(selected);
 			}
+		}
+		
+		function __showEditor() {
+			console.log('click');
 		}
 		//console.log(this.model.columns);
 	},
@@ -712,7 +802,7 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 				if(i%2 === 0) {
 					text.push('<tr>');
 				}
-				text.push('<td>'+column.title+':</td><td>'+_parse(column)+'</td>');
+				text.push('<td>'+column.title+':</td><td>'+_parse(column, route.cache)+'</td>');
 				if(i%2 === 1) {
 					text.push('</tr>');
 				}
@@ -730,7 +820,7 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 				if(i%2 === 0) {
 					text.push('<tr>');
 				}
-				text.push('<td>'+column.title+':</td><td>'+_parse(column)+'</td>');
+				text.push('<td>'+column.title+':</td><td>'+_parse(column, route.cache)+'</td>');
 				if(i%2 === 1) {
 					text.push('</tr>');
 				}
@@ -740,7 +830,7 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 		
 		return text.join('');
 		
-		function _parse(column) { //分析column設定，轉化為表格物件
+		function _parse(column, cache) { //分析column設定，轉化為表格物件
 			var opts = [];
 			if(column.required === true) {
 				opts.push('required:true');
@@ -756,6 +846,22 @@ App.EditorRoute = Ember.Route.extend(App.Dialog, {
 					return '<input name="'+column.field+'" class="easyui-switchbutton" data-options="value:\'1\'"/>';
 				case 'select':
 					return '<select name="'+column.field+'">'+_parseList(column.list || [])+'</select>';
+				case 'combobox':
+					switch(true) {
+						case $.isFunction(column.data):
+							column.data = column.data.apply(cache, []);
+							//console.log('<input name="'+column.field+'" class="easyui-combobox" data-options=\'data: '+JSON.stringify(column.data)+'\'>');
+							return '<input name="'+column.field+'" class="easyui-combobox" data-options=\'data: '+JSON.stringify(column.data)+'\'>';
+						case !!column.url:
+							return '<input name="'+column.field+'" class="easyui-combobox" data-options=\'mode:"remote",url:"'+column.url+'",method:"get"\'>';
+					}
+					
+				//case 'timestamp':
+				//eturn '';
+				case 'itemlist':
+					return '<input type="text" name="'+column.field+'" class="easyui-textbox ap-itemlist" data-options="buttonText:\'編輯\','+opts+'"/>';
+				case 'itemlist2':
+					return '<input type="text" name="'+column.field+'" class="easyui-textbox ap-itemlist2" data-options="buttonText:\'編輯\','+opts+'"/>';
 				default:
 					//text.push('<input type="text" name="'+column.field+'" class="easyui-textbox" data-options="'+opts+'"/>');
 					return '<input type="text" name="'+column.field+'" data-options="'+opts+'"/>'; //有效能問題，暫時不使用easyui-textbox
@@ -821,6 +927,7 @@ App.ManagementRoute = Ember.Route.extend({
 
 App.PlayerRoute = App.TabDatagridRoute.extend({
 	title: "玩家管理",
+	cacheUrl: {ch_name: 'json/cache.character.ch_name.json', 'avatar': 'json/cache.avatar.json'},
 	gridParamsUrl: 'json/grid.player.json',
 	gridParams: {
 		primaryKey: 'p_id',
@@ -836,8 +943,26 @@ App.PlayerRoute = App.TabDatagridRoute.extend({
 			{field: "p_cp_st", type: 'switch-boolean'},
 			{field: 'p_sex', type: 'select', list: App.variable.sex},
 			{field: 's_property', type: 'select', list: App.variable.s_property},
-			{field: 'p_userlv', type: 'select', list: App.variable.userlv}
-		], //擴充
+			{field: 'p_userlv', type: 'select', list: App.variable.userlv},
+			{field: 'p_place', type: 'select', list: App.variable.place},
+			{field: 'p_birth', type: 'select', list: App.variable.birth},
+			{field: 'ch_id', type: 'combobox', url: SERVER_PATH+'character/combobox'},
+			/*{field: 'ch_id', type: 'combobox', data: function() {
+					var data = [];
+					$.each(this.ch_name, function(id, name) {
+						data.push({text: name, value: id});
+					});
+					return data;
+			}},*/
+			{field: 'i_img', type: 'combobox', data: function() {
+					var data = [{text: '無', value: 0}];
+					$.each(this.avatar, function(id, name) {
+						data.push({text: name, value: id});
+					});
+					return data;
+			}},
+			{field: 'p_recomm', type: 'combobox', url: SERVER_PATH+'player/combobox_pc'}
+	], //擴充
 		columnsGroup: {
 			"基本資料": ['p_id', 'p_name', 'p_password', 'p_email', 'p_ipadd', 'act_num', 'act_num_time', 'p_act_time', 'p_online_time', 'p_cdate', 'p_lock', 'p_lock_time', 'p_sex', 's_property', 'ch_id', 'p_place', 'p_birth', 'p_money', 'p_bank', 'p_cash', 'p_st', 'p_userlv', 'p_npc'],
 			"原始能力": ['base_str', 'base_smart', 'base_agi', 'base_life', 'base_vit', 'base_au', 'base_be'],
@@ -867,7 +992,16 @@ App.PlayerItemRoute = App.TabDatagridRoute.extend({
 		autoRowHeight: false,
 		pagination: true,
 		columns: [
-			{field: "a_id", type: 'itemlist'}
+			{field: "a_id", type: 'itemlist', formatter: function(val, row) { return row.a_name || val; }},
+			{field: "d_head_id", type: 'itemlist', formatter: function(val, row) { return row.head_name || val; }},
+			{field: "d_body_id", type: 'itemlist', formatter: function(val, row) { return row.body_name || val; }},
+			{field: "d_hand_id", type: 'itemlist', formatter: function(val, row) { return row.hand_name || val; }},
+			{field: "d_foot_id", type: 'itemlist', formatter: function(val, row) { return row.foot_name || val; }},
+			{field: "d_item_id", type: 'itemlist', formatter: function(val, row) { return row.item_name || val; }},
+			{field: "d_stone_id", type: 'itemlist2', formatter: function(val, row) { return row.stone_name || val; }},
+			{field: "d_key_id", type: 'itemlist2', formatter: function(val, row) { return row.key_name || val; }},
+			{field: "d_honor_id", type: 'itemlist2', formatter: function(val, row) { return row.honor_name || val; }},
+			{field: "d_plus_id", type: 'itemlist2', formatter: function(val, row) { return row.plus_name || val; }},
 		], //擴充
 		columnsGroup: {
 			"基本資料": ['p_id'],
@@ -937,6 +1071,19 @@ App.PlayerExchangeRoute = App.TabDatagridRoute.extend({
 
 App.PlayerChexpRoute = App.TabDatagridRoute.extend({
 	title: "玩家職業熟練管理",
+	cacheUrl: {ch_name: 'json/cache.character.ch_name.json'},
+	fieldCallback: function (field, cache) {
+		$.each(field, function(k, v) {
+			var tmp = v.field.split('_');
+			if (tmp.length === 2 && cache.ch_name[tmp[1]]) {
+				field[k].title = cache.ch_name[tmp[1]];
+				if (tmp[0] === 'sk') {
+					field[k].title = 'sk'+field[k].title;
+				}
+			}
+		});
+		return field;
+	},
 	gridParamsUrl: 'json/grid.player.chexp.json',
 	gridParams: {
 		primaryKey: 'p_id',

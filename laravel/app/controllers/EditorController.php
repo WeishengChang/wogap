@@ -21,6 +21,9 @@ class EditorController extends Controller {
         unset($data['pkval']);
 		$player = new $this->dbname($data);
 		$player->save();
+        if(method_exists($this, 'teardown')) {
+			$this->teardown($data);
+		}
 		return Response::json(['reload'=>TRUE]);
 	}
 	public function edit() {
@@ -37,6 +40,9 @@ class EditorController extends Controller {
         unset($data['pkval']);
 		$player->fill($data);
 		$player->save();
+        if(method_exists($this, 'teardown')) {
+			$this->teardown($data);
+		}
 		return Response::json(['reload'=>TRUE]);
 	}
 	public function del($id) {
@@ -46,6 +52,9 @@ class EditorController extends Controller {
 		});
 		$p = call_user_func(array($this->dbname, 'findOrFail'), $id);
 		$p->delete();
+        if(method_exists($this, 'teardown')) {
+			$this->teardown($data);
+		}
 		return Response::json(['reload'=>TRUE]);
 	}
 	public function show() {

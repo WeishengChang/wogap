@@ -13,6 +13,21 @@ class AvatarController extends EditorController {
             Response::alert("ID重複");
         }
 	}
+    
+    public function teardown($data) {
+        //更新character的cache data
+        $filename = '../../client/json/cache.avatar.json';
+        $all = DBWOGAvatar::all();
+        $arr = [];
+        foreach ($all as $avatar) {
+            $arr[$avatar->i_id] = $avatar->i_filename;
+        }$fp = fopen($filename, 'w+');
+        flock($fp, LOCK_EX);
+        fputs($fp, json_encode($arr));
+        flock($fp, LOCK_UN);
+        fclose($fp);
+    }
+    
 	public function show() {
 		$page = Input::get("page");
 		$rows = Input::get("rows");

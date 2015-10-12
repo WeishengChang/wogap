@@ -23,6 +23,9 @@ Route::group(['prefix' => 'player'], function() {
 	Route::post('add', ['uses' => 'playerController@add']);
 	Route::post('edit', ['uses' => 'playerController@edit']);
 	Route::post('del/{id}', ['uses' => 'playerController@del']);
+	Route::get('combobox', ['uses' => 'playerController@combobox']);
+	Route::get('combobox_pc', ['uses' => 'playerController@combobox_pc']);
+    
 	Route::group(['prefix' => 'item'], function() {
 		Route::post('show', ['uses' => 'playerItemController@show']);
 		Route::post('edit', ['uses' => 'playerItemController@edit']);
@@ -168,6 +171,7 @@ Route::group(['prefix' => 'character'], function() {
     Route::post('add', ['uses' => 'characterController@add']);
     Route::post('edit', ['uses' => 'characterController@edit']);
     Route::post('del/{id}', ['uses' => 'characterController@del']);
+    Route::get('combobox', ['uses' => 'characterController@combobox']);
 	Route::group(['prefix' => 'skill'], function() {
 		Route::post('show', ['uses' => 'characterSkillController@show']);
 		Route::post('add', ['uses' => 'characterSkillController@add']);

@@ -3,7 +3,7 @@ require_once 'EditorController.php';
 class CharacterController extends EditorController {
 	public $rules = [
 		'ch_id' => '',
-		'ch_name' => 'numeric',
+		'ch_name' => 'string',
 		'ch_str' => 'string',
 		'ch_agi' => 'string',
 		'ch_smart' => 'string',
@@ -20,7 +20,7 @@ class CharacterController extends EditorController {
 	public function afterValidation(&$data) {
         
         $ex = DBWOGCharacter::find($data['ch_id']);
-        if ($data['pkval'] && $ex && $data['pkval']!=$data['ch_id']) {
+        if (isset($data['pkval']) && $ex && $data['pkval']!=$data['ch_id']) {
             Response::alert("ID重複");
         }
         if($data['ch_main'] > 0) {
@@ -31,6 +31,20 @@ class CharacterController extends EditorController {
         }
         
 	}
+    
+    public function teardown($data) {
+        //更新character的cache data
+        $filename = '../../client/json/cache.character.ch_name.json';
+        $all = DBWOGCharacter::all();
+        $arr = [];
+        foreach ($all as $character) {
+            $arr[$character->ch_id] = $character->ch_name;
+        }$fp = fopen($filename, 'w+');
+        flock($fp, LOCK_EX);
+        fputs($fp, json_encode($arr));
+        flock($fp, LOCK_UN);
+        fclose($fp);
+    }
 	public function show() {
 		$page = Input::get("page");
 		$rows = Input::get("rows");
@@ -55,4 +69,12 @@ class CharacterController extends EditorController {
 		];
 		return Response::json($list);
 	}
+    public function combobox() {
+        $q = Input::get("q");
+        $p = DBWOGCharacter::where('ch_name', 'like', "%{$q}%")->get();
+        foreach($p as $k=>$d) {
+            $p[$k] = ['value'=>$d['ch_id'], 'text'=>"({$d['ch_id']}) {$d['ch_name']}"];
+        }
+        return Response::json($p);
+    }
 }

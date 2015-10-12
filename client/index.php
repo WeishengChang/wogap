@@ -25,7 +25,7 @@ define('LIBRARY_CSS_PATH', '../libs-css/');
 		<script type="text/javascript" src="js/libs.js"></script>
 		<script type="text/javascript" src="js/config.woggrid.js"></script>
 		<script type="text/javascript" src="js/main.all.js"></script>
-		<script type="text/javascript" src="js/templates.min.js"></script>
+		<script type="text/javascript" src="js/templates.js"></script>
 	</head>
 	<body>
 	</body>

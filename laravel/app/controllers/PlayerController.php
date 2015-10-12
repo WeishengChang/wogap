@@ -116,4 +116,21 @@ class PlayerController extends Controller {
 		];
 		return Response::json($list);
 	}
+    
+    public function combobox() {
+        $q = Input::get("q");
+        $p = DBWOGPlayer::where('p_name', 'like', "%{$q}%")->get();
+        foreach($p as $k=>$d) {
+            $p[$k] = ['value'=>$d['p_id'], 'text'=>$d['p_name']];
+        }
+        return Response::json($p);
+    }
+    public function combobox_pc() {
+        $q = Input::get("q");
+        $p = DBWOGPlayer::where('p_name', 'like', "%{$q}%")->where('p_npc', '=', '0')->get();
+        foreach($p as $k=>$d) {
+            $p[$k] = ['value'=>$d['p_id'], 'text'=>'('.$d['p_id'].') '.$d['p_name']];
+        }
+        return Response::json($p);
+    }
 }

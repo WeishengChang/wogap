@@ -12,17 +12,18 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/wogap/src/js/router.js</file>
-            <file>file:/C:/wamp/www/wogap/laravel/app/routes.php</file>
-            <file>file:/C:/wamp/www/wogap/client/json/wogmodel.jqgrid.json</file>
-            <file>file:/C:/wamp/www/wogap/src/templates/submenu.hbs</file>
             <file>file:/C:/wamp/www/wogap/src/templates/management.hbs</file>
-            <file>file:/C:/wamp/www/wogap/client/history.txt</file>
-            <file>file:/C:/wamp/www/wogap/laravel/app/controllers/ExchangeLogController.php</file>
-            <file>file:/C:/wamp/www/wogap/laravel/app/models/DBWOGExchangeLog.php</file>
+            <file>file:/C:/wamp/www/wogap/src/js/main.js</file>
+            <file>file:/C:/wamp/www/wogap/src/js/router.js</file>
+            <file>file:/C:/wamp/www/wogap/client/js/config.woggrid.js</file>
+            <file>file:/C:/wamp/www/wogap/client/json/wogmodel.jqgrid.json</file>
+            <file>file:/C:/wamp/www/wogap/client/json/grid.monster.json</file>
+            <file>file:/C:/wamp/www/wogap/laravel/app/controllers/MonsterController.php</file>
+            <file>file:/C:/wamp/www/wogap/laravel/app/models/DBWOGMonster.php</file>
             <file>file:/C:/wamp/www/wogap/laravel/app/controllers/CharacterController.php</file>
-            <file>file:/C:/wamp/www/wogap/laravel/app/controllers/CharacterSkillController.php</file>
-            <file>file:/C:/wamp/www/wogap/client/json/grid.player.team.json</file>
+            <file>file:/C:/wamp/www/wogap/client/history.txt</file>
+            <file>file:/C:/wamp/www/wogap/src/templates/submenu.hbs</file>
+            <file>file:/C:/wamp/www/wogap/laravel/app/routes.php</file>
         </group>
     </open-files>
 </project-private>
